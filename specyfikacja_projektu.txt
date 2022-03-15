@@ -1,0 +1,16 @@
+Zespół : Kacper Raczyński (308197), Adam Cieszyński (308158)
+
+Projekt: System Obsługi Warsztatu Samochodowego
+	 Aplikacja oparta jest na bazie danych. Wykorzystuję architekturę klient- serwer, połączenie realizowane jest za pomocą programowania sieciowego. Dostęp do aplikacji serwera ma kierownik warsztatu, który może wykonywać wszystkie poniższe zadania. Klientem jest pracownik warsztatu, który ma dostęp do niektórych funkcjonalności systemu.
+
+Funkcjonalności  aplikacji:
+	Przyjmowanie samochodów do naprawy(dane klienta, dane samochodu, określenie usterek)
+	Przypisanie mechanika do naprawy konkretnego samochodu()
+	Monitorowanie statusu samochodu (przyjęty, w trakcie naprawy, gotowy do odbioru)
+	Informowanie klienta za pomocą SMS o zmianie statusu jego pojazdu
+	Wystawianie faktury (generowanie pdf)
+	Mechanik ma wgląd do przypisanych sobie zadań, historii samochodu, 
+	Dodawanie, usuwanie pracowników
+	Logowanie kierownika i pracowników warsztatu
+
+Link do GitHub:

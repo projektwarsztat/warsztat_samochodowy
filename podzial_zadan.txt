@@ -1,0 +1,12 @@
+Kacper:
+-polacznie z baza 
+- wstawianie do bazy danych z formularza
+
+
+Adam: 
+- ekran powitalny z menu, miejscem na elementy aplikacji
+- postawienie na hostingu bazy
+- wypisywanie danych z bazy
+
+Razem: 
+- struktura bazy danych

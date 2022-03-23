@@ -1,0 +1,66 @@
+﻿<Page x:Class="WarsztatV2.OFirmie"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WarsztatV2"
+      mc:Ignorable="d" 
+      Title="OFirmie"
+      d:DesignHeight="800" d:DesignWidth="810"
+      ShowsNavigationUI="False">
+
+    <Border Background="#BFD7ED"
+            CornerRadius="10">
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+         
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180"/>
+                <RowDefinition />
+                
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="40,40,40,40" Grid.Row="0">
+                <TextBlock FontSize="40" FontFamily="/Fonts/#Roboto">
+                Informacje o Warsztacie
+                </TextBlock>
+
+                <TextBlock Margin="0,10,0,0"  >
+                Poniższe Informacje są niezbędne do prawidłowego działania aplikacji.
+                Za pomocą formularza istnieje możliwość zmiany danych.
+                <LineBreak/> <Bold>Uwaga !!! Poniższe dane znajdą się na fakturze</Bold>
+                </TextBlock>
+
+            </StackPanel>
+
+                <StackPanel  Grid.Row="1" Margin="40,0,0,0">
+                    <Label Content="Nazwa:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Nazwsko:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Ulica:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Numer:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Kod Pocztowy:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Telefon:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
+                    <Label Content="NIP:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
+                    <Label Content="Numer Konta:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
+                </StackPanel>
+
+                
+                <Button x:Name="SaveButton"  Grid.Row="9" Width="100" Height="30" HorizontalAlignment="left" Margin="120,550,50,0">Zapisz</Button>
+        </Grid>
+            
+        </ScrollViewer>
+        
+    </Border>
+    
+</Page>

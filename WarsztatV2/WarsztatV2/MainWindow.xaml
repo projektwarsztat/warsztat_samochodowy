@@ -1,0 +1,92 @@
+﻿<Window x:Class="WarsztatV2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WarsztatV2"
+        mc:Ignorable="d"
+        Title="Warsztat V 2.0" Height="620" Width="1200"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    
+    
+    <Border Background="#003B73"
+            CornerRadius="10">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+
+                <RadioButton x:Name="Aktualonosci" Content="AKTUALNOŚCI"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="13"
+                             Style="{StaticResource MenuButtonStyle}"
+                             Margin="0,100,0,0" />
+
+                <RadioButton x:Name="Akk" Content="PRZYJMIJ SAMOCHÓD DO NAPRAWY"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="13" 
+                             Style="{StaticResource MenuButtonStyle}"/>
+
+                <RadioButton Content="STATUS SAMOCHODU"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="13"
+                             Style="{StaticResource MenuButtonStyle}"/>
+
+                <RadioButton Content="KLIENCI"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="13"
+                             Style="{StaticResource MenuButtonStyle}"
+                             Click="KlienciClick"/>
+
+                <RadioButton Content="ZARZĄDZAJ PRACOWNIKAMI"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="13"
+                             Style="{StaticResource MenuButtonStyle}"/>
+
+                <RadioButton Content="WYDAJ SAMOCHÓD"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="13"
+                             Style="{StaticResource MenuButtonStyle}"/>
+
+                <RadioButton Content="WYSTAW FAKTURĘ"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="13"
+                             Style="{StaticResource MenuButtonStyle}"/>
+
+                <RadioButton Content="O FIRMIE"
+                             Height="55"
+                             Foreground="White"
+                             FontSize="13"
+                             Style="{StaticResource MenuButtonStyle}"
+                             Click="OFirmieClick"/>
+
+
+            </StackPanel>
+
+            <Frame x:Name="RightContent" Grid.Column="1" Grid.Row="1"/>
+
+            <StackPanel x:Name="aktualnosci" Grid.Column="0" Margin="0,10,0,10">
+                <Image Source="/Image/pngwing.com.png" Height="89" Width="280"/>
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+    
+</Window>

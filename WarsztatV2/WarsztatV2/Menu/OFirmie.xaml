@@ -7,45 +7,35 @@
       mc:Ignorable="d" 
       Title="OFirmie"
       d:DesignHeight="800" d:DesignWidth="810"
-      ShowsNavigationUI="False">
+      >
 
     <Border Background="#BFD7ED"
             CornerRadius="10">
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-         
+        <!--.<ScrollViewer VerticalScrollBarVisibility="Auto">-->
+
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="180"/>
-                <RowDefinition />
-                
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition />
 
-            <StackPanel Margin="40,40,40,40" Grid.Row="0">
-                <TextBlock FontSize="40" FontFamily="/Fonts/#Roboto">
+                </Grid.RowDefinitions>
+
+                <StackPanel Margin="40,40,40,40" Grid.Row="0">
+                    <TextBlock FontSize="40" FontFamily="/Fonts/#Roboto">
                 Informacje o Warsztacie
-                </TextBlock>
+                    </TextBlock>
 
-                <TextBlock Margin="0,10,0,0"  >
+                    <TextBlock Margin="0,10,0,0"  >
                 Poniższe Informacje są niezbędne do prawidłowego działania aplikacji.
                 Za pomocą formularza istnieje możliwość zmiany danych.
                 <LineBreak/> <Bold>Uwaga !!! Poniższe dane znajdą się na fakturze</Bold>
-                </TextBlock>
+                    </TextBlock>
 
-            </StackPanel>
+                </StackPanel>
 
                 <StackPanel  Grid.Row="1" Margin="40,0,0,0">
                     <Label Content="Nazwa:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold"/>
-                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Nazwsko:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Ulica:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Numer:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Kod Pocztowy:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
                     <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
                     <Label Content="Telefon:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
                     <TextBox Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
@@ -55,12 +45,24 @@
                     <TextBox Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
                 </StackPanel>
 
-                
-                <Button x:Name="SaveButton"  Grid.Row="9" Width="100" Height="30" HorizontalAlignment="left" Margin="120,550,50,0">Zapisz</Button>
-        </Grid>
-            
-        </ScrollViewer>
-        
+                <StackPanel  Grid.Row="1" Margin="300,0,0,0">
+                    <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Ulica:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Numer:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Kod Pocztowy:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <TextBox Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    
+                </StackPanel>
+
+
+                <Button x:Name="SaveButton"  Grid.Row="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="450,280,0,20" VerticalAlignment="Top">Zapisz</Button>
+            </Grid>
+
+       <!-- </ScrollViewer>-->
+
     </Border>
-    
+
 </Page>

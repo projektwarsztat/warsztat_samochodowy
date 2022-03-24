@@ -26,7 +26,7 @@ CREATE TABLE Pracownik (
 );
 
 CREATE TABLE Pojazd (
-	Numer_rejestracyjny varchar(7) PRIMARY KEY,
+	Numer_rejestracyjny varchar(8) PRIMARY KEY,
 	Wlasciciel integer NOT NULL,
 	Marka varchar(20) NOT NULL,
 	Model varchar(20) NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE Klient (
 
 CREATE TABLE Naprawa (
 	ID_Naprawy integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	Numer_rejestracyjny varchar(7) NOT NULL,
+	Numer_rejestracyjny varchar(8) NOT NULL,
 	Mechanik integer NOT NULL,
 	Data_przyjecia DATE NOT NULL,
 	Data_wydania DATE NOT NULL,

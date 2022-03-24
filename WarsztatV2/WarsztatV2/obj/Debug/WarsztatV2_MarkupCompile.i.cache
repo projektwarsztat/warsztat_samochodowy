@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\WarsztatV2\WarsztatV2\obj\Debug\
+C:\Users\kacpe\Source\Repos\projektwarsztat\warsztat_samochodowy\WarsztatV2\WarsztatV2\obj\Debug\
 WarsztatV2
 none
 false
 DEBUG;TRACE
-D:\WarsztatV2\WarsztatV2\App.xaml
+C:\Users\kacpe\Source\Repos\projektwarsztat\warsztat_samochodowy\WarsztatV2\WarsztatV2\App.xaml
 41631797781
 
-824139321
-13-1310406943
+18-949179001
+36667432190
 MainWindow.xaml;Menu\Klienci.xaml;Menu\OFirmie.xaml;Style\ButtonStyle.xaml;
 
-True
+False
 

@@ -9,11 +9,8 @@
         Background="Transparent"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
-        
-    
-    
-    <Border Background="#003B73"
-            CornerRadius="10">
+
+    <Border Background="#003B73">
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -27,67 +24,84 @@
             <StackPanel>
 
                 <RadioButton x:Name="Aktualonosci" Content="AKTUALNOŚCI"
-                             Height="55"
+                             Height="50"
                              Foreground="White"
                              FontSize="13"
                              Style="{StaticResource MenuButtonStyle}"
                              Margin="0,100,0,0" />
 
-                <RadioButton x:Name="Akk" Content="PRZYJMIJ SAMOCHÓD DO NAPRAWY"
-                             Height="55"
+                <RadioButton x:Name="Zlecenia" Content="ZLECENIA"
+                             Height="50"
                              Foreground="White"
                              FontSize="13" 
-                             Style="{StaticResource MenuButtonStyle}"/>
+                             Style="{StaticResource MenuButtonStyle}"
+                              Click="ZleceniaClick"/>
 
-                <RadioButton Content="STATUS SAMOCHODU"
-                             Height="55"
+                <RadioButton x:Name="NoweZlecenie" Content="NOWE ZLECENIE"
+                             Height="45"
                              Foreground="White"
                              FontSize="13"
+                              Margin="40,0,0,0" 
                              Style="{StaticResource MenuButtonStyle}"/>
 
-                <RadioButton Content="KLIENCI"
-                             Height="55"
+                <RadioButton x:Name="DoNaprawy" Content="DO NAPRAWY"
+                             Height="45"
+                             Foreground="White"
+                             FontSize="13"
+                              Margin="40,0,0,0" 
+                             Style="{StaticResource MenuButtonStyle}"/>
+
+                <RadioButton x:Name="DoOdbioru" Content="DO ODBIORU"
+                             Height="45"
+                             Foreground="White"
+                             FontSize="13"
+                              Margin="40,0,0,0" 
+                             Style="{StaticResource MenuButtonStyle}"/>
+
+                <RadioButton x:Name="HistoriaZlecen" Content="HISTORIA ZLECEŃ"
+                             Height="45"
+                             Foreground="White"
+                             FontSize="13"
+                              Margin="40,0,0,0" 
+                             Style="{StaticResource MenuButtonStyle}"/>
+
+                <RadioButton x:Name="Klienci" Content="KLIENCI"
+                             Height="50"
                              Foreground="White"
                              FontSize="13"
                              Style="{StaticResource MenuButtonStyle}"
                              Click="KlienciClick"/>
 
-                <RadioButton Content="ZARZĄDZAJ PRACOWNIKAMI"
-                             Height="55"
+                <RadioButton x:Name="Pracownicy" Content="PRACOWNICY"
+                             Height="50"
                              Foreground="White"
                              FontSize="13"
                              Style="{StaticResource MenuButtonStyle}"/>
 
-                <RadioButton Content="WYDAJ SAMOCHÓD"
-                             Height="55"
+                <RadioButton x:Name="Samochody" Content="SAMOCHODY"
+                             Height="50"
                              Foreground="White"
                              FontSize="13"
                              Style="{StaticResource MenuButtonStyle}"/>
 
-                <RadioButton Content="WYSTAW FAKTURĘ"
-                             Height="55"
-                             Foreground="White"
-                             FontSize="13"
-                             Style="{StaticResource MenuButtonStyle}"/>
-
-                <RadioButton Content="O FIRMIE"
-                             Height="55"
+                <RadioButton x:Name="OFirmie" Content="O FIRMIE"
+                             Height="50"
                              Foreground="White"
                              FontSize="13"
                              Style="{StaticResource MenuButtonStyle}"
                              Click="OFirmieClick"/>
-
-
             </StackPanel>
 
             <Frame x:Name="RightContent" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden" />
 
-            <StackPanel x:Name="aktualnosci" Grid.Column="0" Margin="0,10,0,10">
-                <Image Source="/Image/pngwing.com.png" Height="89" Width="280"/>
-            </StackPanel>
+            <Image Source="/Image/kindpng_2267500.png" Margin="31,10,0,534" HorizontalAlignment="Left" Width="99" RenderTransformOrigin="0.498,0.519"/>
+
+            <TextBlock x:Name="guzik" Margin="111,10,10,515" FontSize="28" FontWeight="Bold" Foreground="White"> Witaj ! <LineBreak/> Jan Kowalski</TextBlock>
+
+            <Border Width="300" Height="1"  Margin="0,90,0,0" Background="White" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         </Grid>
 
     </Border>
-    
+
 </Window>

@@ -10,7 +10,7 @@
       >
 
     <Border Background="#BFD7ED"
-            CornerRadius="5">
+              CornerRadius="10,0,0,10">
 
         <!--.<ScrollViewer VerticalScrollBarVisibility="Auto">-->
 

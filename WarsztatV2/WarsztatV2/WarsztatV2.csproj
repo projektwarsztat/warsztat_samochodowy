@@ -114,6 +114,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Menu\Aktualnosci.xaml.cs">
+      <DependentUpon>Aktualnosci.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Pracownicy.xaml.cs">
+      <DependentUpon>Pracownicy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Samochody.xaml.cs">
+      <DependentUpon>Samochody.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tables\Adres.cs" />
     <Compile Include="Tables\Czesc.cs" />
     <Compile Include="Tables\Faktura.cs" />
@@ -136,11 +145,23 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Menu\Aktualnosci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Menu\Klienci.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menu\OFirmie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\Pracownicy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\Samochody.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

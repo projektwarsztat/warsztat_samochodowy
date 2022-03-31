@@ -11,10 +11,14 @@ namespace WarsztatV2
         public MainWindow()
         {
             InitializeComponent();
+            // domyslnie podmenu zlecienie - ukryte
             HideSubmenu();
-            guzik.Text = "Witaj ! \nJan kowalski";
+
+            // wypisanie danych aktualnie zalogowanego uzytkownika
+            IdUser.Text = "Witaj ! \nJan Kowalski";
         }
 
+        // metoda rozwijajaca podmenu zlecenia
         private void ShowSubmenu()
         {       
           if(NoweZlecenie.IsVisible==true)
@@ -29,6 +33,7 @@ namespace WarsztatV2
             }
         }
 
+        // metoda ukrywajaca podmenu zlecenia
         private void HideSubmenu()
         {
             NoweZlecenie.Visibility = Visibility.Collapsed;
@@ -38,11 +43,13 @@ namespace WarsztatV2
 
         }
 
+        //metoda rozwijajaca podmenu zlecenia
         private void ZleceniaClick(object sender, RoutedEventArgs e)
         {
            ShowSubmenu();
         }
 
+        //------------ metody przelaczajace zawartosc prawej czesci aplikacji ------------//
         private void OFirmieClick(object sender, RoutedEventArgs e)
         {
 
@@ -55,6 +62,24 @@ namespace WarsztatV2
             RightContent.Content = new Klienci();
         }
 
+        private void PracownicyClick(object sender, RoutedEventArgs e)
+        {
+
+            RightContent.Content = new Pracownicy();
+        }
+
+
+        private void AktualnosciClick(object sender, RoutedEventArgs e)
+        {
+
+            RightContent.Content = new Aktualnosci();
+        }
+
+        private void SamochodyClick(object sender, RoutedEventArgs e)
+        {
+
+            RightContent.Content = new Samochody();
+        }
 
     }
 }

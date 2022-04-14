@@ -1,24 +1,29 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace WarsztatV2.Tables
 {
-    [Table("klient")]
     internal class Klient
     {
-        [Column("id_klient"), Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Klient()
+        {
+            //AdresNav = new Adres();
+            PojazdNav = new List<Pojazd>();
+            FakturaNav = new List<Faktura>();
+        }
+
+        [Key]
         public int ID_Klient { get; set; }
-
-        [Column("imie"), Required, MaxLength(50)]
         public string Imie { get; set; }
-
-        [Column("nazwisko"), Required, MaxLength(50)]
         public string Nazwisko { get; set; }
-
-        [Column("adres"), Required]
-        public int Adres { get; set; }
-
-        [Column("telefon"), Required]
+        public int ID_Adres { get; set; }
         public int Telefon { get; set; }
+        public virtual Adres AdresNav { get; set; }
+        public virtual ICollection<Pojazd> PojazdNav { get; set; }
+        public virtual ICollection<Faktura> FakturaNav { get; set; }
     }
 }

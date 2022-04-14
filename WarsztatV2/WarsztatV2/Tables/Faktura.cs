@@ -1,21 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WarsztatV2.Tables
 {
-    [Table("faktura")]
     internal class Faktura
     {
-        [Column("id_faktura"), Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Faktura()
+        {
+            //WarsztatNav = new Warsztat();
+            //KlientNav = new Klient();
+            //NaprawaNav = new Naprawa();
+        }
+
+        [Key]
         public int ID_Faktura { get; set; }
-
-        [Column("warsztat"), Required, MaxLength(100)]
-        public string Warsztat { get; set; }
-
-        [Column("klient"), Required]
-        public int Klient { get; set; }
-
-        [Column("naprawa"), Required]
-        public int Naprawa { get; set; }
+        [Column("Warsztat")]
+        public string Nazwa { get; set; } //Z powodu konfliktu nazewnictwa
+        public int ID_Klient { get; set; }
+        public int ID_Naprawa { get; set; }
+        public virtual Warsztat WarsztatNav { get; set; }
+        public virtual Klient KlientNav { get; set; }
+        public virtual Naprawa NaprawaNav { get; set; }
     }
 }

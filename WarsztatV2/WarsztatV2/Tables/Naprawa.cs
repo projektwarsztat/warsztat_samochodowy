@@ -1,31 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WarsztatV2.Tables
 {
-    [Table("naprawa")]
     internal class Naprawa
     {
-        [Column("id_naprawa"), Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID_Naprawy { get; set; }
+        public Naprawa()
+        {
+            //PojazdNav = new Pojazd();
+            //PracownikNav = new Pracownik();
+        }
 
-        [Column("numer_rejestracyjny"), Required, MaxLength(8)]
+        [Key]
+        public int ID_Naprawa { get; set; }
         public string Numer_rejestracyjny { get; set; }
-
-        [Column("mechanik"), Required]
-        public int Mechanik { get; set; }
-
-        [Column("data_przyjecia"), Required]
-        public DateTime Data_przyjecia { get; set; }
-
-        [Column("data_wydania"), Required]
-        public DataType Data_wydania { get; set; }
-
-        [Column("status_naprawy"), Required, MaxLength(15)]
+        public int ID_Pracownik { get; set; }
+        public DateTime? Data_przyjecia { get; set; }
+        public DateTime? Data_wydania { get; set; }
         public string Status_naprawy { get; set; }
-
-        [Column("opis_usterek"), Required, MaxLength(500)]
         public string Opis_usterek { get; set; }
+        public string Wiadomosc_zwrotna { get; set; }
+        public virtual Pojazd PojazdNav { get; set; }
+        public virtual Pracownik PracownikNav { get; set; }
     }
 }

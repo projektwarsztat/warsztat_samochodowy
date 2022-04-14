@@ -43,7 +43,8 @@
                              Foreground="White"
                              FontSize="13"
                               Margin="40,0,0,0" 
-                             Style="{StaticResource MenuButtonStyle}"/>
+                             Style="{StaticResource MenuButtonStyle}"
+                             Click="NoweZlecenieClick"/>
 
                 <RadioButton x:Name="DoNaprawy" Content="DO NAPRAWY"
                              Height="45"

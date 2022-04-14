@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\WarsztatV2\WarsztatV2\obj\Debug\
+C:\Users\Adam\Desktop\WarsztatV2\WarsztatV2\obj\Debug\
 WarsztatV2
 none
 false
 DEBUG;TRACE
-D:\WarsztatV2\WarsztatV2\App.xaml
-7621446400
+C:\Users\Adam\Desktop\WarsztatV2\WarsztatV2\App.xaml
+8-756259123
 
-21-1763728764
-36-12413498
-MainWindow.xaml;Menu\Aktualnosci.xaml;Menu\Klienci.xaml;Menu\OFirmie.xaml;Menu\Pracownicy.xaml;Menu\Samochody.xaml;Style\ButtonStyle.xaml;
+221949647035
+36-958739340
+MainWindow.xaml;Menu\Aktualnosci.xaml;Menu\Klienci.xaml;Menu\NoweZlecenie.xaml;Menu\OFirmie.xaml;Menu\Pracownicy.xaml;Menu\Samochody.xaml;Style\ButtonStyle.xaml;
 
-False
+True
 

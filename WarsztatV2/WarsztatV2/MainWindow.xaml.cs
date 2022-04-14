@@ -81,5 +81,12 @@ namespace WarsztatV2
             RightContent.Content = new Samochody();
         }
 
+        private void NoweZlecenieClick(object sender, RoutedEventArgs e)
+        {
+
+            RightContent.Content = new NoweZlecenie();
+        }
+
+
     }
 }

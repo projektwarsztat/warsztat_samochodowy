@@ -117,6 +117,9 @@
     <Compile Include="Menu\Aktualnosci.xaml.cs">
       <DependentUpon>Aktualnosci.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menu\NoweZlecenie.xaml.cs">
+      <DependentUpon>NoweZlecenie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menu\Pracownicy.xaml.cs">
       <DependentUpon>Pracownicy.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menu\Klienci.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\NoweZlecenie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

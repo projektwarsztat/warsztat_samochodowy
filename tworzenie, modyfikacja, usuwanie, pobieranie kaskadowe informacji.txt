@@ -1,0 +1,346 @@
+	1. Zależności obiektów:
+
+Elementy, które mogą być dodawane osobno (nie związane z innymi):
+ -> Obiekty typu Adres,
+ -> Obiekty typu Części,
+
+Elementy, które nie mogą być dodawane osobno:
+ -> Obiekty typu Warsztat (wymagają Adresu),
+ -> Obiekty typu Klient (wymagają Adresu),
+ -> Obiekty typu Pracownik (wymagają Adresu),
+ -> Obiekty typu Pojazd (wymagają Klienta),
+ -> Obiekty typu Naprawa (wymagają Pojazdu, Użytych_części),
+ -> obiekty typu Faktura (wymagają Warsztatu, Klienta, Naprawy)
+
+	2. Dodawanie obiektów:
+/// Nowy warsztat / nowy adres
+                //newConnection.Warsztaty.Add(
+                //    new Warsztat
+                //    {
+                //        Nazwa = "YYY",
+                //        AdresNav = new Adres
+                //        {
+                //            Kod_pocztowy = "BBB",
+                //            Miejscowosc = "CCC",
+                //            Numer = "DDD",
+                //            Ulica = "EEE"
+                //        },
+                //        Nazwa_banku = "FFF",
+                //        NIP = "GGG",
+                //        Numer_konta_bankowego = "HHH",
+                //        Telefon = 0
+                //    });
+                //newConnection.SaveChanges();
+
+///Nowy adres
+                //newConnection.Adresy.Add(
+                //    new Adres
+                //    {
+                //        Miejscowosc = "aaa",
+                //        Ulica = "bbb",
+                //        Numer = "ccc",
+                //        Kod_pocztowy = "ddd"
+                //    });
+                //newConnection.SaveChanges();
+
+///Nowy warsztat / stary adres
+                //newConnection.Warsztaty.Add(
+                //    new Warsztat
+                //    {
+                //        Nazwa = "bbb",
+                //        Telefon = 0,
+                //        NIP = "bbb",
+                //        Nazwa_banku = "ccc",
+                //        Numer_konta_bankowego = "ddd",
+                //        AdresNav = newConnection.Adresy.Single<Adres>(a => a.Numer == "ccc" && a.Miejscowosc == "aaa" && a.Ulica == "bbb" && a.Kod_pocztowy == "ddd")
+                //    });
+                //newConnection.SaveChanges();
+
+///Nowy klient / nowe pojazdy
+                //newConnection.Klienci.Add(
+                //    new Klient
+                //    {
+                //        Imie = "AAA",
+                //        Nazwisko = "BBB",
+                //        AdresNav = new Adres
+                //        {
+                //            Ulica = "eee",
+                //            Numer = "fff",
+                //            Kod_pocztowy = "ggg",
+                //            Miejscowosc = "hhh"
+                //        },
+                //        PojazdNav = {
+                //            new Pojazd
+                //            {
+                //                Numer_rejestracyjny = "AAA",
+                //                Marka = "BBB",
+                //                Model = "CCC",
+                //                Numer_VIN = "WWW",
+                //                Rok_produkcji = 0,
+                //                Typ_paliwa = "EEE",
+                //            }
+                //        },
+                //        Telefon = 0
+                //    });
+                //newConnection.SaveChanges();
+
+///Nowy klient / stary adres
+                //newConnection.Klienci.Add(
+                //    new Klient
+                //    {
+                //        Imie = "AAA",
+                //        Nazwisko = "BBB",
+                //        AdresNav = newConnection.Adresy.Single<Adres>(a => a.Miejscowosc == "aaa"),
+                //        Telefon = 1
+                //    }
+                //);
+                //newConnection.SaveChanges();
+
+///Nowa faktura / stary warsztat / stary klient / stara naprawa !!!
+                //newConnection.Faktury.Add(
+                //    new Faktura
+                //    {
+                //        WarsztatNav = newConnection.Warsztaty.Single<Warsztat>(
+                //            w => w.Nazwa == "CCC"),
+                //        KlientNav = newConnection.Klienci.Single<Klient>(
+                //            k => k.Imie == "AAA"),
+
+                //    }
+                //);
+                //newConnection.SaveChanges();
+
+///Nowy pojazd / nowy klient (nowy adres / stary adres)
+                //newConnection.Pojazdy.Add(
+                //    new Pojazd
+                //    {
+                //        Numer_rejestracyjny = "BBB",
+                //        Marka = "BBB",
+                //        Model = "CCC",
+                //        Numer_VIN = "AAA",
+                //        Rok_produkcji = 2001,
+                //        Typ_paliwa = "EEE",
+                //        KlientNav = new Klient
+                //        {
+                //            Imie = "AAA",
+                //            Nazwisko = "BBB",
+                //            Telefon = 0,
+                //            AdresNav = new Adres
+                //            {
+                //                Ulica = "AAA",
+                //                Numer = "BBB",
+                //                Kod_pocztowy = "CCC",
+                //                Miejscowosc = "DDD"
+                //            }
+                //            //AdresNav = newConnection.Adresy.Single<Adres>(a => a.Miejscowosc == "hhh")
+                //        }
+                //    }
+                //);
+                //newConnection.SaveChanges();
+
+//Nowy pojazd / stary klient
+                //newConnection.Pojazdy.Add(
+                //    new Pojazd
+                //    {
+                //        Numer_rejestracyjny = "DDD",
+                //        Model = "CCC",
+                //        Marka = "DDD",
+                //        Numer_VIN = "GGG",
+                //        Rok_produkcji = 2001,
+                //        Typ_paliwa = "EEE",
+                //        KlientNav = newConnection.Klienci.Single<Klient>(
+                //            k => k.Imie == "AAA" &&
+                //            k.Telefon == 1),
+                //    });
+                //newConnection.SaveChanges();
+
+///Nowa naprawa / nowy pojazd - (nowy / stary klient) / nowy pracownik
+                //newConnection.Naprawy.Add(
+                //    new Naprawa
+                //    {
+                //        PojazdNav = new Pojazd
+                //        {
+                //            Numer_rejestracyjny = "FFF",
+                //            Marka = "BBB",
+                //            Model = "CCC",
+                //            Numer_VIN = "EEE",
+                //            Rok_produkcji = 1,
+                //            Typ_paliwa = "EEE",
+                //            /*KlientNav = new Klient
+                //            {
+                //                Imie = "AAA",
+                //                Nazwisko = "BBB",
+                //                Telefon = 2,
+                //                AdresNav = new Adres
+                //                {
+                //                    Ulica = "AAA",
+                //                    Numer = "BBB",
+                //                    Kod_pocztowy = "CCC",
+                //                    Miejscowosc = "DDD"
+                //                }
+                //            },*/
+                //            KlientNav = newConnection.Klienci.Single<Klient>(
+                //                k => k.Imie == "AAA" &&
+                //                k.Telefon == 2),
+                //        },
+                //        PracownikNav = new Pracownik
+                //        {
+                //            Imie = "AAA",
+                //            Nazwisko = "BBB",
+                //            Telefon = 3,
+                //            AdresNav = new Adres
+                //            {
+                //                Ulica = "AAA",
+                //                Numer = "BBB",
+                //                Kod_pocztowy = "CCC",
+                //                Miejscowosc = "DDD"
+                //            }
+                //        },
+                //        Data_przyjecia = null,
+                //        Data_wydania = null,
+                //        Status_naprawy = "EEE",
+                //        Opis_usterek = "TEKST"
+                //    });
+                //newConnection.SaveChanges();
+
+///Nowa naprawa / nowy pojazd / stary pracownik
+                //newConnection.Naprawy.Add(
+                //    new Naprawa
+                //    {
+                //        PojazdNav = new Pojazd
+                //        {
+                //            Numer_rejestracyjny = "GGG",
+                //            Marka = "AAA",
+                //            Model = "BBB",
+                //            Numer_VIN = "HHH",
+                //            Rok_produkcji = 0,
+                //            Typ_paliwa = "GGG",
+                //            KlientNav = newConnection.Klienci.Single<Klient>(
+                //                k => k.Imie == "AAA" &&
+                //                k.Telefon == 2)
+                //        },
+                //        PracownikNav = newConnection.Pracownicy.Single<Pracownik>(
+                //            p => p.Imie == "BBB" &&
+                //            p.Telefon == 4),
+                //        Data_przyjecia = null,
+                //        Data_wydania = null,
+                //        Status_naprawy = "DDD",
+                //        Opis_usterek = "EEE"
+                //    }
+                //);
+                //newConnection.SaveChanges();
+
+///Nowa naprawa / stary pojazd / nowy pracownik
+                //newConnection.Naprawy.Add(
+                //    new Naprawa
+                //    {
+                //        PojazdNav = newConnection.Pojazdy.Single<Pojazd>(
+                //            p => p.Numer_VIN == "WWW"),
+                //        PracownikNav = new Pracownik
+                //        {
+                //            Imie = "AAA",
+                //            Nazwisko = "BBB",
+                //            Telefon = 5,
+                //            AdresNav = new Adres
+                //            {
+                //                Ulica = "AAA",
+                //                Numer = "BBB",
+                //                Kod_pocztowy = "CCC",
+                //                Miejscowosc = "DDD"
+                //            }
+                //        },
+                //        Data_przyjecia = null,
+                //        Data_wydania = null,
+                //        Status_naprawy = "DDD",
+                //        Opis_usterek = "FFF"
+                //    }
+                //);
+                //newConnection.SaveChanges();
+
+///Nowa naprawa / stary pojazd / stary pracownik
+                //newConnection.Naprawy.Add(
+                //    new Naprawa
+                //    {
+                //        PojazdNav = newConnection.Pojazdy.Single<Pojazd>(
+                //            p => p.Numer_VIN == "WWW"),
+                //        PracownikNav = newConnection.Pracownicy.Single<Pracownik>(
+                //            p => p.Imie == "AAA" &&
+                //            p.Telefon == 6),
+                //        Data_przyjecia = null,
+                //        Data_wydania = null,
+                //        Status_naprawy = "DDD",
+                //        Opis_usterek = "FFF"
+                //    }
+                //);
+                //newConnection.SaveChanges();
+
+///Nowy pracownik / nowy adres
+                //newConnection.Pracownicy.Add(
+                //    new Pracownik
+                //    {
+                //        Imie = "AAA",
+                //        Nazwisko = "BBB",
+                //        Telefon = 123,
+                //        AdresNav = new Adres
+                //        {
+                //            Ulica = "AAA",
+                //            Numer = "BBB",
+                //            Kod_pocztowy = "CCC",
+                //            Miejscowosc = "DDD"
+                //        }
+                //    }
+                //);
+                //newConnection.SaveChanges();
+
+///Nowy pracownik / stary adres
+                //newConnection.Pracownicy.Add(
+                //    new Pracownik
+                //    {
+                //        Imie = "BBB",
+                //        Nazwisko = "CCC",
+                //        Telefon = 321,
+                //        AdresNav = newConnection.Adresy.Single<Adres>(
+                //            a => a.Ulica == "bbb")
+                //    }    
+                //);
+                //newConnection.SaveChanges();
+
+///Nowa faktura / istniejący: warsztat, klient, naprawa
+                //newConnection.Faktury.Add(
+                //    new Faktura
+                //    {
+                //        //WarsztatNav = newConnection.Warsztaty.Single<Warsztat>(w => w.NIP == "bbb"),
+                //        WarsztatNav = new Warsztat
+                //        {
+                //            Nazwa = "AAA",
+                //            Telefon = 21,
+                //            NIP = "CCC",
+                //            Numer_konta_bankowego = "DDD",
+                //            Nazwa_banku = "EEE",
+                //            AdresNav = new Adres
+                //            {
+                //                Ulica = "AAB",
+                //                Miejscowosc = "BBA",
+                //                Numer = "CCA",
+                //                Kod_pocztowy = "AAC"
+                //            }
+                //        },
+                //        KlientNav = newConnection.Klienci.Single<Klient>(k => k.Telefon == 2),
+                //        NaprawaNav = newConnection.Naprawy.Single<Naprawa>(n => n.ID_Naprawa == 4)
+                //    }
+                //);
+                //newConnection.SaveChanges();
+
+	3. Modyfikacja obiektów:
+			//Adres adresDoEdycji = newConnection.Adresy.Single<Adres>(a => a.ID_Adres == 1);
+                adresDoEdycji.Miejscowosc = "Iława";
+                //newConnection.SaveChanges();
+
+	4. Usuwanie obiektów:
+                //newConnection.Warsztaty.Remove(newConnection.Warsztaty.Single<Warsztat>(w => w.Nazwa == "ok"));
+                //newConnection.SaveChanges();
+
+	5. Dostęp kaskadowy (można później modyfikować, usuwać, lub pobierać dane (SELECT, UPDATE, DELETE)):
+			//Pracownik pracownik = newConnection.Pracownicy.Single<Pracownik>(p => p.Imie == "BBB" && p.Nazwisko == "CCC");
+                //Adres adresPracowika = newConnection.Adresy.Single<Adres>(a => a.ID_Adres == pracownik.ID_Adres);
+
+                //Console.WriteLine("adresPracownika: " + adresPracowika.ToString()); // Tylko do testów - wymaga ToStringa w klasie Adres - niepotrzebne nam

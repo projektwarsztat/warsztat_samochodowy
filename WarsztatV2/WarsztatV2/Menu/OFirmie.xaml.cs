@@ -17,7 +17,8 @@ namespace WarsztatV2
         {
             InitializeComponent();
 
-            //Dodać wpisywanie informacji o warsztacie z bazy danych do pól formularza, jeśli takie informacje znajdują się w bazie danych  
+            DataToForm(); 
+            
         }
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -55,6 +56,33 @@ namespace WarsztatV2
                     })
                 );
                 await newConnection.SaveChangesAsync();
+            }
+        }
+
+        private async void DataToForm()
+        {
+            //dodac zabezpieczenie gdy nie ma danych w bazie 
+
+            using (databaseConnection newConnection = new databaseConnection())
+            {
+
+                Warsztat DefaultWarsztat = new Warsztat ();
+                Adres DefaultAdresWarsztatu = new Adres ();
+
+                await Task.Run(() => DefaultWarsztat = newConnection.Warsztaty.FirstOrDefault<Warsztat>());
+                await Task.Run(() => DefaultAdresWarsztatu = newConnection.Adresy.Single<Adres>(a => a.ID_Adres == DefaultWarsztat.ID_Adres));
+
+                nazwa.Text = DefaultWarsztat.Nazwa;
+                telefon.Text = Convert.ToString(DefaultWarsztat.Telefon);
+                nip.Text = DefaultWarsztat.NIP;
+                numer_konta.Text = DefaultWarsztat.Numer_konta_bankowego;
+                nazwa_banku.Text= DefaultWarsztat.Nazwa_banku;
+            
+                miejscowosc.Text = DefaultAdresWarsztatu.Miejscowosc;
+                ulica.Text = DefaultAdresWarsztatu.Ulica;
+                numer.Text=DefaultAdresWarsztatu.Numer;
+                kod_pocztowy.Text = DefaultAdresWarsztatu.Kod_pocztowy;
+
             }
         }
     }

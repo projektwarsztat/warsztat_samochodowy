@@ -60,6 +60,31 @@ namespace WarsztatV2.Menu
             }
 
             lvDataBinding.ItemsSource = wynikL;
+            
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource);
+            view.Filter = UserFilter;
+        }
+        
+        private bool UserFilter(object item)
+        {
+            if (String.IsNullOrEmpty(searchTextBox.Text))
+                return true;
+            else
+            {
+                if ((item as DaneKlient).Imie.IndexOf(searchTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return ((item as DaneKlient).Imie.IndexOf(searchTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+                else
+                {
+                    return ((item as DaneKlient).Nazwisko.IndexOf(searchTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                }
+            }
+        }
+
+        private void searchTextBoxTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource).Refresh();
         }
 
         private async void ListViewItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -115,7 +140,7 @@ namespace WarsztatV2.Menu
     }
 
     //Struktura pojedynczego wiersza w ListView
-    public struct DaneKlient
+    public class DaneKlient
     {
         public int ID_Klient { get; set; }
         public string Imie { get; set; }

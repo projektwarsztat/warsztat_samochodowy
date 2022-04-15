@@ -55,8 +55,8 @@ namespace WarsztatV2.Menu
                         }
                     }
                 }
-                Thread informationLabelT = new Thread(() => this.Dispatcher.Invoke(() => informationLabel.Visibility = Visibility.Hidden));
-                informationLabelT.Start();
+                Thread updateInfoLAndSearchBT = new Thread(() => this.Dispatcher.Invoke(() => { informationLabel.Visibility = Visibility.Hidden; searchTextBox.Visibility = Visibility.Visible; }));
+                updateInfoLAndSearchBT.Start();
             }
 
             lvDataBinding.ItemsSource = wynikL;

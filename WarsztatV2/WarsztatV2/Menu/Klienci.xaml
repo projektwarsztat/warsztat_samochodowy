@@ -53,6 +53,7 @@
                 <Label Content="Telefon:" Width="170" HorizontalAlignment="Left"/>
                 <TextBox x:Name="telefon" Width="170" HorizontalAlignment="Left" Height="20" Margin="5, 0, 0, 0"/>
             </StackPanel>
+            <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" VerticalAlignment="Top" Grid.Column="1"/>
             <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="410" VerticalAlignment="Top" Grid.Column="1" Margin="10,40,10,0">
                 <!--  Wskazanie: Marginesu | Źródła danych | Metody podczas wybrania elementu: SelectionChanged="MySelectionChanged"-->
                 <ListView.View>

@@ -79,17 +79,33 @@
                 </StackPanel>
 
                 <Canvas Grid.Row="2" Grid.ColumnSpan="2">
-                    <Button x:Name="Dodaj"  Content="Dodaj" Height="25" Width="100" Canvas.Left="143" Canvas.Top="28" HorizontalAlignment="Left" VerticalAlignment="Center" />
-                    <Button x:Name="Edytuj"  Content="Edytuj" Height="25" Width="100" Canvas.Left="278" Canvas.Top="28" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                    <Button x:Name="Usun"  Content="Usuń" Height="25" Width="100" Canvas.Left="416" Canvas.Top="28" HorizontalAlignment="Left" VerticalAlignment="Center"  />
-                    <Button x:Name="Szukaj"  Content="Szukaj" Height="25" Width="100" Canvas.Left="551" Canvas.Top="28"  />
-                </Canvas>
-                <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Background="Aqua" Height="200">
-                    <TextBlock>
-                        miesjce na dane
+                    <Button x:Name="Dodaj"  Content="Dodaj" Height="25" Width="100" Canvas.Left="450" Canvas.Top="28" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                    <Button x:Name="Edytuj"  Content="Edytuj" Height="25" Width="100" Canvas.Left="600" Canvas.Top="28" HorizontalAlignment="Right" VerticalAlignment="Center"  Click="modyfikujClick" />
 
-                    </TextBlock>
-                </StackPanel>
+                </Canvas>
+                <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="3" Grid.ColumnSpan="2"/>
+
+                <Label x:Name="informationLabel" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="50,8,10,0"  VerticalAlignment="Top" Height="30" FontStretch="Normal" HorizontalContentAlignment="Right" Grid.Row="3" Grid.ColumnSpan="2"/>
+
+                <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="500" VerticalAlignment="Top" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,40,10,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Numer_rejestracyjny}" Header="Numer Rejestracyjny" Width="115"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Marka}" Header="Marka" Width="90"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Model}" Header="Model" Width="90"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Numer_VIN}" Header="Numer VIN" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Rok_produkcji}" Header="Rok produkcji" Width="80"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Typ_paliwa}" Header="Typ paliwa" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Imie}" Header="Imię Właściciela" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Nazwisko}" Header="Nazwisko Właściciela" Width="115"/>
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemPreviewMouseLeftButtonDown"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
 
             </Grid>
 

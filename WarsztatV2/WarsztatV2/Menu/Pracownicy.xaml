@@ -47,7 +47,7 @@
             <Button x:Name="Usun" Grid.Row="1" Content="Usuń" Width="100" Height="25" HorizontalAlignment="Right" Margin="0,0,137,63" VerticalAlignment="Bottom"/>
             <Button x:Name="Szukaj" Grid.Row="1" Content="Szukaj" Width="100" Height="25" HorizontalAlignment="Right" Margin="0,0,10,63" VerticalAlignment="Bottom"/>
 
-            <StackPanel Grid.Row="1" Grid.Column="1" Background="Yellow">
+            <StackPanel Grid.Row="1" Grid.Column="1" Background="white">
 
                 <TextBlock>Miejsce na data grid</TextBlock>
             </StackPanel>

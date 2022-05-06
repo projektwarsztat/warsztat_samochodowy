@@ -18,9 +18,8 @@ namespace WarsztatV2
         public DbSet<Klient> Klienci { get; set; }
         public DbSet<Faktura> Faktury { get; set; }
         public DbSet<Naprawa> Naprawy { get; set; }
-        //public DbSet<Czesc> Czesci { get; set; }
-        //public DbSet<Uzyte_czesci> Uzyteczesci { get; set; }
-        //public databaseConnection() : base(nameOrConnectionString: "databaseConnection") { }
+        public DbSet<Czesc> Czesci { get; set; }
+        public DbSet<Uzyte_czesci> Uzyte_czesci { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,8 +30,8 @@ namespace WarsztatV2
             modelBuilder.Entity<Klient>().ToTable("klient", "public");
             modelBuilder.Entity<Faktura>().ToTable("faktura", "public");
             modelBuilder.Entity<Naprawa>().ToTable("naprawa", "public");
-            //modelBuilder.Entity<Czesc>().ToTable("czesci", "public");
-            //modelBuilder.Entity<Uzyte_czesci>().ToTable("uzyte_czesci", "public");
+            modelBuilder.Entity<Czesc>().ToTable("czesc", "public");
+            modelBuilder.Entity<Uzyte_czesci>().ToTable("uzyte_czesci", "public");
 
             modelBuilder.Conventions.Add<StoreGeneratedIdentityKeyConvention>();
         }

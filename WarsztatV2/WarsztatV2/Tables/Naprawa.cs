@@ -13,6 +13,7 @@ namespace WarsztatV2.Tables
         {
             //PojazdNav = new Pojazd();
             //PracownikNav = new Pracownik();
+            Uzyte_czesciNav = new List<Uzyte_czesci>();
         }
 
         [Key]
@@ -26,5 +27,6 @@ namespace WarsztatV2.Tables
         public string Wiadomosc_zwrotna { get; set; }
         public virtual Pojazd PojazdNav { get; set; }
         public virtual Pracownik PracownikNav { get; set; }
+        public virtual ICollection<Uzyte_czesci> Uzyte_czesciNav { get; set; }
     }
 }

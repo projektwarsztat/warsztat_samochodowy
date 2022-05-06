@@ -1,5 +1,23 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.Entity;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using WarsztatV2.Menu;
+using WarsztatV2.Tables;
 
 namespace WarsztatV2
 {
@@ -11,6 +29,7 @@ namespace WarsztatV2
         public MainWindow()
         {
             InitializeComponent();
+            RightContent.Content = new Aktualnosci();
             // domyslnie podmenu zlecienie - ukryte
             HideSubmenu();
 
@@ -20,11 +39,11 @@ namespace WarsztatV2
 
         // metoda rozwijajaca podmenu zlecenia
         private void ShowSubmenu()
-        {       
-          if(NoweZlecenie.IsVisible==true)
-            HideSubmenu();
+        {
+            if (NoweZlecenie.IsVisible == true)
+                HideSubmenu();
 
-          else
+            else
             {
                 NoweZlecenie.Visibility = Visibility.Visible;
                 DoNaprawy.Visibility = Visibility.Visible;
@@ -46,7 +65,7 @@ namespace WarsztatV2
         //metoda rozwijajaca podmenu zlecenia
         private void ZleceniaClick(object sender, RoutedEventArgs e)
         {
-           ShowSubmenu();
+            ShowSubmenu();
         }
 
         //------------ metody przelaczajace zawartosc prawej czesci aplikacji ------------//

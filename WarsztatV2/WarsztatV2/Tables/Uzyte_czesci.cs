@@ -1,18 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace WarsztatV2.Tables
 {
-    [Table("uzyte_czeci")]
     internal class Uzyte_czesci
     {
-        [Column("naprawa"), Required]
-        public int Naprawa { get; set; }
-
-        [Column("czesci"), Required]
-        public int Czesci { get; set; }
-
-        [Column("ilosc"), Required]
+        [Key]
+        public int ID { get; set; }
+        public int ID_Naprawa { get; set; }
+        public int ID_Czesci { get; set; }
         public int Ilosc { get; set; }
+        public virtual Naprawa NaprawaNav { get; set; }
+        public virtual Czesc CzescNav { get; set; }
     }
 }

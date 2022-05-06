@@ -9,8 +9,9 @@ Elementy, które nie mogą być dodawane osobno:
  -> Obiekty typu Klient (wymagają Adresu),
  -> Obiekty typu Pracownik (wymagają Adresu),
  -> Obiekty typu Pojazd (wymagają Klienta),
- -> Obiekty typu Naprawa (wymagają Pojazdu, Użytych_części),
- -> obiekty typu Faktura (wymagają Warsztatu, Klienta, Naprawy)
+ -> Obiekty typu Naprawa (wymagają Pojazdu, Użytych_części*), * - dodawane później przez pracownika!!!
+ -> Obiekty typu Faktura (wymagają Warsztatu, Klienta, Naprawy)
+ -> Obiekty typu Użyte_cześci (wymagają Naprawy, Części)
 
 	2. Dodawanie obiektów:
 /// Nowy warsztat / nowy adres
@@ -329,7 +330,11 @@ Elementy, które nie mogą być dodawane osobno:
                 //    }
                 //);
                 //newConnection.SaveChanges();
-
+/// Nowe użyte części / istniejący: naprawa, części
+		//newConnection.Uzyte_czesci.Add(
+                //new Uzyte_czesci { NaprawaNav = newConnection.Naprawy.Single<Naprawa>(n => n.ID_Naprawa == 14), CzescNav = newConnection.Czesci.Single<Czesc>(c => c.ID_Czesci == 3), Ilosc = 24124}    
+                //);
+ 
 	3. Modyfikacja obiektów:
 			//Adres adresDoEdycji = newConnection.Adresy.Single<Adres>(a => a.ID_Adres == 1);
                 adresDoEdycji.Miejscowosc = "Iława";

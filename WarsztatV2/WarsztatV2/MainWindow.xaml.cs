@@ -105,6 +105,23 @@ namespace WarsztatV2
 
             RightContent.Content = new NoweZlecenie();
         }
+        private void DoNaprawyClick(object sender, RoutedEventArgs e)
+        {
+
+            RightContent.Content = new DoNaprawy();
+        }
+
+        private void DoOdbioruClick(object sender, RoutedEventArgs e)
+        {
+
+            RightContent.Content = new DoOdbioru();
+        }
+
+        private void HistoriaZlecenClick(object sender, RoutedEventArgs e)
+        {
+
+            RightContent.Content = new HistoriaZlecen();
+        }
 
 
     }

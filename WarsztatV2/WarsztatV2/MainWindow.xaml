@@ -51,21 +51,24 @@
                              Foreground="White"
                              FontSize="13"
                               Margin="40,0,0,0" 
-                             Style="{StaticResource MenuButtonStyle}"/>
+                             Style="{StaticResource MenuButtonStyle}"
+                             Click="DoNaprawyClick"/>
 
                 <RadioButton x:Name="DoOdbioru" Content="DO ODBIORU"
                              Height="45"
                              Foreground="White"
                              FontSize="13"
                               Margin="40,0,0,0" 
-                             Style="{StaticResource MenuButtonStyle}"/>
+                             Style="{StaticResource MenuButtonStyle}"
+                             Click="DoOdbioruClick"/>
 
                 <RadioButton x:Name="HistoriaZlecen" Content="HISTORIA ZLECEŃ"
                              Height="45"
                              Foreground="White"
                              FontSize="13"
                               Margin="40,0,0,0" 
-                             Style="{StaticResource MenuButtonStyle}"/>
+                             Style="{StaticResource MenuButtonStyle}"
+                             Click="HistoriaZlecenClick"/>
 
                 <RadioButton x:Name="Klienci" Content="KLIENCI"
                              Height="50"

@@ -158,7 +158,7 @@ namespace WarsztatV2.Menu
                                         p.Nazwisko == nazwiskoMechanika),
                              Status_naprawy = "Przyjety",
                              Opis_usterek = opis_usterek,
-                             Wiadomosc_zwrotna = "sdsss"
+                             Wiadomosc_zwrotna = ""
                          }
                         ));
 
@@ -184,7 +184,7 @@ namespace WarsztatV2.Menu
                                           p.Nazwisko == nazwiskoMechanika),
                                Status_naprawy = "Przyjety",
                                Opis_usterek = opis_usterek,
-                               Wiadomosc_zwrotna = "sdsss"
+                               Wiadomosc_zwrotna = ""
                            }
                           ));
 

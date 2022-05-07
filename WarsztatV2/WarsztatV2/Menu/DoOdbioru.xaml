@@ -1,0 +1,82 @@
+﻿<Page x:Class="WarsztatV2.Menu.DoOdbioru"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WarsztatV2.Menu"
+      mc:Ignorable="d" 
+      d:DesignHeight="1300" d:DesignWidth="810"
+      Title="Do Odbioru"
+      ShowsNavigationUI="False">
+
+    <Border Background="#BFD7ED"
+             CornerRadius="10,0,0,10">
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="170"/>
+                    <RowDefinition Height="135"/>
+
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="20" FontWeight="Bold" FontFamily="/Fonts/#Roboto" Margin="40,10,10,10" Grid.ColumnSpan="2">
+                Pojazdy oczekujące na odbiór
+                </TextBlock>
+
+
+                <TextBox Margin="10,8,0,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="1"/>
+
+                <Label x:Name="informationLabel" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="50,8,10,0"  VerticalAlignment="Top" Height="30" FontStretch="Normal" HorizontalContentAlignment="Right" Grid.Row="1" Grid.ColumnSpan="2"/>
+
+                <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="200" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,40,10,0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Numer_rejestracyjny}" Header="Numer Rejestracyjny" Width="120"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=MarkaModel}" Header="Marka / Model" Width="110"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Imie}" Header="Imię Mechanika" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Nazwisko}" Header="Nazwisko Mechanika" Width="130"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Data_przyjecia}" Header="Data przyjecia" Width="100"/>
+
+
+
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemPreviewMouseLeftButtonDown"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+
+                <StackPanel Grid.Row="2" Grid.Column="1"  Height="200" Margin="10,0,17,0" VerticalAlignment="Top">
+                    <TextBlock FontSize="15" FontWeight="Bold" FontFamily="/Fonts/#Roboto"  Width="200" HorizontalAlignment="Left" Margin="5,15,0,15">
+                Wiadomość Zwrotna:
+                    </TextBlock>
+                    <TextBox x:Name="Wiadomosc_zwrotna" Width="350" Height="110" HorizontalAlignment="Left" TextWrapping="Wrap" IsEnabled="False"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2"   Height="200" Margin="10,0,0,0" VerticalAlignment="Top">
+                    <TextBlock FontSize="15" FontWeight="Bold" FontFamily="/Fonts/#Roboto"  Width="200" HorizontalAlignment="Left" Margin="5,15,0,15">
+                Opis Usterek:
+                    </TextBlock>
+                    <TextBox x:Name="Opis_usterek" Width="350" Height="110" HorizontalAlignment="Left" TextWrapping="Wrap" IsEnabled="False"></TextBox>
+                </StackPanel>
+
+                <Button Name="WystawFaktureBtn" Grid.Row="3" Content="Wystaw Fakture" Height="25" Width="100" Margin="5,5,305,0" VerticalAlignment="Top" Grid.Column="1" Click="WystawFakture" />
+                <Button Name="WydajPojazd" Grid.Row="3" Content="Wydaj Pojazd" Height="25" Width="100" Margin="150,5,160,0" VerticalAlignment="Top" Grid.Column="1" Click="WydajPojazdClick" />
+                <!--<Button Name="Wystawgen" Grid.Row="3" Content="Wystawgen" Height="25" Width="100" Margin="152,86,158,0" VerticalAlignment="Top" Grid.Column="1" Click="gen" />-->
+            </Grid>
+
+        </ScrollViewer>
+
+    </Border>
+</Page>

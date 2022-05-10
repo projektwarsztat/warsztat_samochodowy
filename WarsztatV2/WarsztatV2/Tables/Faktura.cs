@@ -19,8 +19,7 @@ namespace WarsztatV2.Tables
 
         [Key]
         public int ID_Faktura { get; set; }
-        [Column("Warsztat")]
-        public string Nazwa { get; set; } //Z powodu konfliktu nazewnictwa
+        public string ID_Warsztat { get; set; }
         public int ID_Klient { get; set; }
         public int ID_Naprawa { get; set; }
         public virtual Warsztat WarsztatNav { get; set; }

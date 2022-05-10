@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WarsztatV2",
+    "\\WarsztatV2\\WarsztatV2",
+    "\\WarsztatV2\\WarsztatV2\\Menu"
   ],
-  "SelectedNode": "\\WarsztatV2.sln",
+  "SelectedNode": "\\WarsztatV2\\WarsztatV2\\Menu\\Aktualnosci.xaml",
   "PreviewInSolutionExplorer": false
 }

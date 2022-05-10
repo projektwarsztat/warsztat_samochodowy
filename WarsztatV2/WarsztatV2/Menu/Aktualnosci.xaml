@@ -19,8 +19,8 @@
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <Label x:Name="headerSectionLabel" Content="Panel nawigacyjny" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Grid.Row="0"/>
-            <TextBlock x:Name="subHeaderSectionLabel" Text="W sekcji Panel nawigacyjny możesz uzyskać dostęp do ogólnych informacji na temat warsztatu. Te wiadomości mogą zawierać następujące tematy: całkowita liczba wykonanych napraw; liczba pojazdów, które mogą zostać wydane klientom; liczba pojazdów aktualnie będących w naprawie, czy nawet najczęściej psujący się pojazd wśród samochodów klientów." TextWrapping="Wrap" Margin="15, 0, 5, 0" Grid.Row="1"/>
+            <Label x:Name="headerSectionLabel" Content="Panel Informacyjny" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Grid.Row="0"/>
+            <TextBlock x:Name="subHeaderSectionLabel" Text="W sekcji Panel Informacyjny możesz uzyskać dostęp do ogólnych informacji na temat warsztatu. Te wiadomości mogą zawierać następujące tematy: całkowita liczba wykonanych napraw; liczba pojazdów, które mogą zostać wydane klientom; liczba pojazdów aktualnie będących w naprawie, czy nawet najczęściej psujący się pojazd wśród samochodów klientów." TextWrapping="Wrap" Margin="15, 0, 5, 0" Grid.Row="1"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -33,11 +33,113 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Border x:Name="firstSection" Grid.Row="0" Background="#FFEEEEEE" Margin="10,10,10,10" CornerRadius="2">
-                    <TextBlock x:Name="firstSectionHeader" Text="Liczba przyjętych do naprawy pojazdów w przeciągu ostatnich 7 dni" Margin="0,10,0,0" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Height="25"/>
-
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" x:Name="firstSectionHeader" Text="Liczba przyjętych do naprawy pojazdów w przeciągu ostatnich 7 dni" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Height="43" Width="410"/>
+                        <Grid Grid.Row="1" Margin="10,0,10,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" x:Name="day1" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="1" x:Name="day2" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="2" x:Name="day3" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="3" x:Name="day4" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="4" x:Name="day5" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="5" x:Name="day6" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                                <TextBlock Grid.Column="6" x:Name="day7" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" x:Name="day1n" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" x:Name="day2n" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="2" x:Name="day3n" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="3" x:Name="day4n" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="4" x:Name="day5n" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="5" x:Name="day6n" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="6" x:Name="day7n" Text="" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                        <Label x:Name="informationLabel1" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="10,35,10,35" Grid.Row="1" FontStretch="Normal" HorizontalContentAlignment="Center"/>
+                    </Grid>
                 </Border>
                 <Border x:Name="secondSection" Grid.Row="1" Background="#FFEEEEEE" Margin="10,0,10,10" CornerRadius="2">
-
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" x:Name="secondSubSectionHeader1" Text="Pojazdy w liczbach" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Height="43" Width="410"/>
+                        <Grid Grid.Row="1" Margin="10,0,10,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <TextBlock x:Name="repairStatusC" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" Foreground="DimGray"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <TextBlock x:Name="readyStatusC" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontWeight="Bold" Foreground="DimGray"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <TextBlock x:Name="repairStatusLabel" Text="liczba pojazdów w stanie naprawy" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="DimGray"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <TextBlock x:Name="readyStatusLabel" Text="liczba pojazdów oczekujących na odbiór" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Foreground="DimGray"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="2" Margin="10,10,10,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="90"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid>
+                                    <TextBlock x:Name="allVehicle" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" FontWeight="Bold" Foreground="DimGray"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid>
+                                    <TextBlock x:Name="allVehicleLabel" Text="liczba wszystkich pojazdów we warsztacie (od powstania warsztatu)" HorizontalAlignment="Center" Foreground="DimGray"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Label x:Name="informationLabel2" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="10,10,10,110" Grid.Row="2" FontStretch="Normal" HorizontalContentAlignment="Center"/>
+                    </Grid>
                 </Border>
             </Grid>
             <Grid Grid.Column="1" Margin="0,0,10,0">
@@ -46,13 +148,74 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Border x:Name="thirdSection" Grid.Row="0" Background="#FFEEEEEE" Margin="0,10,15,10" CornerRadius="2">
-
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" x:Name="thirdSubSectionHeader1" Text="Pojazd o najdłuższej historii napraw" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Height="43" Width="406" Grid.RowSpan="2"/>
+                        <Grid Grid.Row="1" Margin="10,0,10,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <TextBlock x:Name="numberVehicle" Text="" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="36" Foreground="Firebrick" FontWeight="Bold"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Margin="10,0,0,0">
+                                    <TextBlock x:Name="modelVehicle" Text="" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="24" FontWeight="Normal" Foreground="DimGray"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <TextBlock Grid.Row="2" x:Name="thirdSubSectionHeader2" Text="Przyczyna ostatniej wizyty" Margin="0,10,0,0" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Height="43" Width="406" Grid.RowSpan="2"/>
+                        <Grid Grid.Row="3" Margin="10,0,10,10">
+                            <TextBlock x:Name="reasonText" TextWrapping="Wrap"/>
+                        </Grid>
+                        <Label x:Name="informationLabel3" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="8,32,13,31" FontStretch="Normal" HorizontalContentAlignment="Center" Grid.Row="1"/>
+                    </Grid>
                 </Border>
                 <Border x:Name="fourthSection" Grid.Row="1" Background="#FFEEEEEE" Margin="0,0,15,10" CornerRadius="2">
-
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="fourthSectionHeader" Text="Pracownik o największej liczbie napraw" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Height="24" Width="406"/>
+                        <Grid Grid.Row="1" Margin="10,0,10,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Margin="0,0,10,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="firstNameW" Grid.Row="0" Text="" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="22" Foreground="DimGray"/>
+                                    <TextBlock x:Name="surnameW" Grid.Row="1" Text="" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="24" FontWeight="Bold" Foreground="DimGray"/>
+                                </Grid>
+                                <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Width="156">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock x:Name="repairWorkerC" Grid.Row="0" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="64" Foreground="Firebrick" FontWeight="Bold"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Label x:Name="informationLabel4" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="8,56,13,56" Grid.Row="1" FontStretch="Normal" HorizontalContentAlignment="Center"/>
+                    </Grid>
                 </Border>
             </Grid>
         </Grid>
     </Grid>
-
 </Page>

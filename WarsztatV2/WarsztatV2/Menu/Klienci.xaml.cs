@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -328,12 +329,37 @@ namespace WarsztatV2.Menu
     }
 
     //Klasa pojedynczego wiersza w ListView (potrzebna, by poprawnie generować odpowiednie wiersze)
-    public class DaneKlient
-    {
+    public class DaneKlient //: INotifyPropertyChanged, IDataErrorInfo
+    {/*
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string this[string columnName]
+        {
+            get
+            {
+                var results = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+                var valid = Validator.TryValidateProperty(GetType().GetProperty(columnName)?.GetValue(this), new ValidationContext(this) { MemberName = columnName }, results);
+
+                return valid ? null : results[0].ErrorMessage;
+            }
+        }
+
+        public string Error
+        {
+            get => null;
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }*/
+
         public int ID_Klient { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
-        public int Telefon { get; set; }
+        //[Required(ErrorMessage = "Required error")]
+        //[RegularExpression(@"^[\d]+", ErrorMessage = "Regex error")]
+        public int Telefon { get /*{ return Telefon; }*/; set /*{ Telefon = value; OnPropertyChanged(); }*/; }
         public int ID_Adres { get; set; }
         public string Ulica { get; set; }
         public string Numer { get; set; }

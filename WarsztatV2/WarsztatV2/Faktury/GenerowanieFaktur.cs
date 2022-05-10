@@ -31,8 +31,8 @@ namespace WarsztatV2.Faktury
             using (databaseConnection newConnection = new databaseConnection())
             {
                 FakturaFav = await Task.Run(() => { return newConnection.Faktury.Single<Faktura>(a => a.ID_Naprawa == fav.ID_Naprawa); });
-                // WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.FirstOrDefault<Warsztat>();});
-                WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.Single<Warsztat>(a => a.Nazwa == fav.Nazwa); });
+ //// WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.FirstOrDefault<Warsztat>();});
+ ////WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.Single<Warsztat>(a => a.Nazwa == fav.Nazwa); });
                 AdresWarsztatFav = await Task.Run(() => { return newConnection.Adresy.Single<Adres>(a => a.ID_Adres == WarsztatFav.ID_Adres); });
                 NaprawaFav = await Task.Run(() => { return newConnection.Naprawy.Single<Naprawa>(a => a.ID_Naprawa == fav.ID_Naprawa); });
                 KlientFav = await Task.Run(() => { return newConnection.Klienci.Single<Klient>(a => a.ID_Klient == fav.ID_Klient); });
@@ -89,11 +89,11 @@ namespace WarsztatV2.Faktury
             string daneklient = KlientFav.Imie + " " +
                                 KlientFav.Nazwisko + " \n" +
                                 AdresKlientFav.Miejscowosc + " " +
-                                  AdresKlientFav.Ulica + " " +
-                                  AdresKlientFav.Numer + "\n" +
-                                  AdresKlientFav.Kod_pocztowy + " " +
-                                  AdresKlientFav.Miejscowosc + "\n" +
-                                  KlientFav.Telefon.ToString();
+                                AdresKlientFav.Ulica + " " +
+                                AdresKlientFav.Numer + "\n" +
+                                AdresKlientFav.Kod_pocztowy + " " +
+                                AdresKlientFav.Miejscowosc + "\n" +
+                                KlientFav.Telefon.ToString();
 
             tf.DrawString("Nabywca:\n", fontBold, XBrushes.Black, rect6, XStringFormats.TopLeft);
             tf.DrawString(daneklient, font, XBrushes.Black, rect7, XStringFormats.TopLeft);

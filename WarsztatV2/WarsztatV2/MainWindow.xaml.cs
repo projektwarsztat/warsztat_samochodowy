@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WarsztatV2.Menu;
 using WarsztatV2.Tables;
+using WarsztatV2.SocketConnection;
 
 namespace WarsztatV2
 {
@@ -29,6 +30,11 @@ namespace WarsztatV2
         public MainWindow()
         {
             InitializeComponent();
+
+            //Test sieci - synchroniczne połączenie
+            //socketConnection connect = new socketConnection();
+            //connect.komunikacja();
+
             RightContent.Content = new Aktualnosci();
             // domyslnie podmenu zlecienie - ukryte
             HideSubmenu();
@@ -73,18 +79,24 @@ namespace WarsztatV2
         {
 
             RightContent.Content = new OFirmie();
+            if (NoweZlecenie.IsVisible == true)
+                HideSubmenu();
         }
 
         private void KlienciClick(object sender, RoutedEventArgs e)
         {
 
             RightContent.Content = new Klienci();
+            if (NoweZlecenie.IsVisible == true)
+                HideSubmenu();
         }
 
         private void PracownicyClick(object sender, RoutedEventArgs e)
         {
 
             RightContent.Content = new Pracownicy();
+            if (NoweZlecenie.IsVisible == true)
+                HideSubmenu();
         }
 
 
@@ -92,12 +104,24 @@ namespace WarsztatV2
         {
 
             RightContent.Content = new Aktualnosci();
+            if (NoweZlecenie.IsVisible == true)
+                HideSubmenu();
         }
 
         private void SamochodyClick(object sender, RoutedEventArgs e)
         {
 
             RightContent.Content = new Samochody();
+            if (NoweZlecenie.IsVisible == true)
+                HideSubmenu();
+        }
+
+        private void CzesciClick(object sender, RoutedEventArgs e)
+        {
+
+            RightContent.Content = new Czesci();
+            if (NoweZlecenie.IsVisible == true)
+                HideSubmenu();
         }
 
         private void NoweZlecenieClick(object sender, RoutedEventArgs e)

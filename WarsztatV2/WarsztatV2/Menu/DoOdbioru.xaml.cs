@@ -182,7 +182,7 @@ namespace WarsztatV2.Menu
                 NaprawaFav = await Task.Run(() => { return newConnection.Naprawy.Single<Naprawa>(a => a.ID_Naprawa == NaprawaID); });
                 PojazdFav = await Task.Run(() => { return newConnection.Pojazdy.Single<Pojazd>(a => a.Numer_rejestracyjny == NaprawaFav.Numer_rejestracyjny); });
 
-                fav1.Nazwa = WarsztatFav.Nazwa;
+                ////fav1.Nazwa = WarsztatFav.Nazwa;
                 fav1.ID_Klient = PojazdFav.ID_Klient;
                 fav1.ID_Naprawa = NaprawaFav.ID_Naprawa;
 
@@ -240,7 +240,7 @@ namespace WarsztatV2.Menu
                 PojazdFav = await Task.Run(() => { return newConnection.Pojazdy.Single<Pojazd>(a => a.Numer_rejestracyjny == NaprawaFav.Numer_rejestracyjny); });
                 // KlientFav = await Task.Run(() => { return newConnection.Klienci.Single<Klient>(a => a.ID_Klient == PojazdFav.ID_Klient); });
 
-                fav1.Nazwa = "Warsztat Samochodowy JK";
+                ////fav1.Nazwa = "Warsztat Samochodowy JK";
                 fav1.ID_Klient = PojazdFav.ID_Klient;
                 fav1.ID_Naprawa = NaprawaFav.ID_Naprawa;
 

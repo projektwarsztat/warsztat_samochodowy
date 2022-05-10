@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
-    <Border Background="#003B73">
+    <Border Background="#FF003E3E">
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -90,6 +90,13 @@
                              FontSize="13"
                              Style="{StaticResource MenuButtonStyle}"
                              Click="SamochodyClick"/>
+                
+                <RadioButton x:Name="Czesci" Content="CZĘŚCI"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="13"
+                             Style="{StaticResource MenuButtonStyle}"
+                             Click="CzesciClick"/>
 
                 <RadioButton x:Name="OFirmie" Content="O FIRMIE"
                              Height="50"

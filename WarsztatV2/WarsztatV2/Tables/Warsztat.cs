@@ -16,6 +16,7 @@ namespace WarsztatV2.Tables
         }
 
         [Key]
+        public string ID_Warsztat { get; set; }
         public string Nazwa { get; set; }
         public int ID_Adres { get; set; }
         public int Telefon { get; set; }

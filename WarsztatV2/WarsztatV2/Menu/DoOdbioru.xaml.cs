@@ -182,7 +182,7 @@ namespace WarsztatV2.Menu
                 NaprawaFav = await Task.Run(() => { return newConnection.Naprawy.Single<Naprawa>(a => a.ID_Naprawa == NaprawaID); });
                 PojazdFav = await Task.Run(() => { return newConnection.Pojazdy.Single<Pojazd>(a => a.Numer_rejestracyjny == NaprawaFav.Numer_rejestracyjny); });
 
-                ////fav1.Nazwa = WarsztatFav.Nazwa;
+                fav1.ID_Warsztat = WarsztatFav.ID_Warsztat;
                 fav1.ID_Klient = PojazdFav.ID_Klient;
                 fav1.ID_Naprawa = NaprawaFav.ID_Naprawa;
 

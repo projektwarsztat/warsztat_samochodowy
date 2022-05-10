@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/kindpng_2267500.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/splashscreen.jpg")]
 
 

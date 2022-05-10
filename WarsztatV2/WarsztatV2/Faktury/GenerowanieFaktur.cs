@@ -25,20 +25,16 @@ namespace WarsztatV2.Faktury
             Klient KlientFav = new Klient();
             Adres AdresKlientFav = new Adres();
             Uzyte_czesci Uzyte_CzesciFav = new Uzyte_czesci();
-            //List<Czesc> Uzyte_CzesciFav;
             List<Uzyte_czesci> czesci = new List<Uzyte_czesci>();
 
             using (databaseConnection newConnection = new databaseConnection())
             {
                 FakturaFav = await Task.Run(() => { return newConnection.Faktury.Single<Faktura>(a => a.ID_Naprawa == fav.ID_Naprawa); });
- //// WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.FirstOrDefault<Warsztat>();});
- ////WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.Single<Warsztat>(a => a.Nazwa == fav.Nazwa); });
+                WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.Single<Warsztat>(a => a.ID_Warsztat== fav.ID_Warsztat); });
                 AdresWarsztatFav = await Task.Run(() => { return newConnection.Adresy.Single<Adres>(a => a.ID_Adres == WarsztatFav.ID_Adres); });
                 NaprawaFav = await Task.Run(() => { return newConnection.Naprawy.Single<Naprawa>(a => a.ID_Naprawa == fav.ID_Naprawa); });
                 KlientFav = await Task.Run(() => { return newConnection.Klienci.Single<Klient>(a => a.ID_Klient == fav.ID_Klient); });
                 AdresKlientFav = await Task.Run(() => { return newConnection.Adresy.Single<Adres>(a => a.ID_Adres == KlientFav.ID_Adres); });
-                // Uzyte_CzesciFav = await Task.Run(() => { return newConnection.Uzyte_czesci.ToList<Uzyte_czesci>(a=>a.ID_Naprawa==15); });
-                //Uzyte_CzesciFav = await Task.Run(() => { return newConnection.Uzyte_czesci.Single<Uzyte_czesci>(a => a.ID_Naprawa == 15); });
                 czesci = newConnection.Uzyte_czesci.Where<Uzyte_czesci>(u => u.ID_Naprawa == fav.ID_Naprawa).ToList();
             }
             int ilosczurzytychczesci = czesci.Count();

@@ -29,6 +29,13 @@ namespace WarsztatV2
     {
         public MainWindow()
         {
+
+            SplashScreen subWindow = new SplashScreen();
+            subWindow.Show();
+
+            loading();
+            subWindow.Close();
+
             InitializeComponent();
 
             //Test sieci - synchroniczne połączenie
@@ -41,6 +48,24 @@ namespace WarsztatV2
 
             // wypisanie danych aktualnie zalogowanego uzytkownika
             IdUser.Text = "Witaj ! \nJan Kowalski";
+        }
+
+        void loading()
+        {
+            List<Naprawa> naprawaL;
+            List<Pracownik> pracownikL;
+            List<Pojazd> pojazdL;
+            Warsztat warsztatL;
+
+
+            using (databaseConnection newConnection = new databaseConnection())
+            {
+                naprawaL = newConnection.Naprawy.ToList<Naprawa>();
+                pracownikL = newConnection.Pracownicy.ToList<Pracownik>();
+                pojazdL = newConnection.Pojazdy.ToList<Pojazd>();
+                warsztatL = newConnection.Warsztaty.FirstOrDefault<Warsztat>();
+
+            }
         }
 
         // metoda rozwijajaca podmenu zlecenia

@@ -17,11 +17,20 @@ namespace WarsztatV2
         {
             InitializeComponent();
 
-            DataToForm(); 
+            if (IfDataExists())
+             DataToForm(); 
             
         }
 
-        private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (IfDataExists())
+                Modyfikuj();
+            else
+                InsertData();
+        }
+
+        private async void InsertData()
         {
             using (databaseConnection newConnection = new databaseConnection())
             {
@@ -57,6 +66,7 @@ namespace WarsztatV2
                 );
                 await newConnection.SaveChangesAsync();
             }
+
         }
 
         private async void DataToForm()
@@ -66,8 +76,8 @@ namespace WarsztatV2
             using (databaseConnection newConnection = new databaseConnection())
             {
 
-                Warsztat DefaultWarsztat = new Warsztat ();
-                Adres DefaultAdresWarsztatu = new Adres ();
+                Warsztat DefaultWarsztat = new Warsztat();
+                Adres DefaultAdresWarsztatu = new Adres();
 
                 await Task.Run(() => DefaultWarsztat = newConnection.Warsztaty.FirstOrDefault<Warsztat>());
                 await Task.Run(() => DefaultAdresWarsztatu = newConnection.Adresy.Single<Adres>(a => a.ID_Adres == DefaultWarsztat.ID_Adres));
@@ -76,14 +86,57 @@ namespace WarsztatV2
                 telefon.Text = Convert.ToString(DefaultWarsztat.Telefon);
                 nip.Text = DefaultWarsztat.NIP;
                 numer_konta.Text = DefaultWarsztat.Numer_konta_bankowego;
-                nazwa_banku.Text= DefaultWarsztat.Nazwa_banku;
-            
+                nazwa_banku.Text = DefaultWarsztat.Nazwa_banku;
+
                 miejscowosc.Text = DefaultAdresWarsztatu.Miejscowosc;
                 ulica.Text = DefaultAdresWarsztatu.Ulica;
-                numer.Text=DefaultAdresWarsztatu.Numer;
+                numer.Text = DefaultAdresWarsztatu.Numer;
                 kod_pocztowy.Text = DefaultAdresWarsztatu.Kod_pocztowy;
 
             }
+        }
+
+        private bool IfDataExists()
+        {
+            using (databaseConnection newConnection = new databaseConnection())
+            {
+                if (newConnection.Warsztaty.Any(w => w.Nazwa != ""))
+                    return true;
+
+                else
+                    return false;
+            }
+
+
+        }
+
+        private async void Modyfikuj()
+        {
+            using (databaseConnection newConnection = new databaseConnection())
+            {
+
+                Warsztat modyfikacjaWarsztat = await Task.Run(() => { return newConnection.Warsztaty.FirstOrDefault(); });
+                Adres modyfikacjaAdres = await Task.Run(() => { return newConnection.Adresy.Single<Adres>(p => p.ID_Adres == modyfikacjaWarsztat.ID_Adres); });
+
+                this.Dispatcher.Invoke(() =>
+                {
+                    modyfikacjaWarsztat.Nazwa = nazwa.Text;
+                    modyfikacjaWarsztat.Telefon = Convert.ToInt32(telefon.Text);
+                    modyfikacjaWarsztat.NIP = nip.Text;
+                    modyfikacjaWarsztat.Numer_konta_bankowego = numer_konta.Text;
+                    modyfikacjaWarsztat.Nazwa_banku = nazwa_banku.Text;
+
+                    //Dane adresowe
+                    modyfikacjaAdres.Miejscowosc = miejscowosc.Text;
+                    modyfikacjaAdres.Ulica = ulica.Text;
+                    modyfikacjaAdres.Numer = numer.Text;
+                    modyfikacjaAdres.Kod_pocztowy = kod_pocztowy.Text;
+
+
+                });
+                newConnection.SaveChanges();
+            }
+
         }
     }
 }

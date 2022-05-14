@@ -1,0 +1,20 @@
+﻿<Window x:Class="WarsztatV2_klient.LoginScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WarsztatV2_klient"
+        mc:Ignorable="d"
+        Title="LoginScreen" Height="650" Width="420"
+         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+      
+        Background="#003E3E">
+
+    <StackPanel>
+        <Image Source="/Image/logo.png" Width="200" Margin="100,50,100,50"/>
+        <TextBox x:Name="InputPin" Width="300" Height="50" FontSize="30" Background="#f2f2f2" Foreground="#005250" HorizontalContentAlignment="Center" />
+        <Button Width="150" Height="25" Margin="200,60,50,200" Background="#f2f2f2" Content="Zaloguj" Click="Button_Click" />
+    </StackPanel>
+</Window>
+

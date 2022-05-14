@@ -1,0 +1,85 @@
+﻿<Window x:Class="WarsztatV2_klient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WarsztatV2_klient"
+        mc:Ignorable="d"
+        Title="Warsztat V 2.0 - Mechanik" Height="650" Width="1200"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Border Background="#FF003E3E">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="370"/>
+                <ColumnDefinition Width="370"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="570"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock x:Name="LoginIdentificator"   Foreground="White" Margin="10,10,0,6" Width="360" HorizontalAlignment="Left" >Zalogowany jako:</TextBlock>
+
+            <!--   <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>-->
+            <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#f2f2f2" Grid.Column="0" Grid.Row="1" Margin="10,43,10,10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Imie}" Header="Numer Rejestracyjny" Width="120"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Nazwisko}" Header="Marka" Width="120"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Telefon}" Header="Model" Width="105"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Ulica}" Header="Ulica" Width="85"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Label x:Name="informationLabel" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top" Height="38"  HorizontalContentAlignment="Center" Foreground="#f2f2f2" FontSize="16"/>
+
+            <TextBlock Grid.Column="1" Grid.Row="1"  Foreground="#f2f2f2" FontSize="16" Margin="10">Szczegółowe Informacje o Pojeździe:</TextBlock>
+            
+            <StackPanel Grid.Column="1" Grid.Row="1" Width="350" Background="#f2f2f2" Margin="0,43,0,10"  HorizontalAlignment="Center" Visibility="Visible">
+                <TextBlock x:Name="NumerRejestracyjny" Margin="10"> <Bold> Numer Rejestracyjny: </Bold></TextBlock>
+                <TextBlock x:Name="Marka" Margin="10,5,10,10"> <Bold> Marka: </Bold></TextBlock>
+                <TextBlock x:Name="Model" Margin="10,5,10,10"> <Bold> Model: </Bold></TextBlock>
+                <TextBlock x:Name="NumerVIN" Margin="10,5,10,10"> <Bold> Numer VIN: </Bold></TextBlock>
+                <TextBlock x:Name="RokProdukcji" Margin="10,5,10,10"> <Bold> Rok Produkcji: </Bold></TextBlock>
+                <TextBlock x:Name="TypPaliwa" Margin="10,5,10,10"> <Bold> Typ Paliwa: </Bold></TextBlock>
+                <TextBlock x:Name="NumerTelefonu" Margin="10,15,10,10"> <Bold> NUmer Telefonu Właściciela: </Bold></TextBlock>
+                <TextBlock x:Name="WiadomoscZwrotnaLabel" Margin="10,15,10,10"> <Bold> Raport z Naprawy: </Bold></TextBlock>
+                <TextBox x:Name="WiadomoscZwrotnaInput" Margin="10,5,10,10" Height="100"></TextBox>
+                <Button x:Name="ZapiszWiadZwrotBtn" Margin="10,5,10,10" Width="100" HorizontalAlignment="Right">Zapisz</Button>
+                <Button x:Name="CzesciDoNaprawyBtn" Margin="10,25,10,10" Height="30" Click="CzesciDoNaprawyBtn_Click">Dodaj części użyte przy naprawie</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="1" Width="350" Background="#f2f2f2" Margin="0,43,0,10"  HorizontalAlignment="Center" Visibility="Hidden">
+                <TextBlock x:Name="ImieNazwMechanika" Margin="10"> <Bold> Imie i Nazwisko Mechanika: </Bold></TextBlock>
+                <TextBlock x:Name="DataPrzyjecia" Margin="10,5,10,10"> <Bold> Data Przyjecia do naprawy: </Bold></TextBlock>
+                <TextBlock x:Name="DataWdania" Margin="10,5,10,10"> <Bold> Data wydania: </Bold></TextBlock>
+                <TextBlock x:Name="OpisUsterek" Margin="10,35,10,10"> <Bold> Opis usterek: </Bold></TextBlock>
+                <TextBlock x:Name="WidomoscZwrotna" Margin="10,35,10,10"> <Bold> Wiadomość zwrotna od mechanika: </Bold></TextBlock>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1" Grid.Column="2" Margin="10">
+                <TextBlock Foreground="#f2f2f2" FontSize="16">Historia Napraw Pojazdu</TextBlock>
+                <ListView x:Name="lvDataBindingHistory" HorizontalContentAlignment="Stretch" Background="#f2f2f2" Grid.Column="0" Grid.Row="1" Margin="0,10,0,0" Height="519">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Imie}" Header="Data Naprawy" Width="120"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Nazwisko}" Header="Imie Mechanika" Width="120"/>
+                            <GridViewColumn DisplayMemberBinding= "{Binding Path=Telefon}" Header="Nazwisko Mechanika" Width="120"/>
+                        </GridView>
+                    </ListView.View>
+
+                </ListView>
+            </StackPanel>
+
+        </Grid>
+
+    </Border>
+
+</Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BibliotekaKlas;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -13,7 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WarsztatV2.Tables;
 
 namespace WarsztatV2.Menu
 {
@@ -191,10 +191,7 @@ namespace WarsztatV2.Menu
                         this.Dispatcher.Invoke(
                             () =>
                             {
-                                informationLabel4.Visibility = Visibility.Hidden; //Ukrycie informacji dt. pobierania danych
-                                firstNameW.Text = "Brak"; //Wstawienie imienia pracownika
-                                surnameW.Text = "Brak"; //Wstawienie nazwiska pracownika
-                                repairWorkerC.Text = "Brak"; //Wstawienie ilości wykonanych napraw przed danego pracownika
+                                informationLabel4.Content = "Brak danych do wyświetlenia"; //Wyświetlenie informacji o braku danych do wypisania
                             }
                         );
                     }
@@ -255,10 +252,7 @@ namespace WarsztatV2.Menu
                         this.Dispatcher.Invoke(
                             () =>
                             {
-                                informationLabel3.Visibility = Visibility.Hidden; //Ukrycie informacji dt. pobierania danych
-                                numberVehicle.Text = "Brak"; //Wstawienie numeru rejestracyjnego
-                                modelVehicle.Text = "Brak"; //Wstawienie nazwy modelu pojazdu
-                                reasonText.Text = "Brak"; //Wstawienie opisu ostatniej ustreki danego pojazdu
+                                informationLabel3.Content = "Brak danych do wyświetlenia"; //Wyświetlenie informacji o braku danych do wypisania
                             }
                         );
                     }

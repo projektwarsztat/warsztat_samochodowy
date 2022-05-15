@@ -2,9 +2,9 @@
 using System.Text;
 using System.Linq;
 using System.Windows;
-using WarsztatV2.Tables;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using BibliotekaKlas;
 
 namespace WarsztatV2
 {

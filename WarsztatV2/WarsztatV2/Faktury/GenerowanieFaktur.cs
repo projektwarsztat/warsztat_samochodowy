@@ -1,4 +1,5 @@
-﻿using PdfSharp.Drawing;
+﻿using BibliotekaKlas;
+using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
 using System;
@@ -8,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
-using WarsztatV2.Tables;
 
 
 namespace WarsztatV2.Faktury

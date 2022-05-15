@@ -5,53 +5,61 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WarsztatV2.Menu"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="810"
+      d:DesignHeight="610" d:DesignWidth="900"
       Title="Pracownicy"
       ShowsNavigationUI="False">
 
-    <Border Background="#BFD7ED"
-              CornerRadius="10,0,0,10">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="277"/>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+    <Grid Background="#FFFFFFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="10,0,10,0" Background="#ffeeeeee" Height="150" VerticalAlignment="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="90"/>
             </Grid.RowDefinitions>
-
-            <TextBlock  FontSize="20" FontWeight="Bold" FontFamily="/Fonts/#Roboto" Margin="40,10,10,10">
-                Zarządzaj Pracownikami
-            </TextBlock>
-
-            <StackPanel  Grid.Row="1" Margin="40,0,0,0">
-                <Label Content="Imie:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox x:Name="Imie" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                <Label Content="Nazwsko:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox x:Name="Nazwisko" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox x:Name="Miejscowosc" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                <Label Content="Ulica:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox x:Name="Ulica" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                <Label Content="Numer:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox x:Name="Numer" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                <Label Content="Kod Pocztowy:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox x:Name="KodPocztowy" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                <Label Content="Telefon:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox x:Name="Telefon" Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
-            </StackPanel>
-
-            <Button x:Name="Dodaj" Grid.Row="1" Content="Dodaj" Height="25" Margin="40,0,137,112" VerticalAlignment="Bottom"/>
-            <Button x:Name="Edytuj" Grid.Row="1" Content="Edytuj" Width="100" Height="25" Margin="0,0,10,112" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-            <Button x:Name="Usun" Grid.Row="1" Content="Usuń" Width="100" Height="25" HorizontalAlignment="Right" Margin="0,0,137,63" VerticalAlignment="Bottom"/>
-            <Button x:Name="Szukaj" Grid.Row="1" Content="Szukaj" Width="100" Height="25" HorizontalAlignment="Right" Margin="0,0,10,63" VerticalAlignment="Bottom"/>
-
-            <StackPanel Grid.Row="1" Grid.Column="1" Background="white">
-
-                <TextBlock>Miejsce na data grid</TextBlock>
-            </StackPanel>
-
+            <Label x:Name="headerSectionLabel" Content="Zarządzaj pracownikami" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Grid.Row="0"/>
+            <TextBlock x:Name="subHeaderSectionTextBlock" VerticalAlignment="Top" FontSize="12" TextWrapping="Wrap" Margin="15,5,5,0" Width="auto" Grid.Row="1"><Run Text="Sekcja Zarządzaj pracownikami poświęcona jest sprawom pracowników warsztatu. W tej sekcji można: dodawać nowych lub usuwać dotychczasowch pracowników, jak również modyfikować ich dane - w szczególności, zmieniać dane logowania, czyli login i hasło. Aby dodać nowego pracownika, wypełnij poniższy formularz. W celu modyfikacji, bądź usunięcia pracownika należy wybrać odpowiedni rekord "/><Run Language="pl-pl" Text="lewym"/><Run Text=" przyciskiem myszy, a następnie w zależności od celu dalszych działań - wybrać przycisk Usuń, lub wprowadzić nowe dane i wybrać przcisk Modyfikuj. Wprowadź imię lub nazwisko, aby znaleźć odpowiedniego pracownika."/><Run/></TextBlock>
         </Grid>
-    </Border>
+        <Grid Grid.Row="1" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Background="#FFEEEEEE" Grid.Column="0" Margin="10,0,0,10">
+                <StackPanel Margin="5,400,5,0" Orientation="Horizontal">
+                    <Button x:Name="dodaj" Content="Dodaj" Width="65" Height="25" Margin="6, 0, 0, 0"/>
+                    <Button x:Name="modyfikuj" Content="Modyfikuj" Width="65" Height="25" Margin="6, 0, 0, 0"/>
+                    <Button x:Name="usun" Content="Usuń" Width="65" Height="25" Margin="5, 0, 0, 0"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.Row="0" Margin="20,0,0,0">
+                <Label Content="Imię:" Height="25" Width="85" HorizontalAlignment="Left"/>
+                <TextBox x:Name ="imie" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <Label Content="Nazwisko:" Width="170" HorizontalAlignment="Left"/>
+                <TextBox x:Name="nazwisko" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <Label Content="Telefon: (+48)" Width="170" HorizontalAlignment="Left"/>
+                <TextBox x:Name="telefon" Width="170" HorizontalAlignment="Left" Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left"/>
+                <TextBox x:Name="miejscowosc" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <Label Content="Ulica:" Width="170" HorizontalAlignment="Left"/>
+                <TextBox x:Name="ulica" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <Label Content="Numer:" Width="170" HorizontalAlignment="Left"/>
+                <TextBox x:Name="numer" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <Label Content="Kod pocztowy:" Width="170" HorizontalAlignment="Left"/>
+                <TextBox x:Name="kod_pocztowy" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <WrapPanel>
+                    <StackPanel>
+                        <Label Content="Login:" Width="83" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="login" Width="83" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Hasło:" Width="83" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="haslo" Width="83" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </Page>

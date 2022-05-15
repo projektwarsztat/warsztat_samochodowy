@@ -13,8 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WarsztatV2.Tables;
 using System.Threading;
+using BibliotekaKlas;
 
 namespace WarsztatV2.Menu
 {

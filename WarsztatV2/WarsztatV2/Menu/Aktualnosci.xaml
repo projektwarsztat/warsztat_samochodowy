@@ -19,8 +19,8 @@
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <Label x:Name="headerSectionLabel" Content="Panel Informacyjny" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Grid.Row="0"/>
-            <TextBlock x:Name="subHeaderSectionLabel" Text="W sekcji Panel Informacyjny możesz uzyskać dostęp do ogólnych informacji na temat warsztatu. Te wiadomości mogą zawierać następujące tematy: całkowita liczba wykonanych napraw; liczba pojazdów, które mogą zostać wydane klientom; liczba pojazdów aktualnie będących w naprawie, czy nawet najczęściej psujący się pojazd wśród samochodów klientów." TextWrapping="Wrap" Margin="15, 0, 5, 0" Grid.Row="1"/>
+            <Label x:Name="headerSectionLabel" Content="Panel informacyjny" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="24" Grid.Row="0"/>
+            <TextBlock x:Name="subHeaderSectionLabel" TextWrapping="Wrap" Margin="15, 0, 5, 0" Grid.Row="1"><Run Text="W sekcji Panel "/><Run Language="pl-pl" Text="i"/><Run Text="nformacyjny możesz uzyskać dostęp do ogólnych informacji na temat warsztatu. Te wiadomości mogą zawierać następujące tematy: całkowita liczba wykonanych napraw; liczba pojazdów, które mogą zostać wydane klientom; liczba pojazdów aktualnie będących w naprawie, czy nawet najczęściej psujący się pojazd wśród samochodów klientów."/></TextBlock>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

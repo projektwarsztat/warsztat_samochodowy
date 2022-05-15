@@ -5,16 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarsztatV2_klient"
         mc:Ignorable="d"
-        Title="LoginScreen" Height="650" Width="420"
-         ResizeMode="NoResize"
+        Title="Ekran logowania" Height="400" Width="720"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-      
-        Background="#003E3E">
+        Background="#FFFFFFFF"
+        Icon="Image/logo.png">
 
-    <StackPanel>
-        <Image Source="/Image/logo.png" Width="200" Margin="100,50,100,50"/>
-        <TextBox x:Name="InputPin" Width="300" Height="50" FontSize="30" Background="#f2f2f2" Foreground="#005250" HorizontalContentAlignment="Center" />
-        <Button Width="150" Height="25" Margin="200,60,50,200" Background="#f2f2f2" Content="Zaloguj" Click="Button_Click" />
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF003E3E">
+            <Label x:Name="headerSectionLabel" Content="System obsługi warsztatu samochodowego - aplikacja kliencka" HorizontalAlignment="Center" Margin="0,10,0,10" FontSize="24" Foreground="White" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="Image/logo.png" Margin="0,25,0,25"/>
+            <Grid Grid.Column="1" Margin="0,10,0,10" HorizontalAlignment="Center" Width="340">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Height="154">
+                    <Label Content="Login:" Height="25" Width="85" HorizontalAlignment="Left"/>
+                    <TextBox x:Name ="login" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                    <Label Content="Hasło:" Width="170" HorizontalAlignment="Left"/>
+                    <PasswordBox x:Name="haslo" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                    <Button x:Name="loginButton" Content="Zaloguj" Height="20" Width="75" Margin="5, 20, 0, 0" HorizontalAlignment="Left" VerticalAlignment="Center" Click="loginButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
 </Window>
 

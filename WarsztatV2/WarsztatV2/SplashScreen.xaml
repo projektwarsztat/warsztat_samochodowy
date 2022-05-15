@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarsztatV2"
         mc:Ignorable="d"
-        Title="Warsztat V 2.0" Height="450" Width="860"
+        Title="Warsztat V 2.0" Height="300" Width="860"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="#003E3E">
-    
-    <Image Source="/Image/splashScreen.jpg" />
+
+    <Image Source="/Image/splashScreen.png"/>
 
 </Window>

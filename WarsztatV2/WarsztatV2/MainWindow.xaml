@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WarsztatV2"
         mc:Ignorable="d"
-        Title="Warsztat V 2.0" Height="650" Width="1200"
+        Title="Warsztat v2.0 - aplikacja serwerowa" Height="650" Width="1200"
         Background="Transparent"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen"
+        Icon="Image/logo.png">
 
     <Border Background="#FF003E3E">
 

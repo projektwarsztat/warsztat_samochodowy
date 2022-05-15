@@ -5,12 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using WarsztatV2.Tables;
+using BibliotekaKlas;
 
 namespace WarsztatV2
 {
     internal class databaseConnection : DbContext
     {
+        public databaseConnection()
+        {
+            Configuration.ProxyCreationEnabled = false;
+            //Configuration.AutoDetectChangesEnabled = false;
+        }
+        
         public DbSet<Adres> Adresy { get; set; }
         public DbSet<Warsztat> Warsztaty { get; set; }
         public DbSet<Pracownik> Pracownicy { get; set; }
@@ -20,6 +26,7 @@ namespace WarsztatV2
         public DbSet<Naprawa> Naprawy { get; set; }
         public DbSet<Czesc> Czesci { get; set; }
         public DbSet<Uzyte_czesci> Uzyte_czesci { get; set; }
+        public DbSet<Dane_logowania> Dane_logowania { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -32,6 +39,7 @@ namespace WarsztatV2
             modelBuilder.Entity<Naprawa>().ToTable("naprawa", "public");
             modelBuilder.Entity<Czesc>().ToTable("czesc", "public");
             modelBuilder.Entity<Uzyte_czesci>().ToTable("uzyte_czesci", "public");
+            modelBuilder.Entity<Dane_logowania>().ToTable("dane_logowania", "public");
 
             modelBuilder.Conventions.Add<StoreGeneratedIdentityKeyConvention>();
         }

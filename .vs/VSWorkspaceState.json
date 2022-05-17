@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\WarsztatV2",
-    "\\WarsztatV2\\Serialization",
-    "\\WarsztatV2\\WarsztatV2_klient"
+    "\\WarsztatV2\\WarsztatV2",
+    "\\WarsztatV2\\WarsztatV2\\Menu"
   ],
-  "SelectedNode": "\\WarsztatV2\\WarsztatV2_klient\\LoginScreen.xaml",
+  "SelectedNode": "\\WarsztatV2\\WarsztatV2\\Menu\\Pracownicy.xaml",
   "PreviewInSolutionExplorer": false
 }

@@ -36,17 +36,17 @@ namespace WarsztatV2
 
             /* ŁĄCZENIE SIECIOWE - DZIAŁA WYMAGA PRACY, ABY MOŻE TUTAJ LUŹNO NIE LEŻAŁO */ //Dodać obsługę błędów!!!
             Socket serverSocketConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Utworzenie gniazda
-            EndPoint endPoint = new IPEndPoint(IPAddress.Loopback, 19164); //Utworzenie adresu
+            EndPoint endPoint = new IPEndPoint(IPAddress.Any, 19164); //Utworzenie adresu
             serverSocketConnection.Bind(endPoint); //Dowiązanie adresu do gniazda
             serverSocketConnection.Listen(50); //Ustalenie długości kolejki
 
-            Task.Run(() => {
+            Task.Run(async () => {
                 while (true)
                 {
                     Socket socketAccepted = serverSocketConnection.Accept();
-                    Task.Run(async () => {
+                    await Task.Run(async () => {
                         if (socketAccepted.Connected)
-                        { 
+                        {
                             NetworkStream networkStream = new NetworkStream(socketAccepted); //Utworzenie strumienia do komunikacji
                             BinaryFormatterAsync bF = new BinaryFormatterAsync(); //Umożliwia serializację danych
                             while (true)
@@ -79,17 +79,40 @@ namespace WarsztatV2
                                     int ID = Convert.ToInt32(data.Substring(5));
                                     using (databaseConnection newConnection = new databaseConnection()) //Połączenie do bazy
                                     {
-                                        List<Naprawa> naprawaL = newConnection.Naprawy.Where(n => n.ID_Pracownik == ID).ToList<Naprawa>();
+                                        List<Naprawa> naprawaL = newConnection.Naprawy.Where(n => n.ID_Pracownik == ID && n.Status_naprawy == "Przyjety").ToList<Naprawa>();
                                         Pracownik pracownik = newConnection.Pracownicy.Single(p => p.ID_Pracownik == ID);
-                                        if (naprawaL.Count() == 0)
-                                            await bF.SerializeAsync<string>(networkStream, "NON_EXIST"); //Brak danych - pusta lista
-                                        else
+                                        List<Pojazd> pojazdL = newConnection.Pojazdy.ToList<Pojazd>();
+                                        await bF.SerializeAsync<string>(networkStream, pracownik.Imie + " " + pracownik.Nazwisko);
+                                        await bF.SerializeAsync<List<Naprawa>>(networkStream, naprawaL);
+                                        await bF.SerializeAsync<List<Pojazd>>(networkStream, pojazdL);
+                                    }
+                                }
+
+                                //Pobranie danych o częściach
+                                else if (data == "CDATA")
+                                {
+                                    using (databaseConnection newConnection = new databaseConnection()) //Połączenie do bazy
+                                    {
+                                        List<Czesc> czesciL = newConnection.Czesci.ToList<Czesc>(); //Pobranie tablicy części
+                                        await bF.SerializeAsync<List<Czesc>>(networkStream, czesciL);
+                                    }
+                                }
+
+                                else if (data == "SNDT")
+                                {
+                                    int naprawaID = await bF.DeserializeAsync<int>(networkStream);
+                                    string komentarz = await bF.DeserializeAsync<string>(networkStream);
+                                    List<Uzyte_czesci> uzyteCzesciL = await bF.DeserializeAsync<List<Uzyte_czesci>>(networkStream);
+                                    using (databaseConnection newConnection = new databaseConnection()) //Połączenie do bazy
+                                    {
+                                        Naprawa naprawa = newConnection.Naprawy.SingleOrDefault<Naprawa>(n => n.ID_Naprawa == naprawaID);
+                                        naprawa.Status_naprawy = "DoOdbioru"; //Zaznaczenie stanu jako naprawniony i jest już do odbioru
+
+                                        for (int i = 0; i < uzyteCzesciL.Count; i++)
                                         {
-                                            List<Pojazd> pojazdL = newConnection.Pojazdy.ToList<Pojazd>();
-                                            await bF.SerializeAsync<string>(networkStream, pracownik.Imie + " " + pracownik.Nazwisko);
-                                            await bF.SerializeAsync<List<Naprawa>>(networkStream, naprawaL);
-                                            await bF.SerializeAsync<List<Pojazd>>(networkStream, pojazdL);
+                                            newConnection.Uzyte_czesci.Add(new Uzyte_czesci { ID_Czesci = uzyteCzesciL[i].CzescNav.ID_Czesci, ID_Naprawa = uzyteCzesciL[i].NaprawaNav.ID_Naprawa, Ilosc = uzyteCzesciL[i].Ilosc });
                                         }
+                                        newConnection.SaveChanges(); //Zapisanie zmian w bazie danych
                                     }
                                 }
 

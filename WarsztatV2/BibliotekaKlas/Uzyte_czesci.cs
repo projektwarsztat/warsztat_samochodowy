@@ -10,11 +10,6 @@ namespace BibliotekaKlas
     [Serializable]
     public class Uzyte_czesci
     {
-        public Uzyte_czesci()
-        {
-
-        }
-
         [Key]
         public int ID { get; set; }
         public int ID_Naprawa { get; set; }

@@ -6,27 +6,22 @@
       xmlns:local="clr-namespace:WarsztatV2"
       mc:Ignorable="d" 
       Title="OFirmie"
-      d:DesignHeight="800" d:DesignWidth="810"
-      >
+      d:DesignHeight="610" d:DesignWidth="900">
 
-    <Border Background="#BFD7ED"
-              CornerRadius="10,0,0,10">
-
-        <!--.<ScrollViewer VerticalScrollBarVisibility="Auto">-->
-
+    <Border Background="#FFFFFFFF" >
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="180"/>
+                <RowDefinition Height="140" />
                 <RowDefinition />
 
             </Grid.RowDefinitions>
 
-            <StackPanel Margin="40,40,40,40" Grid.Row="0">
-                <TextBlock FontSize="40" FontFamily="/Fonts/#Roboto">
+            <StackPanel Margin="10,0,10,10" Grid.Row="0" Background="#ffeeeeee">
+                <TextBlock FontSize="24" FontFamily="/Fonts/#Roboto" Margin="15,10,0,0"  >
                 Informacje o Warsztacie
                 </TextBlock>
 
-                <TextBlock Margin="0,10,0,0"  >
+                <TextBlock Margin="15,10,0,0"  >
                 Poniższe Informacje są niezbędne do prawidłowego działania aplikacji.
                 Za pomocą formularza istnieje możliwość zmiany danych.
                 <LineBreak/> <Bold>Uwaga !!! Poniższe dane znajdą się na fakturze</Bold>
@@ -34,20 +29,20 @@
 
             </StackPanel>
 
-            <StackPanel  Grid.Row="1" Margin="40,0,0,0" HorizontalAlignment="Left" Width="210">
-                <Label Content="Nazwa:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold"/>
-                <TextBox Name="nazwa" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                <Label Content="Telefon:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="telefon"  Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
-                <Label Content="NIP:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="nip" Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
-                <Label Content="Numer Konta:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="numer_konta" Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
-                <Label Content="Nazwa Banku:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="nazwa_banku" Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
+            <StackPanel Margin="10,2,0,85" HorizontalAlignment="Left" Width="480" Background="#ffeeeeee" Grid.Row="1">
+                <Label Content="Nazwa:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold" Margin="15,0,0,0" />
+                <TextBox Name="nazwa" Width="170" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0" ></TextBox>
+                <Label Content="Telefon:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold" />
+                <TextBox Name="telefon"  Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0"></TextBox>
+                <Label Content="NIP:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
+                <TextBox Name="nip" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0"></TextBox>
+                <Label Content="Numer Konta:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
+                <TextBox Name="numer_konta" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0"></TextBox>
+                <Label Content="Nazwa Banku:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
+                <TextBox Name="nazwa_banku" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0"></TextBox>
             </StackPanel>
 
-            <StackPanel  Grid.Row="1" Margin="300,0,0,0" Height="220" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200">
+            <StackPanel  Grid.Row="1" Margin="300,0,0,0" Height="220" VerticalAlignment="Top" HorizontalAlignment="Left" Width="190" >
                 <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold"/>
                 <TextBox Name="miejscowosc" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
                 <Label Content="Ulica:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
@@ -56,15 +51,23 @@
                 <TextBox Name="numer" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
                 <Label Content="Kod Pocztowy:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
                 <TextBox Name="kod_pocztowy" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-
             </StackPanel>
 
-
-            <Button x:Name="SaveButton"  Grid.Row="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="450,280,0,20" VerticalAlignment="Top" Click="SaveButton_Click">Zapisz</Button>
+            <StackPanel Margin="0,0,10,0" Height="385" VerticalAlignment="Top" HorizontalAlignment="Right" Width="379" Background="#ffeeeeee" Grid.Row="1">
+                <Label Content="Ścieżka do dla faktur:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold" Margin="15,0,0,0"/>
+                <TextBox Name="sciezkafaktury" Width="342" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0" MouseDoubleClick="sciezkafaktury_MouseDoubleClick" ></TextBox>
+                <Label Content="Stawka Vat dla części:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
+                <TextBox Name="stawkaVat"  Width="170" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0"></TextBox>
+                <Label Content="Login GSMService:" Width="170" HorizontalAlignment="Left" Margin="15,65,0,0" FontWeight="Bold"/>
+                <TextBox Name="loginGsmservice" Width="170" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0"></TextBox>
+                <Label Content="Hasło GSMService:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
+                <PasswordBox Name="hasloGsmservice" Width="170" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0" ></PasswordBox>
+            </StackPanel>
+            
+            <Button x:Name="SaveButton"  Grid.Row="1" Width="165" Height="30" HorizontalAlignment="Left" Margin="300,321,0,0" VerticalAlignment="Top" Click="SaveButton_Click">Zapisz</Button>
+            <Button x:Name="SaveButtonFile"  Grid.Row="1" Width="166" Height="30" HorizontalAlignment="Left" Margin="700,321,0,0" VerticalAlignment="Top" Click="SaveButtonFile_Click" Content="Zapisz"/>
+            
         </Grid>
-
-        <!-- </ScrollViewer>-->
-
     </Border>
 
 </Page>

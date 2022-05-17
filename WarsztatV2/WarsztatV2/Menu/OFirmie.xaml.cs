@@ -5,6 +5,8 @@ using System.Windows;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using BibliotekaKlas;
+using Microsoft.Win32;
+using System.IO;
 
 namespace WarsztatV2
 {
@@ -18,8 +20,11 @@ namespace WarsztatV2
             InitializeComponent();
 
             if (IfDataExists())
-             DataToForm(); 
-            
+                DataToForm();
+
+            if (IfDataNotNull())
+                WriteDataToForm();
+
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -137,6 +142,57 @@ namespace WarsztatV2
                 newConnection.SaveChanges();
             }
 
+        }
+
+        private async void SaveDataToFIle()
+        {
+
+            using (StreamWriter writer = new StreamWriter("config.txt"))
+            {
+                writer.WriteLine(sciezkafaktury.Text);
+                writer.WriteLine(stawkaVat.Text);
+                writer.WriteLine(loginGsmservice.Text);
+                writer.WriteLine(hasloGsmservice.Password);
+
+            }
+
+        }
+
+
+        private bool IfDataNotNull()
+        {
+            string[] lines = System.IO.File.ReadAllLines("config.txt");
+
+
+
+            if (lines.Length == 4)
+                return true;
+            else return false;
+
+        }
+
+        private async void WriteDataToForm()
+        {
+            string[] lines = System.IO.File.ReadAllLines("config.txt");
+
+            sciezkafaktury.Text = lines[0];
+            stawkaVat.Text = lines[1];
+            loginGsmservice.Text = lines[2];
+            hasloGsmservice.Password = lines[3];
+
+        }
+
+        private void SaveButtonFile_Click(object sender, RoutedEventArgs e)
+        {
+            SaveDataToFIle();
+        }
+
+        private void sciezkafaktury_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            if (openFileDialog.FileName != " ")
+                sciezkafaktury.Text = openFileDialog.FileName;
         }
     }
 }

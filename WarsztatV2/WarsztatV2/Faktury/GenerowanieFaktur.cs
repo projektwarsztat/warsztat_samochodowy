@@ -15,9 +15,28 @@ namespace WarsztatV2.Faktury
 {
     class GenerowanieFaktur
     {
+        private static string SciezkaDoZapisu;
+        private static int Vat;
+        public static async void GetData()
+        {
+            string[] lines = System.IO.File.ReadAllLines("config.txt");
 
+            if(lines.Length >= 2)
+            {
+                SciezkaDoZapisu = lines[0];
+                Vat = Convert.ToInt32(lines[1]);
+            }
+            else
+            {
+                SciezkaDoZapisu = "";
+                Vat = 0;
+            }
+            
+        }
         public static async void GenerujFakture(Faktura fav)
         {
+            GetData();
+
             Faktura FakturaFav = new Faktura();
             Warsztat WarsztatFav = new Warsztat();
             Adres AdresWarsztatFav = new Adres();
@@ -183,9 +202,9 @@ namespace WarsztatV2.Faktury
                 tf.DrawString(UzytaczescFav.Nazwa, font, XBrushes.Black, rectt2[i], XStringFormats.TopLeft);
                 tf.DrawString(czesci[i].Ilosc.ToString(), font, XBrushes.Black, rectt3[i], XStringFormats.TopLeft);
                 tf.DrawString((UzytaczescFav.Cena * czesci[i].Ilosc).ToString(), font, XBrushes.Black, rectt4[i], XStringFormats.TopLeft);
-                tf.DrawString("23%", font, XBrushes.Black, rectt5[i], XStringFormats.TopLeft);
-                tf.DrawString((Math.Round(UzytaczescFav.Cena * 1.23 * czesci[i].Ilosc, 2)).ToString(), font, XBrushes.Black, rectt6[i], XStringFormats.TopLeft);
-                suma += UzytaczescFav.Cena * 1.23 * czesci[i].Ilosc;
+                tf.DrawString(Vat.ToString(), font, XBrushes.Black, rectt5[i], XStringFormats.TopLeft);
+                tf.DrawString((Math.Round(UzytaczescFav.Cena * ((Vat / 100.0) + 1.0) * czesci[i].Ilosc, 2)).ToString(), font, XBrushes.Black, rectt6[i], XStringFormats.TopLeft);
+                suma += UzytaczescFav.Cena * ((Vat/100.0)+1.0) * czesci[i].Ilosc;
 
             }
 
@@ -251,7 +270,7 @@ namespace WarsztatV2.Faktury
             rect27 = new XRect(360, dlugoscTabeli + 150, 500, 220);
             tf.DrawString("Podpis osoby upoważnionej do odbioru ", font, XBrushes.Black, rect27, XStringFormats.TopLeft);
 
-            string filename = FakturaFav.ID_Faktura.ToString() + ".pdf";
+            string filename = SciezkaDoZapisu + FakturaFav.ID_Faktura.ToString() + ".pdf";
 
             document.Save(filename);
 

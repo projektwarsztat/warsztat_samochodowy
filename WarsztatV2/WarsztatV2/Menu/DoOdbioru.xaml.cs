@@ -39,6 +39,7 @@ namespace WarsztatV2.Menu
 
         }
 
+        // wypelnienie listviewbox
         private async Task pobierzDaneNaprawy()
         {
             List<Naprawa> naprawaL;
@@ -99,9 +100,6 @@ namespace WarsztatV2.Menu
                             Wiadomosc_zwrotna.Text = naprawa.Wiadomosc_zwrotna;
                         }
                     );
-                    //KlientID = pojazd.ID_Klient;
-                    //AdresID = pojazd.ID_Adres;
-                    //NumerRejestracyjny = naprawa.Numer_rejestracyjny;
                     NaprawaID = naprawa.ID_Naprawa;
 
                     if (IfFakturaExists())
@@ -144,7 +142,6 @@ namespace WarsztatV2.Menu
             public string Numer_rejestracyjny { get; set; }
             public string MarkaModel { get; set; }
 
-            // public string Mechanik { get; set; }
             public string Imie { get; set; }
             public string Nazwisko { get; set; }
             public int ID_Pracownik { get; set; }
@@ -155,6 +152,7 @@ namespace WarsztatV2.Menu
 
         }
 
+        //sprawdzenie czy faktura o danym Id juz istnieje
         private bool IfFakturaExists()
         {
             using (databaseConnection newConnection = new databaseConnection())
@@ -166,10 +164,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        //wystawienie faktury
         private async void WystawFakture(object sender, RoutedEventArgs e)
         {
-
-
             Naprawa NaprawaFav = new Naprawa();
             Warsztat WarsztatFav = new Warsztat();
             Pojazd PojazdFav = new Pojazd();
@@ -222,37 +219,7 @@ namespace WarsztatV2.Menu
             }
         }
 
-        private async void gen(object sender, RoutedEventArgs e)//metoda do testowania generowania pdf
-        {
-
-            Naprawa NaprawaFav = new Naprawa();
-            //  Klient KlientFav = new Klient();
-            Warsztat WarsztatFav = new Warsztat();
-            Pojazd PojazdFav = new Pojazd();
-
-            Faktura fav1 = new Faktura();
-            //fav1.ID_Klient = 1;
-            // fav1.ID_Naprawa = NaprawaID;
-
-            using (databaseConnection newConnection = new databaseConnection())
-            {
-                NaprawaFav = await Task.Run(() => { return newConnection.Naprawy.Single<Naprawa>(a => a.ID_Naprawa == NaprawaID); });
-                PojazdFav = await Task.Run(() => { return newConnection.Pojazdy.Single<Pojazd>(a => a.Numer_rejestracyjny == NaprawaFav.Numer_rejestracyjny); });
-                // KlientFav = await Task.Run(() => { return newConnection.Klienci.Single<Klient>(a => a.ID_Klient == PojazdFav.ID_Klient); });
-
-                ////fav1.Nazwa = "Warsztat Samochodowy JK";
-                fav1.ID_Klient = PojazdFav.ID_Klient;
-                fav1.ID_Naprawa = NaprawaFav.ID_Naprawa;
-
-                //await Task.Run(() => newConnection.Faktury.Add(new Faktura { Nazwa = "Warsztat Samochodowy JK", ID_Klient = KlientFav.ID_Klient, ID_Naprawa = NaprawaFav.ID_Naprawa }));
-                //await Task.Run(() => newConnection.Faktury.Add(fav1));
-
-                // await newConnection.SaveChangesAsync();
-            }
-
-            GenerowanieFaktur.GenerujFakture(fav1);
-        }
-
+        // wydanie pojazdu - zmiana statusu naprawy i uzupenienie daty wydania
         private async void WydajPojazdClick(object sender, RoutedEventArgs e)
         {
 

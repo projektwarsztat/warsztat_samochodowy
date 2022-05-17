@@ -163,8 +163,6 @@ namespace WarsztatV2
         {
             string[] lines = System.IO.File.ReadAllLines("config.txt");
 
-
-
             if (lines.Length == 4)
                 return true;
             else return false;
@@ -189,8 +187,9 @@ namespace WarsztatV2
 
         private void sciezkafaktury_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.ShowDialog();
+            if(openFileDialog.ShowDialog()==true)
             if (openFileDialog.FileName != " ")
                 sciezkafaktury.Text = openFileDialog.FileName;
         }

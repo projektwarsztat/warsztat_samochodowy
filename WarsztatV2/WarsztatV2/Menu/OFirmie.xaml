@@ -29,7 +29,7 @@
 
             </StackPanel>
 
-            <StackPanel Margin="10,2,0,85" HorizontalAlignment="Left" Width="480" Background="#ffeeeeee" Grid.Row="1">
+            <StackPanel Margin="10,0,0,10" HorizontalAlignment="Left" Width="480" Background="#ffeeeeee" Grid.Row="1">
                 <Label Content="Nazwa:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold" Margin="15,0,0,0" />
                 <TextBox Name="nazwa" Width="170" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0" ></TextBox>
                 <Label Content="Telefon:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold" />
@@ -53,7 +53,7 @@
                 <TextBox Name="kod_pocztowy" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
             </StackPanel>
 
-            <StackPanel Margin="0,0,10,0" Height="385" VerticalAlignment="Top" HorizontalAlignment="Right" Width="379" Background="#ffeeeeee" Grid.Row="1">
+            <StackPanel Margin="499,0,10,0" Height="460" VerticalAlignment="Top" Background="#ffeeeeee" Grid.Row="1">
                 <Label Content="Ścieżka do dla faktur:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold" Margin="15,0,0,0"/>
                 <TextBox Name="sciezkafaktury" Width="342" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0" MouseDoubleClick="sciezkafaktury_MouseDoubleClick" ></TextBox>
                 <Label Content="Stawka Vat dla części:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
@@ -63,10 +63,10 @@
                 <Label Content="Hasło GSMService:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
                 <PasswordBox Name="hasloGsmservice" Width="170" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0" ></PasswordBox>
             </StackPanel>
-            
+
             <Button x:Name="SaveButton"  Grid.Row="1" Width="165" Height="30" HorizontalAlignment="Left" Margin="300,321,0,0" VerticalAlignment="Top" Click="SaveButton_Click">Zapisz</Button>
             <Button x:Name="SaveButtonFile"  Grid.Row="1" Width="166" Height="30" HorizontalAlignment="Left" Margin="700,321,0,0" VerticalAlignment="Top" Click="SaveButtonFile_Click" Content="Zapisz"/>
-            
+
         </Grid>
     </Border>
 

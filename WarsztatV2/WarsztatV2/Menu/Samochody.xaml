@@ -5,70 +5,69 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WarsztatV2.Menu"
       mc:Ignorable="d" 
-     d:DesignHeight="1300" d:DesignWidth="810"
+     d:DesignHeight="1000" d:DesignWidth="900"
       Title="Samochody"
       ShowsNavigationUI="False">
 
-    <Border Background="#BFD7ED"
-             CornerRadius="10,0,0,10">
+    <Border Background="#FFFFFF">
 
         <ScrollViewer VerticalScrollBarVisibility="Auto">
 
             <Grid >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="277"/>
+                    <ColumnDefinition Width="300"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="400"/>
-                    <RowDefinition Height="91" />
-                    <RowDefinition Height="757"/>
+                    <RowDefinition Height="500"/>
 
                 </Grid.RowDefinitions>
 
-                <TextBlock FontSize="20" FontWeight="Bold" FontFamily="/Fonts/#Roboto" Margin="40,10,10,10">
-                Zarządzaj Pojazdami
-                </TextBlock>
+                <Border  Background="#ffeeeeee"  Margin="10,0,10,0" Grid.ColumnSpan="2">
+                    <TextBlock FontSize="24" Margin="10,10,0,0">
+                         Pojazdy
+                    </TextBlock>
+                </Border>
 
-                <StackPanel  Grid.Row="1" Margin="60,0,0,0">
-
-                    <TextBlock FontSize="15" FontWeight="Bold" FontFamily="/Fonts/#Roboto" Margin="0,5,5,15">
-                Dane Pojazdu:
+                <StackPanel Background="#ffeeeeee" Grid.Row="1" Margin="10,10,527,5" Grid.ColumnSpan="2">
+                    <TextBlock FontSize="15" FontWeight="Bold" FontFamily="/Fonts/#Roboto" Margin="10,5,5,5">
+                          Dane Pojazdu:
                     </TextBlock>
 
-                    <Label Content="Numer rejestracyjny:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox x:Name="Numer_rejestracyjny" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Marka:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox x:Name="Marka" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Model:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox x:Name="Model" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Numer VIN:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox x:Name="Numer_VIM" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="Rok produkcji:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox x:Name="Rok_produkcji" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-                    <Label Content="typ paliwa:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                    <TextBox x:Name="Typ_paliwa" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                    <Label Content="Numer rejestracyjny:" Width="170" HorizontalAlignment="Left" Margin="5,10,0,0" FontWeight="Bold"/>
+                    <TextBox x:Name="Numer_rejestracyjny" Width="170" HorizontalAlignment="Left" Margin="10,0,0,0" Height="20"></TextBox>
+                    <Label Content="Marka:" Width="170" HorizontalAlignment="Left" Margin="5,10,0,0" FontWeight="Bold"/>
+                    <TextBox x:Name="Marka" Width="170" HorizontalAlignment="Left" Margin="10,0,0,0" Height="20"></TextBox>
+                    <Label Content="Model:" Width="170" HorizontalAlignment="Left" Margin="5,10,0,0" FontWeight="Bold"/>
+                    <TextBox x:Name="Model" Width="170" HorizontalAlignment="Left" Margin="10,0,0,0" Height="20"></TextBox>
+                    <Label Content="Numer VIN:" Width="170" HorizontalAlignment="Left" Margin="5,10,0,0" FontWeight="Bold"/>
+                    <TextBox x:Name="Numer_VIM" Width="170" HorizontalAlignment="Left" Margin="10,0,0,0" Height="20"></TextBox>
+                    <Label Content="Rok produkcji:" Width="170" HorizontalAlignment="Left" Margin="5,10,0,0" FontWeight="Bold"/>
+                    <TextBox x:Name="Rok_produkcji" Width="170" HorizontalAlignment="Left" Margin="10,0,0,0" Height="20"></TextBox>
+                    <Label Content="Typ paliwa:" Width="170" HorizontalAlignment="Left" Margin="5,10,0,0" FontWeight="Bold"/>
+                    <TextBox x:Name="Typ_paliwa" Width="170" HorizontalAlignment="Left" Margin="10,0,0,0" Height="20"></TextBox>
 
                 </StackPanel>
 
 
 
-                <StackPanel Grid.Row="1" Grid.Column="1" Margin="30,0,0,0" Height="400" VerticalAlignment="Center">
-                    <TextBlock FontSize="15" FontWeight="Bold" FontFamily="/Fonts/#Roboto" Margin="0,5,5,15">
+                <StackPanel Background="#ffeeeeee" Height="385" VerticalAlignment="Top" Margin="0,10,10,0" Grid.Row="1" HorizontalAlignment="Right" Width="596" Grid.ColumnSpan="2">
+                    <TextBlock FontSize="15" FontWeight="Bold" FontFamily="/Fonts/#Roboto" Margin="0,5,5,0">
                 Dane Właściciela Pojazdu:
                     </TextBlock>
 
-                    <Label Content="Imie:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+                    <Label Content="Imie:" Width="170" HorizontalAlignment="Left" Margin="0,15,0,0" FontWeight="Bold"/>
                     <TextBox x:Name="Imie" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
                     <Label Content="Nazwsko:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
                     <TextBox x:Name="Nazwisko" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
                     <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
                     <TextBox x:Name="Miejscowosc" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
-
                 </StackPanel>
-                <StackPanel Grid.Row="1" Grid.Column="1" Margin="250,35,0,0">
-                    <Label Content="Ulica:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
+
+                <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,35,10,5" HorizontalAlignment="Right" Width="332">
+                    <Label Content="Ulica:" Width="170" HorizontalAlignment="Left" Margin="0,13,0,0" FontWeight="Bold"/>
                     <TextBox x:Name="Ulica" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
                     <Label Content="Numer:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
                     <TextBox x:Name="Numer" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
@@ -76,18 +75,17 @@
                     <TextBox x:Name="KodPocztowy" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
                     <Label Content="Telefon:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
                     <TextBox x:Name="Telefon" Width="170" HorizontalAlignment="Left" Height="20"></TextBox>
+
                 </StackPanel>
 
-                <Canvas Grid.Row="2" Grid.ColumnSpan="2">
-                    <Button x:Name="Dodaj"  Content="Dodaj" Height="25" Width="100" Canvas.Left="450" Canvas.Top="28" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                    <Button x:Name="Edytuj"  Content="Edytuj" Height="25" Width="100" Canvas.Left="600" Canvas.Top="28" HorizontalAlignment="Right" VerticalAlignment="Center"  Click="modyfikujClick" />
+                <Button x:Name="Dodaj"  Content="Dodaj" Height="25" Grid.Row="1" Grid.Column="1" Margin="335,356,161,19"/>
+                <Button x:Name="Edytuj"  Content="Edytuj" Height="25"  Click="modyfikujClick" Grid.Row="1" Grid.Column="1" Margin="191,356,300,19" />
 
-                </Canvas>
                 <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Row="3" Grid.ColumnSpan="2"/>
 
                 <Label x:Name="informationLabel" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="50,8,10,0"  VerticalAlignment="Top" Height="30" FontStretch="Normal" HorizontalContentAlignment="Right" Grid.Row="3" Grid.ColumnSpan="2"/>
 
-                <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="500" VerticalAlignment="Top" Grid.Row="3" Grid.ColumnSpan="2" Margin="10,40,10,0">
+                <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,40,10,-30">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding= "{Binding Path=Numer_rejestracyjny}" Header="Numer Rejestracyjny" Width="115"/>
@@ -108,10 +106,7 @@
                 </ListView>
 
             </Grid>
-
-
-
-
+            
         </ScrollViewer>
 
     </Border>

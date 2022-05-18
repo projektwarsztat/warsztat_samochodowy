@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tnx="http://www.wso2.org/php/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://www.w3.org/2003/05/soap/bindings/HTTP/" xmlns:tns="http://www.wso2.org/php" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.wso2.org/php" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns:ns4="http://www.wso2.org/php/xsd" xmlns:ns5="http://www.wso2.org/php/xsd" xmlns:ns0="http://www.wso2.org/php/xsd" xmlns:ns1="http://www.wso2.org/php/xsd" xmlns:ns2="http://www.wso2.org/php/xsd" xmlns:ns3="http://www.wso2.org/php/xsd" elementFormDefault="qualified" targetNamespace="http://www.wso2.org/php/xsd">
+      <xsd:element name="GetPrice">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="account" type="ns3:Account" />
+            <xsd:element maxOccurs="unbounded" name="messages" type="ns3:Message" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="Account">
+        <xsd:sequence>
+          <xsd:element name="login" type="xsd:string" />
+          <xsd:element name="pass" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Message">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="recipients" type="xsd:string" />
+          <xsd:element name="message" type="xsd:string" />
+          <xsd:element name="url" nillable="true" type="xsd:string" />
+          <xsd:element name="udh" nillable="true" type="xsd:string" />
+          <xsd:element name="sender" nillable="true" type="xsd:string" />
+          <xsd:element name="msgType" nillable="true" type="xsd:int" />
+          <xsd:element name="unicode" nillable="true" type="xsd:boolean" />
+          <xsd:element name="timestamp" nillable="true" type="xsd:int" />
+          <xsd:element name="sandbox" nillable="true" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetPriceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="return" type="ns3:GetPriceReturn" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetPriceReturn">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:string" />
+          <xsd:element name="errCode" nillable="true" type="xsd:string" />
+          <xsd:element name="description" type="xsd:string" />
+          <xsd:element name="recipient" nillable="true" type="xsd:string" />
+          <xsd:element name="parts" nillable="true" type="xsd:int" />
+          <xsd:element name="price" nillable="true" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetStatus">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="account" type="ns3:Account" />
+            <xsd:element maxOccurs="unbounded" name="ids" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetStatusResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="return" type="ns3:GetStatusReturn" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetStatusReturn">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:string" />
+          <xsd:element name="errCode" nillable="true" type="xsd:string" />
+          <xsd:element name="description" type="xsd:string" />
+          <xsd:element name="msgId" nillable="true" type="xsd:int" />
+          <xsd:element name="recipient" nillable="true" type="xsd:string" />
+          <xsd:element name="origDate" nillable="true" type="xsd:string" />
+          <xsd:element name="doneDate" nillable="true" type="xsd:string" />
+          <xsd:element name="msgStatusCode" nillable="true" type="xsd:string" />
+          <xsd:element name="msgStatusDescription" nillable="true" type="xsd:string" />
+          <xsd:element name="msgType" nillable="true" type="xsd:int" />
+          <xsd:element name="parts" nillable="true" type="xsd:int" />
+          <xsd:element name="price" nillable="true" type="xsd:double" />
+          <xsd:element name="extId" nillable="true" type="xsd:string" />
+          <xsd:element name="unicode" nillable="true" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetBalance">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="account" type="ns3:Account" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetBalanceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="return" type="ns3:GetBalanceReturn" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetBalanceReturn">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:string" />
+          <xsd:element name="errCode" nillable="true" type="xsd:string" />
+          <xsd:element name="description" type="xsd:string" />
+          <xsd:element name="balance" nillable="true" type="xsd:double" />
+          <xsd:element name="currency" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Cancel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="account" type="ns3:Account" />
+            <xsd:element maxOccurs="unbounded" name="ids" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CancelResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="return" type="ns3:CancelReturn" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="CancelReturn">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:string" />
+          <xsd:element name="errCode" nillable="true" type="xsd:string" />
+          <xsd:element name="description" type="xsd:string" />
+          <xsd:element name="msgId" nillable="true" type="xsd:int" />
+          <xsd:element name="recipient" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SendSMS">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="account" type="ns3:Account" />
+            <xsd:element maxOccurs="unbounded" name="messages" type="ns3:Message" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SendSMSResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="return" type="ns3:SendSMSReturn" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="SendSMSReturn">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:string" />
+          <xsd:element name="errCode" nillable="true" type="xsd:string" />
+          <xsd:element name="description" type="xsd:string" />
+          <xsd:element name="recipient" nillable="true" type="xsd:string" />
+          <xsd:element name="msgId" nillable="true" type="xsd:int" />
+          <xsd:element name="parts" nillable="true" type="xsd:int" />
+          <xsd:element name="price" nillable="true" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetPrice">
+    <wsdl:part name="parameters" element="tnx:GetPrice" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceResponse">
+    <wsdl:part name="parameters" element="tnx:GetPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStatus">
+    <wsdl:part name="parameters" element="tnx:GetStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetStatusResponse">
+    <wsdl:part name="parameters" element="tnx:GetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBalance">
+    <wsdl:part name="parameters" element="tnx:GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="GetBalanceResponse">
+    <wsdl:part name="parameters" element="tnx:GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="Cancel">
+    <wsdl:part name="parameters" element="tnx:Cancel" />
+  </wsdl:message>
+  <wsdl:message name="CancelResponse">
+    <wsdl:part name="parameters" element="tnx:CancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendSMS">
+    <wsdl:part name="parameters" element="tnx:SendSMS" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSResponse">
+    <wsdl:part name="parameters" element="tnx:SendSMSResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GSMServicePortType">
+    <wsdl:operation name="GetPrice">
+      <wsdl:input message="tns:GetPrice" />
+      <wsdl:output message="tns:GetPriceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:input message="tns:GetStatus" />
+      <wsdl:output message="tns:GetStatusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBalance">
+      <wsdl:input message="tns:GetBalance" />
+      <wsdl:output message="tns:GetBalanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Cancel">
+      <wsdl:input message="tns:Cancel" />
+      <wsdl:output message="tns:CancelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <wsdl:input message="tns:SendSMS" />
+      <wsdl:output message="tns:SendSMSResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GSMServiceSOAPBinding" type="tns:GSMServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="GetPrice">
+      <default:operation soapAction="https://api.gsmservice.pl:443/soap/v2/gateway.php/GetPrice" style="document" />
+      <wsdl:input>
+        <default:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <default:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="GetStatus">
+      <default:operation soapAction="http://api.gsmservice.pl/soap/v2/gateway.php/GetStatus" style="document" />
+      <wsdl:input>
+        <default:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <default:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="GetBalance">
+      <default:operation soapAction="https://api.gsmservice.pl:443/soap/v2/gateway.php/GetBalance" style="document" />
+      <wsdl:input>
+        <default:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <default:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="Cancel">
+      <default:operation soapAction="https://api.gsmservice.pl:443/soap/v2/gateway.php/Cancel" style="document" />
+      <wsdl:input>
+        <default:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <default:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="SendSMS">
+      <default:operation soapAction="https://api.gsmservice.pl:443/soap/v2/gateway.php/SendSMS" style="document" />
+      <wsdl:input>
+        <default:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <default:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GSMService">
+    <wsdl:port xmlns:default="http://schemas.xmlsoap.org/wsdl/soap/" name="GSMServiceSOAPPort_Http" binding="tns:GSMServiceSOAPBinding">
+      <default:address location="https://api.gsmservice.pl:443/soap/v2/gateway.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -17,6 +17,7 @@ using System.Threading;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using BibliotekaKlas;
+using System.IO;
 
 namespace WarsztatV2.Menu
 {
@@ -167,38 +168,49 @@ namespace WarsztatV2.Menu
         //wystawienie faktury
         private async void WystawFakture(object sender, RoutedEventArgs e)
         {
-            Naprawa NaprawaFav = new Naprawa();
-            Warsztat WarsztatFav = new Warsztat();
-            Pojazd PojazdFav = new Pojazd();
 
-            Faktura fav1 = new Faktura();
+            GenerowanieFaktur.GetData();
 
-            using (databaseConnection newConnection = new databaseConnection())
+            if (Directory.Exists(GenerowanieFaktur.SciezkaDoZapisu))
             {
-                WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.First<Warsztat>(); });
-                NaprawaFav = await Task.Run(() => { return newConnection.Naprawy.Single<Naprawa>(a => a.ID_Naprawa == NaprawaID); });
-                PojazdFav = await Task.Run(() => { return newConnection.Pojazdy.Single<Pojazd>(a => a.Numer_rejestracyjny == NaprawaFav.Numer_rejestracyjny); });
+                Naprawa NaprawaFav = new Naprawa();
+                Warsztat WarsztatFav = new Warsztat();
+                Pojazd PojazdFav = new Pojazd();
 
-                fav1.ID_Warsztat = WarsztatFav.ID_Warsztat;
-                fav1.ID_Klient = PojazdFav.ID_Klient;
-                fav1.ID_Naprawa = NaprawaFav.ID_Naprawa;
+                Faktura fav1 = new Faktura();
 
-                if (IfFakturaNotNull(fav1))
+                using (databaseConnection newConnection = new databaseConnection())
                 {
-                    await Task.Run(() => newConnection.Faktury.Add(fav1));
+                    WarsztatFav = await Task.Run(() => { return newConnection.Warsztaty.First<Warsztat>(); });
+                    NaprawaFav = await Task.Run(() => { return newConnection.Naprawy.Single<Naprawa>(a => a.ID_Naprawa == NaprawaID); });
+                    PojazdFav = await Task.Run(() => { return newConnection.Pojazdy.Single<Pojazd>(a => a.Numer_rejestracyjny == NaprawaFav.Numer_rejestracyjny); });
 
-                    await newConnection.SaveChangesAsync();
+                    fav1.ID_Warsztat = WarsztatFav.ID_Warsztat;
+                    fav1.ID_Klient = PojazdFav.ID_Klient;
+                    fav1.ID_Naprawa = NaprawaFav.ID_Naprawa;
 
-                    GenerowanieFaktur.GenerujFakture(fav1);
+                    if (IfFakturaNotNull(fav1))
+                    {
+                        await Task.Run(() => newConnection.Faktury.Add(fav1));
 
-                    WystawFaktureBtn.Dispatcher.Invoke(() => { WystawFaktureBtn.IsEnabled = false; });
-                    WydajPojazd.Dispatcher.Invoke(() => { WydajPojazd.IsEnabled = true; });
-                }
+                        await newConnection.SaveChangesAsync();
+                    
+                         GenerowanieFaktur.GenerujFakture(fav1);
 
-                else
-                {
-                    MessageBox.Show("Wygenerowanie faktury jest niemożliwe, ponieważ nie zawiera żadnych elementów.", "Błąd !", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                         WystawFaktureBtn.Dispatcher.Invoke(() => { WystawFaktureBtn.IsEnabled = false; });
+                         WydajPojazd.Dispatcher.Invoke(() => { WydajPojazd.IsEnabled = true; });
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Wygenerowanie faktury jest niemożliwe, ponieważ nie zawiera żadnych elementów.", "Błąd !", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+            }
+
+            }
+            else
+            {
+                MessageBox.Show("Błędna ścieżka do zapisu faktury. Sprawdź ścieżkę w zkaładce O Firmie", "Błąd !", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
 

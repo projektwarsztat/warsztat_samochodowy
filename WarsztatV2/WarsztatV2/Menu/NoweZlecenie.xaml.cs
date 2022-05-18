@@ -56,7 +56,7 @@ namespace WarsztatV2.Menu
 
         private void TextChangedEventHandler(object sender, TextChangedEventArgs e)
         {
-            if (Numer_rejestracyjny_input.Text.Length == 7)
+            if (Numer_rejestracyjny_input.Text.Length > 3)
             {
                 //sprawdz w bazie czy istnieje taki numer
                 //jesli tak to wypisz dane do formularzy
@@ -235,25 +235,24 @@ namespace WarsztatV2.Menu
                     IfPojazdExist = true;
 
                     await Task.Run(() => DefaultPojazd = newConnection.Pojazdy.Single<Pojazd>(p => p.Numer_rejestracyjny == nr));
+                    await Task.Run(() => DefaultKlient = newConnection.Klienci.Single<Klient>(k => k.ID_Klient == DefaultPojazd.ID_Klient));
+                    await Task.Run(() => DefaultAdres = newConnection.Adresy.Single<Adres>(a => a.ID_Adres == DefaultKlient.ID_Adres));
+
                     Marka.Text = DefaultPojazd.Marka;
                     Model.Text = DefaultPojazd.Model;
                     Numer_VIN.Text = DefaultPojazd.Numer_VIN;
                     Rok_produkcji.Text = DefaultPojazd.Rok_produkcji.ToString();
                     Typ_paliwa.Text = DefaultPojazd.Typ_paliwa;
-
-                    await Task.Run(() => DefaultKlient = newConnection.Klienci.Single<Klient>(k => k.ID_Klient == DefaultPojazd.ID_Klient));
+                
                     Imie.Text = DefaultKlient.Imie;
                     Nazwisko.Text = DefaultKlient.Nazwisko;
                     Telefon.Text = DefaultKlient.Telefon.ToString();
-
-                    await Task.Run(() => DefaultAdres = newConnection.Adresy.Single<Adres>(a => a.ID_Adres == DefaultKlient.ID_Adres));
+         
                     Miejscowosc.Text = DefaultAdres.Miejscowosc;
                     Ulica.Text = DefaultAdres.Ulica;
                     Numer.Text = DefaultAdres.Numer;
                     Kod_pocztowy.Text = DefaultAdres.Kod_pocztowy;
-
-                }
-
+               }
             }
         }
 

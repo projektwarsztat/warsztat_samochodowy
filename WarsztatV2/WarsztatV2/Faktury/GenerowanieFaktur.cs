@@ -5,9 +5,11 @@ using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 
 
@@ -15,8 +17,8 @@ namespace WarsztatV2.Faktury
 {
     class GenerowanieFaktur
     {
-        private static string SciezkaDoZapisu;
-        private static int Vat;
+        public static string SciezkaDoZapisu;
+        public static int Vat;
         public static async void GetData()
         {
             string[] lines = System.IO.File.ReadAllLines("config.txt");
@@ -272,9 +274,19 @@ namespace WarsztatV2.Faktury
 
             string filename = SciezkaDoZapisu + FakturaFav.ID_Faktura.ToString() + ".pdf";
 
-            document.Save(filename);
+            //sparawdzic czy sciezka istnieje
+            if(Directory.Exists(SciezkaDoZapisu))
+            {
+                document.Save(filename);
+                Process.Start(filename);
+            }      
+            else
+            {
+                MessageBox.Show("Błędna ścieżka do zapisu faktury. Sprawdź ścieżkę w zkaładce O Firmie", "Błąd !", MessageBoxButton.OK, MessageBoxImage.Error);
+              
+            }
 
-            Process.Start(filename);
+           
 
         }
 

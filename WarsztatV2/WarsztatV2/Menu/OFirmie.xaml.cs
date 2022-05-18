@@ -8,6 +8,17 @@ using BibliotekaKlas;
 using Microsoft.Win32;
 using System.IO;
 
+using System;
+using System.Collections.Generic;
+
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
 namespace WarsztatV2
 {
     /// <summary>
@@ -24,7 +35,6 @@ namespace WarsztatV2
 
             if (IfDataNotNull())
                 WriteDataToForm();
-
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -187,11 +197,18 @@ namespace WarsztatV2
 
         private void sciezkafaktury_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog()==true)
-            if (openFileDialog.FileName != " ")
-                sciezkafaktury.Text = openFileDialog.FileName;
+
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //if(openFileDialog.ShowDialog()==true)
+            //if (openFileDialog.FileName != " ")
+            //    sciezkafaktury.Text = openFileDialog.FileName;
+
+            var fd = new System.Windows.Forms.FolderBrowserDialog();
+            var czyWybrano = fd.ShowDialog();
+            if (czyWybrano == System.Windows.Forms.DialogResult.OK)
+                sciezkafaktury.Text = fd.SelectedPath;
+
+
         }
     }
 }

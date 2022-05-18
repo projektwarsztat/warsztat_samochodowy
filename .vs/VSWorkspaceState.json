@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\WarsztatV2",
-    "\\WarsztatV2\\WarsztatV2",
-    "\\WarsztatV2\\WarsztatV2\\Menu"
+    "\\WarsztatV2\\WarsztatV2"
   ],
-  "SelectedNode": "\\WarsztatV2\\WarsztatV2\\Menu\\Pracownicy.xaml",
+  "SelectedNode": "\\WarsztatV2\\WarsztatV2\\MainWindow.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

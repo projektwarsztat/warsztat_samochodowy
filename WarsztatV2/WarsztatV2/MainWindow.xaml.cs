@@ -21,6 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WarsztatV2.Menu;
+using WarsztatV2.SMS;
 
 namespace WarsztatV2
 {
@@ -107,7 +108,8 @@ namespace WarsztatV2
                                     {
                                         Naprawa naprawa = newConnection.Naprawy.SingleOrDefault<Naprawa>(n => n.ID_Naprawa == naprawaID);
                                         naprawa.Status_naprawy = "DoOdbioru"; //Zaznaczenie stanu jako naprawniony i jest już do odbioru
-
+                                        naprawa.Wiadomosc_zwrotna = komentarz;
+                                        //SendSMS.SendToClient(naprawaID);
                                         for (int i = 0; i < uzyteCzesciL.Count; i++)
                                         {
                                             newConnection.Uzyte_czesci.Add(new Uzyte_czesci { ID_Czesci = uzyteCzesciL[i].CzescNav.ID_Czesci, ID_Naprawa = uzyteCzesciL[i].NaprawaNav.ID_Naprawa, Ilosc = uzyteCzesciL[i].Ilosc });

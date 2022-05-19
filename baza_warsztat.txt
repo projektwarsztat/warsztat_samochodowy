@@ -1,0 +1,156 @@
+CREATE TABLE IF NOT EXISTS public.adres
+(
+    "ID_Adres" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Miejscowosc" character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    "Ulica" character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    "Numer" character varying(10) COLLATE pg_catalog."default" NOT NULL,
+    "Kod_pocztowy" character varying(6) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT adres_pkey PRIMARY KEY ("ID_Adres")
+)
+
+CREATE TABLE IF NOT EXISTS public.czesc
+(
+    "ID_Czesci" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Nazwa" character varying(60) COLLATE pg_catalog."default" NOT NULL,
+    "Cena" double precision NOT NULL,
+    CONSTRAINT czesc_pkey PRIMARY KEY ("ID_Czesci")
+)
+
+CREATE TABLE IF NOT EXISTS public.dane_logowania
+(
+    "ID_Dane_logowania" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Login" character varying(50) COLLATE pg_catalog."default",
+    "Haslo" character varying(50) COLLATE pg_catalog."default",
+    CONSTRAINT dane_logowania_pk0 PRIMARY KEY ("ID_Dane_logowania")
+)
+
+CREATE TABLE IF NOT EXISTS public.faktura
+(
+    "ID_Faktura" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "ID_Warsztat" integer NOT NULL,
+    "ID_Klient" integer NOT NULL,
+    "ID_Naprawa" integer NOT NULL,
+    CONSTRAINT faktura_pkey PRIMARY KEY ("ID_Faktura"),
+    CONSTRAINT faktura_fk0 FOREIGN KEY ("ID_Warsztat")
+        REFERENCES public.warsztat ("ID_Warsztat") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT faktura_fk1 FOREIGN KEY ("ID_Klient")
+        REFERENCES public.klient ("ID_Klient") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT faktura_fk2 FOREIGN KEY ("ID_Naprawa")
+        REFERENCES public.naprawa ("ID_Naprawa") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+
+CREATE TABLE IF NOT EXISTS public.klient
+(
+    "ID_Klient" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Imie" character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    "Nazwisko" character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    "ID_Adres" integer NOT NULL,
+    "Telefon" integer NOT NULL,
+    CONSTRAINT klient_pkey PRIMARY KEY ("ID_Klient"),
+    CONSTRAINT klient_fk0 FOREIGN KEY ("ID_Adres")
+        REFERENCES public.adres ("ID_Adres") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+CREATE TABLE IF NOT EXISTS public.naprawa
+(
+    "ID_Naprawa" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Numer_rejestracyjny" character varying(8) COLLATE pg_catalog."default" NOT NULL,
+    "ID_Pracownik" integer NOT NULL,
+    "Data_przyjecia" date NOT NULL,
+    "Data_wydania" date,
+    "Status_naprawy" character varying(15) COLLATE pg_catalog."default" NOT NULL,
+    "Opis_usterek" character varying(500) COLLATE pg_catalog."default" NOT NULL,
+    "Wiadomosc_zwrotna" character varying(500) COLLATE pg_catalog."default",
+    CONSTRAINT naprawa_pkey PRIMARY KEY ("ID_Naprawa"),
+    CONSTRAINT naprawa_fk0 FOREIGN KEY ("Numer_rejestracyjny")
+        REFERENCES public.pojazd ("Numer_rejestracyjny") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT naprawa_fk1 FOREIGN KEY ("ID_Pracownik")
+        REFERENCES public.pracownik ("ID_Pracownik") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+CREATE TABLE IF NOT EXISTS public.pojazd
+(
+    "Numer_rejestracyjny" character varying(8) COLLATE pg_catalog."default" NOT NULL,
+    "ID_Klient" integer NOT NULL,
+    "Marka" character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    "Model" character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    "Numer_VIN" character varying(17) COLLATE pg_catalog."default" NOT NULL,
+    "Rok_produkcji" integer NOT NULL,
+    "Typ_paliwa" character varying(15) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT pojazd_pkey PRIMARY KEY ("Numer_rejestracyjny"),
+    CONSTRAINT pojazd_numer_vim_key UNIQUE ("Numer_VIN"),
+    CONSTRAINT pojazd_fk0 FOREIGN KEY ("ID_Klient")
+        REFERENCES public.klient ("ID_Klient") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+CREATE TABLE IF NOT EXISTS public.pracownik
+(
+    "ID_Pracownik" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Imie" character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    "Nazwisko" character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    "ID_Adres" integer NOT NULL,
+    "Telefon" integer NOT NULL,
+    "ID_Dane_logowania" integer NOT NULL,
+    CONSTRAINT pracownik_pkey PRIMARY KEY ("ID_Pracownik"),
+    CONSTRAINT pracownik_fk0 FOREIGN KEY ("ID_Adres")
+        REFERENCES public.adres ("ID_Adres") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT pracownik_fk1 FOREIGN KEY ("ID_Dane_logowania")
+        REFERENCES public.dane_logowania ("ID_Dane_logowania") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+CREATE TABLE IF NOT EXISTS public.uzyte_czesci
+(
+    "ID" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "ID_Naprawa" integer NOT NULL,
+    "ID_Czesci" integer NOT NULL,
+    "Ilosc" integer NOT NULL,
+    CONSTRAINT uzyte_czesci_pkey PRIMARY KEY ("ID"),
+    CONSTRAINT uzyte_czesci_fk0 FOREIGN KEY ("ID_Naprawa")
+        REFERENCES public.naprawa ("ID_Naprawa") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT uzyte_czesci_fk1 FOREIGN KEY ("ID_Czesci")
+        REFERENCES public.czesc ("ID_Czesci") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+CREATE TABLE IF NOT EXISTS public.warsztat
+(
+    "ID_Warsztat" integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    "Nazwa" character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    "ID_Adres" integer NOT NULL,
+    "Telefon" integer NOT NULL,
+    "NIP" character varying(12) COLLATE pg_catalog."default" NOT NULL,
+    "Numer_konta_bankowego" character varying(28) COLLATE pg_catalog."default" NOT NULL,
+    "Nazwa_banku" character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT warsztat_pkey PRIMARY KEY ("ID_Warsztat"),
+    CONSTRAINT warsztat_fk0 FOREIGN KEY ("ID_Adres")
+        REFERENCES public.adres ("ID_Adres") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)

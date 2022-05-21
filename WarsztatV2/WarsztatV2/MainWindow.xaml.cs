@@ -1,4 +1,5 @@
 ﻿using BibliotekaKlas;
+using PasswordCryptography;
 using Serialization;
 using System;
 using System.Collections.Generic;
@@ -59,9 +60,11 @@ namespace WarsztatV2
                                 {
                                     string login = await bF.DeserializeAsync<string>(networkStream); //Pozyskanie danych logowania od klienta
                                     string haslo = await bF.DeserializeAsync<string>(networkStream);
+
+                                    string zaszyfrowaneHaslo = passwordCryptography.Encrypt(haslo);
                                     using (databaseConnection newConnection = new databaseConnection()) //Sprawdzenie danych w bazie danych (póki co nie ma jeszcze szyfrowania danych)
                                     {
-                                        Pracownik pracownik = newConnection.Pracownicy.SingleOrDefault(dL => dL.Dane_logowaniaNav.Login == login && dL.Dane_logowaniaNav.Haslo == haslo);
+                                        Pracownik pracownik = newConnection.Pracownicy.SingleOrDefault(dL => dL.Dane_logowaniaNav.Login == login && dL.Dane_logowaniaNav.Haslo == zaszyfrowaneHaslo);
                                         if (pracownik == null)
                                         {
                                             await bF.SerializeAsync<string>(networkStream, "NON_EXIST"); //Brak takich danych

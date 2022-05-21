@@ -29,9 +29,9 @@
             </Grid.ColumnDefinitions>
             <Grid Background="#FFEEEEEE" Grid.Column="0" Margin="10,0,0,10">
                 <StackPanel Margin="5,400,5,0" Orientation="Horizontal">
-                    <Button x:Name="dodaj" Content="Dodaj" Width="65" Height="25" Margin="6, 0, 0, 0"/>
-                    <Button x:Name="modyfikuj" Content="Modyfikuj" Width="65" Height="25" Margin="6, 0, 0, 0"/>
-                    <Button x:Name="usun" Content="Usuń" Width="65" Height="25" Margin="5, 0, 0, 0"/>
+                    <Button x:Name="dodaj" Content="Dodaj" Width="65" Height="25" Margin="6, 0, 0, 0" Click="dodajClick"/>
+                    <Button x:Name="modyfikuj" Content="Modyfikuj" Width="65" Height="25" Margin="6, 0, 0, 0" Click="modyfikujClick"/>
+                    <Button x:Name="usun" Content="Usuń" Width="65" Height="25" Margin="5, 0, 0, 0" Click="usunClick"/>
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Row="0" Margin="20,0,0,0">
@@ -60,6 +60,27 @@
                     </StackPanel>
                 </WrapPanel>
             </StackPanel>
+            <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
+            <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="410" VerticalAlignment="Top" Grid.Column="1" Margin="10,40,10,0">
+                <!--  Wskazanie: Marginesu | Źródła danych | Metody podczas wybrania elementu: SelectionChanged="MySelectionChanged"-->
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Imie}" Header="Imię" Width="75"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Nazwisko}" Header="Nazwisko" Width="120"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Telefon}" Header="Numer telefonu" Width="93"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=AdresNav.Ulica}" Header="Ulica" Width="85"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=AdresNav.Numer}" Header="Numer" Width="50"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=AdresNav.Miejscowosc}" Header="Miejscowość" Width="100"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=AdresNav.Kod_pocztowy}" Header="Kod pocztowy" Width="85"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItemPreviewMouseLeftButtonDown"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
         </Grid>
+        <Label x:Name="informationLabel" Content="Oczekiwanie na pobranie danych ze serwera..." Margin="250,15,10,0" Grid.Row="1" VerticalAlignment="Top" Height="30" FontStretch="Normal" HorizontalContentAlignment="Center"/>
     </Grid>
 </Page>

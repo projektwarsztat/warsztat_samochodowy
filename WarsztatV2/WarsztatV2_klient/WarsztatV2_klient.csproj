@@ -109,6 +109,10 @@
       <Project>{6602866e-1ebd-4edd-a8e7-01546130ffae}</Project>
       <Name>BibliotekaKlas</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PasswordCryptography\PasswordCryptography.csproj">
+      <Project>{52305dab-864e-48e0-81d3-56c579fca2bf}</Project>
+      <Name>PasswordCryptography</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Serialization\Serializacja.csproj">
       <Project>{79e33833-93ea-4635-995a-d35ca07dea35}</Project>
       <Name>Serializacja</Name>

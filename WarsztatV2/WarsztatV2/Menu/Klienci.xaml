@@ -51,7 +51,6 @@
                 <TextBox x:Name="numer" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
                 <Label Content="Kod pocztowy:" Width="170" HorizontalAlignment="Left"/>
                 <TextBox x:Name="kod_pocztowy" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
-
             </StackPanel>
             <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
             <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="410" VerticalAlignment="Top" Grid.Column="1" Margin="10,40,10,0">

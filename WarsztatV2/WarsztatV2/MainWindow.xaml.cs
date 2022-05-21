@@ -140,9 +140,6 @@ namespace WarsztatV2
             // domyslnie podmenu zlecienie - ukryte
             HideSubmenu();
 
-            // wypisanie danych aktualnie zalogowanego uzytkownika
-            IdUser.Text = "Witaj ! \nJan Kowalski";
-
             //Obsługa zamykania aplikacji - wyświetlenie odpowiedniego komunikatu
             Closing += (s, e) =>
             {

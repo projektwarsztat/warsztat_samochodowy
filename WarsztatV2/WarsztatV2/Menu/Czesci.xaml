@@ -29,7 +29,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Background="#FFEEEEEE" Grid.Column="0" Margin="10,0,0,0">
-                <StackPanel Margin="5,100,5,300" Orientation="Horizontal">
+                <StackPanel Margin="5,100,5,378" Orientation="Horizontal">
                     <Button x:Name="dodaj" Content="Dodaj" Width="65" Height="25" Margin="6, 0, 0, 0" Click="dodajClick"/>
                     <Button x:Name="modyfikuj" Content="Modyfikuj" Width="65" Height="25" Margin="6, 0, 0, 0" Click="modyfikujClick"/>
                     <Button x:Name="usun" Content="Usuń" Width="65" Height="25" Margin="5, 0, 0, 0" Click="usunClick"/>
@@ -43,7 +43,7 @@
                 <TextBox x:Name="Cena" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="0" Margin="20,200,0,0">
+            <StackPanel Grid.Row="0" Margin="20,180,0,0">
                 <Label Content="Automatyczne dodawanie części" Height="25" Width="220" HorizontalAlignment="Left" FontWeight="Bold"/>
                 <Label Content="Dodaj części po przez wczytanie&#xA;faktury w formacie PDF" Margin="5,0,0,5" Height="54" Width="220" HorizontalAlignment="Left" />
                 <Label Content="Uwaga !!!&#xA;Po dodaniu częsci do bazy danych&#xA;koniecznie należy sprawdzić&#xA;poprawność danych" Margin="5,0,0,5" Height="84" Width="220" HorizontalAlignment="Left" />
@@ -51,7 +51,7 @@
             </StackPanel>
 
             <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
-            <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="410" VerticalAlignment="Top" Grid.Column="1" Margin="10,40,10,0">
+            <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="490" VerticalAlignment="Top" Grid.Column="1" Margin="10,40,10,0">
                 <!--  Wskazanie: Marginesu | Źródła danych | Metody podczas wybrania elementu: SelectionChanged="MySelectionChanged"-->
                 <ListView.View>
                     <GridView>

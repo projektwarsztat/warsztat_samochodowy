@@ -29,7 +29,7 @@
                              Foreground="White"
                              FontSize="13"
                              Style="{StaticResource MenuButtonStyle}"
-                             Margin="0,100,0,0" 
+                             Margin="0,0,0,0" 
                              Click="AktualnosciClick"/>
 
                 <RadioButton x:Name="Zlecenia" Content="ZLECENIA"
@@ -109,11 +109,9 @@
 
             <Frame x:Name="RightContent" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden" />
 
-            <Image Source="/Image/kindpng_2267500.png" Margin="31,10,0,534" HorizontalAlignment="Left" Width="99" RenderTransformOrigin="0.498,0.519"/>
+            
 
-            <TextBlock x:Name="IdUser" Margin="111,10,10,515" FontSize="28" FontWeight="Bold" Foreground="White"> Witaj ! <LineBreak/> Jan Kowalski</TextBlock>
-
-            <Border Width="300" Height="1"  Margin="0,90,0,0" Background="White" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            
 
         </Grid>
 

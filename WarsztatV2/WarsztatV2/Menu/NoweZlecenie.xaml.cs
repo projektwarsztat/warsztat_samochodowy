@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 namespace WarsztatV2.Menu
 {
     /// <summary>
-    /// Interaction logic for NoweZlecenie.xaml
+    /// Klasa zawierająca implementację zakładki Nowe Zlecenie 
     /// </summary>
     public partial class NoweZlecenie : Page
     {
@@ -32,6 +32,9 @@ namespace WarsztatV2.Menu
             WlascicielTextBoxInaccessible(false);
         }
 
+        /// <summary>
+        /// Ustawienie dostępności pól w formularzu z danymi pojazdu
+        /// </summary>
         public void PojazdTextBoxInaccessible(bool value)
         {
             Marka.IsEnabled = value;
@@ -42,6 +45,9 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Ustawienie dostępności pól w formularzu z danymi właściciela pojazdu
+        /// </summary>
         public void WlascicielTextBoxInaccessible(bool value)
         {
             Imie.IsEnabled = value;
@@ -54,16 +60,14 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Sprawdzanie czy pojazd o danym numerze rejestracyjnym istnieje w bazie
+        /// </summary>
         private void TextChangedEventHandler(object sender, TextChangedEventArgs e)
         {
             if (Numer_rejestracyjny_input.Text.Length > 3)
             {
-                //sprawdz w bazie czy istnieje taki numer
-                //jesli tak to wypisz dane do formularzy
-                //jesli nie to umozliwij wprowadzanie danych i dodaj do tabeli samochody i klienci odpowiednie dane
                 DataToForm();
-                // PojazdTextBoxInaccessible(true);
-                // WlascicielTextBoxInaccessible(true);
             }
 
             if (Numer_rejestracyjny_input.Text.Length < 7)
@@ -78,6 +82,9 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Sprawdzenie czy Mechanik istnieje 
+        /// </summary>
         private bool IfMechanikExists()
         {
             using (databaseConnection newConnection = new databaseConnection())
@@ -92,6 +99,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Dodanie nowej naprawy wraz z pojazdem i właścicielem () 
+        /// </summary>
         async private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
             using (databaseConnection newConnection = new databaseConnection())
@@ -209,6 +219,9 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Jeśli podany numer rejestracyjny pojazdu istnieje (zapisany jest w bazie) to metoda uzupełnia cały formularz danymi z bazy
+        /// </summary>
         private async void DataToForm()
         {
 
@@ -256,6 +269,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Wyczyszczenie Formularza
+        /// </summary>
         private void ClearForm()
         {
             // Numer_rejestracyjny_input.Clear();

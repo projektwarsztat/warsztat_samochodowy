@@ -7,10 +7,7 @@ using System.Windows.Controls;
 using BibliotekaKlas;
 using Microsoft.Win32;
 using System.IO;
-
-using System;
 using System.Collections.Generic;
-
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -22,7 +19,7 @@ using System.Windows.Shapes;
 namespace WarsztatV2
 {
     /// <summary>
-    /// Interaction logic for OFirmie.xaml
+    /// Klasa zawierająca implementację zakładki O Firmie: dodawanie danych firmy, danych do logowania (Bramka sms), wartości podatku VAT, ścieżki do zapisu faktur
     /// </summary>
     public partial class OFirmie : Page
     {
@@ -37,6 +34,9 @@ namespace WarsztatV2
                 WriteDataToForm();
         }
 
+        /// <summary>
+        /// Sprawdzenie czy dane w lewym formularzu istnieją jeśli tak to nastepuje modyfikacja, jeśli nie wstawiane są nowe dane
+        /// </summary>
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (IfDataExists())
@@ -45,6 +45,9 @@ namespace WarsztatV2
                 InsertData();
         }
 
+        /// <summary>
+        /// Wstawianie danych o warsztacie do bazy
+        /// </summary>
         private async void InsertData()
         {
             using (databaseConnection newConnection = new databaseConnection())
@@ -84,6 +87,9 @@ namespace WarsztatV2
 
         }
 
+        /// <summary>
+        /// Wypisywanie danych z bazy do formularza
+        /// </summary>
         private async void DataToForm()
         {
             //dodac zabezpieczenie gdy nie ma danych w bazie 
@@ -111,6 +117,9 @@ namespace WarsztatV2
             }
         }
 
+        /// <summary>
+        /// Sprawdzenie czy dane istnieją w bazie
+        /// </summary>
         private bool IfDataExists()
         {
             using (databaseConnection newConnection = new databaseConnection())
@@ -125,6 +134,9 @@ namespace WarsztatV2
 
         }
 
+        /// <summary>
+        /// Modyfikacja danych warsztatu w bazie
+        /// </summary>
         private async void Modyfikuj()
         {
             using (databaseConnection newConnection = new databaseConnection())
@@ -154,7 +166,10 @@ namespace WarsztatV2
 
         }
 
-        private async void SaveDataToFIle()
+        /// <summary>
+        /// Zapisanie danych z prawego formularza do pliku config.txt
+        /// </summary>
+        private void SaveDataToFIle()
         {
 
             using (StreamWriter writer = new StreamWriter("config.txt"))
@@ -168,7 +183,9 @@ namespace WarsztatV2
 
         }
 
-
+        /// <summary>
+        /// Sprawdzenie czy dane w pliku config.txt nie są puste
+        /// </summary>
         private bool IfDataNotNull()
         {
             string[] lines = System.IO.File.ReadAllLines("config.txt");
@@ -179,7 +196,10 @@ namespace WarsztatV2
 
         }
 
-        private async void WriteDataToForm()
+        /// <summary>
+        /// Wypisanie danych z pliku config.txt do formularza
+        /// </summary>
+        private void WriteDataToForm()
         {
             string[] lines = System.IO.File.ReadAllLines("config.txt");
 
@@ -190,11 +210,17 @@ namespace WarsztatV2
 
         }
 
+        /// <summary>
+        /// Wywołanie zapisania danych do pliku 
+        /// </summary>
         private void SaveButtonFile_Click(object sender, RoutedEventArgs e)
         {
             SaveDataToFIle();
         }
 
+        /// <summary>
+        /// Wywołanie okna dialogowego do wyboru folderu (gdzie zapisywane będą faktury)
+        /// </summary>
         private void sciezkafaktury_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
 

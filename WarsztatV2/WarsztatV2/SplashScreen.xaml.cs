@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace WarsztatV2
 {
     /// <summary>
-    /// Interaction logic for SplashScreen.xaml
+    /// Ekran ukazujący się po uruchamienu aplikacji
     /// </summary>
     public partial class SplashScreen : Window
     {

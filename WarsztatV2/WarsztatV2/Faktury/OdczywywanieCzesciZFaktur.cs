@@ -10,13 +10,19 @@ using BibliotekaKlas;
 
 namespace WarsztatV2.Faktury
 {
+    /// <summary>
+    /// Klasa odczytuje nazwy części, ceny z pliku, w formacie PDF i wstawia je do bazy danych
+    /// </summary>
     internal class OdczywywanieCzesciZFaktur
     {
         static string text = string.Empty;
         static int start = 0;
         static int koniec = 0;
 
-        //metoda sprawdzajaca czy znak jest liczba
+        
+        /// <summary>
+        /// Metoda sprawdzająca czy znak jest liczbą
+        /// </summary>
         private static bool czyl(char c)
         {
             if (c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9' || c == '0')
@@ -25,7 +31,9 @@ namespace WarsztatV2.Faktury
             else return false;
         }
 
-        // metoda odczytujaca plik PDF (fakturę) i zapisujaca do bazy danych czesci jesli nie istnieją juz w bazie
+        /// <summary>
+        /// Metoda odczytujaca plik PDF (fakturę) i zapisujaca do bazy danych czesci jesli nie istnieją juz w bazie
+        /// </summary>
         public static async void ReadPDF()
         {
             //okno dialogowe do wyboru pliku
@@ -130,7 +138,10 @@ namespace WarsztatV2.Faktury
             ceny.Clear();
         }
 
-        // metoda sprawdzacjaca czy część o danej nazwie juz istnieje w bazie
+        
+        /// <summary>
+        ///  Metoda sprawdzacjąca czy część o danej nazwie istnieje w bazie
+        /// </summary>
         private static bool CzyWUzyciu(string nazwaCzesciDoWstawienia)
         {
             List<Czesc> czescAll;

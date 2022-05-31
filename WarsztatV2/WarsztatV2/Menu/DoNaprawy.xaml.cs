@@ -20,7 +20,7 @@ using BibliotekaKlas;
 namespace WarsztatV2.Menu
 {
     /// <summary>
-    /// Interaction logic for DoNaprawy.xaml
+    /// Klasa zawierająca implementację zakładki Do Naprawy 
     /// </summary>
     public partial class DoNaprawy : Page
     {
@@ -37,6 +37,9 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Metoda pobierająca dane napraw, pracowników i pojazdów z bazy danych, wypełnienie ListViewBox
+        /// </summary>
         private async Task pobierzDaneNaprawy()
         {
             List<Naprawa> naprawaL;
@@ -82,6 +85,9 @@ namespace WarsztatV2.Menu
             view.Filter = UserFilter;
         }
 
+        /// <summary>
+        /// Obsługa klikania w ListView zawierający listę zleceń do naprawy
+        /// </summary>
         private async void ListViewItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListViewItem element = sender as ListViewItem;
@@ -106,7 +112,9 @@ namespace WarsztatV2.Menu
             }
         }
 
-
+        /// <summary>
+        /// Metoda modyfikująca dane w bazie danych, wykonująca się po kliknięciu przycisku
+        /// </summary>
         private async void modyfikujClick(object sender, RoutedEventArgs e)
         {
             if (NaprawaID != -1 && IfMechanikExists())
@@ -135,6 +143,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda sprawdzająca czy mechanik o danym Imieniu i Nazwisku istnieje w bazie danych
+        /// </summary>
         private bool IfMechanikExists()
         {
             using (databaseConnection newConnection = new databaseConnection())
@@ -149,6 +160,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny NumerRejestracyjny
+        /// </summary>
         private bool UserFilter(object item)
         {
             if (String.IsNullOrEmpty(searchTextBox.Text))
@@ -158,11 +172,17 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Wyszukiwanie w ListVievBox frazy z pola formularza 
+        /// </summary>
         private void searchTextBoxTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource).Refresh();
         }
 
+        /// <summary>
+        /// Klasa pojedynczego wiersza w ListView (potrzebna, by poprawnie generować odpowiednie wiersze)
+        /// </summary>
         public class DaneNaprawa
         {
             public int ID_Naprawa { get; set; }

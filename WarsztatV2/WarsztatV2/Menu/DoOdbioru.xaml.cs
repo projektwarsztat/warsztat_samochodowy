@@ -22,7 +22,7 @@ using System.IO;
 namespace WarsztatV2.Menu
 {
     /// <summary>
-    /// Interaction logic for DoOdbioru.xaml
+    /// Klasa zawierająca implementację zakładki Do Odbioru
     /// </summary>
     public partial class DoOdbioru : Page
     {
@@ -40,7 +40,9 @@ namespace WarsztatV2.Menu
 
         }
 
-        // wypelnienie listviewbox
+        /// <summary>
+        /// Metoda pobierająca dane napraw, pracowników i pojazdów z bazy danych, wypełnienie ListViewBox
+        /// </summary>
         private async Task pobierzDaneNaprawy()
         {
             List<Naprawa> naprawaL;
@@ -87,6 +89,9 @@ namespace WarsztatV2.Menu
             view.Filter = UserFilter;
         }
 
+        /// <summary>
+        /// Obsługa klikania w ListView zawierający listę zleceń do odbioru
+        /// </summary>
         private async void ListViewItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListViewItem element = sender as ListViewItem;
@@ -122,7 +127,9 @@ namespace WarsztatV2.Menu
             }
         }
 
-
+        /// <summary>
+        /// Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny NumerRejestracyjny
+        /// </summary>
         private bool UserFilter(object item)
         {
             if (String.IsNullOrEmpty(searchTextBox.Text))
@@ -132,11 +139,17 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Wyszukiwanie w ListVievBox frazy z pola formularza 
+        /// </summary>
         private void searchTextBoxTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource).Refresh();
         }
 
+        /// <summary>
+        /// Klasa pojedynczego wiersza w ListView (potrzebna, by poprawnie generować odpowiednie wiersze)
+        /// </summary>
         public class DaneNaprawa
         {
             public int ID_Naprawa { get; set; }
@@ -153,7 +166,10 @@ namespace WarsztatV2.Menu
 
         }
 
-        //sprawdzenie czy faktura o danym Id juz istnieje
+       
+        /// <summary>
+        /// Sprawdzenie czy faktura o danym ID już istnieje
+        /// </summary>
         private bool IfFakturaExists()
         {
             using (databaseConnection newConnection = new databaseConnection())
@@ -165,7 +181,10 @@ namespace WarsztatV2.Menu
             }
         }
 
-        //wystawienie faktury
+        
+        /// <summary>
+        /// Metoda przygotowywuje dane do wystawienia faktury i wywołuje jej generowanie
+        /// </summary>
         private async void WystawFakture(object sender, RoutedEventArgs e)
         {
 
@@ -216,6 +235,9 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Sprawdzenie czy faktura posiada jakieś części
+        /// </summary>
         private bool IfFakturaNotNull(Faktura fav)
         {
             List<Uzyte_czesci> czesci = new List<Uzyte_czesci>();
@@ -231,7 +253,10 @@ namespace WarsztatV2.Menu
             }
         }
 
-        // wydanie pojazdu - zmiana statusu naprawy i uzupenienie daty wydania
+        
+        /// <summary>
+        /// wydanie pojazdu - zmiana statusu naprawy i uzupenienie daty wydania
+        /// </summary>
         private async void WydajPojazdClick(object sender, RoutedEventArgs e)
         {
 

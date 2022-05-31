@@ -7,12 +7,18 @@ using BibliotekaKlas;
 
 namespace WarsztatV2.SMS
 {
+    /// <summary>
+    /// Klasa posiadająca mechanizmy,które wysyłają wiadomość SMS
+    /// </summary>
     internal class SendSMS
     {
         private static string log;
         private static string pas;
 
-        public static async void GetDataFromFile()
+        /// <summary>
+        /// Metoda pobierająca dane (login i haslo do bramki sms - GSMSERVICE) z pliku konfiguracyjnego
+        /// </summary>
+        public static void GetDataFromFile()
         {
             string[] lines = System.IO.File.ReadAllLines("config.txt");
 
@@ -28,6 +34,9 @@ namespace WarsztatV2.SMS
             }
         }
 
+        /// <summary>
+        /// Metoda wysyła wiadomośc sms na numer telefonu klienta, który jest pobierany z argumentu metody - IdNaprawy
+        /// </summary>
         public static async void SendToClient(int IdNaprawy)
         {
 

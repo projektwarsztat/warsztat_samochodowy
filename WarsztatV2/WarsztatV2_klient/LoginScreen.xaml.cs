@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace WarsztatV2_klient
 {
     /// <summary>
-    /// Interaction logic for LoginScreen.xaml
+    /// Klasa ekranu logowania klienta
     /// </summary>
     public partial class LoginScreen : Window
     {
@@ -28,6 +28,9 @@ namespace WarsztatV2_klient
             InitializeComponent();      
         }
 
+        /// <summary>
+        /// Metoda zawierająca mechanizmy logowania klienta
+        /// </summary>
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
             Socket clientSocketConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Utworzenie gniazda

@@ -20,7 +20,7 @@ using BibliotekaKlas;
 namespace WarsztatV2.Menu
 {
     /// <summary>
-    /// Logika interakcji dla klasy Czesci.xaml
+    /// Klasa zawierająca implementację zakładki Cześci 
     /// </summary>
     public partial class Czesci : Page
     {
@@ -37,7 +37,9 @@ namespace WarsztatV2.Menu
         }
 
 
-
+        /// <summary>
+        /// Metoda pobierająca dane części i użytych części z bazy danych, wypełnienie ListViewBox
+        /// </summary>
         private async void pobieranieDanych()
         {
 
@@ -78,7 +80,10 @@ namespace WarsztatV2.Menu
             view.Filter = czescFilter;
         }
 
-        private bool czescFilter(object item) //Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny Imię, lub Nazwisko
+        /// <summary>
+        /// Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny nazwaCzesci
+        /// </summary>
+        private bool czescFilter(object item) 
         {
             if (String.IsNullOrEmpty(searchTextBox.Text)) return true;
             else
@@ -89,11 +94,17 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Wyszukiwanie w ListVievBox frazy z pola formularza 
+        /// </summary>
         private void searchTextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource).Refresh();
         }
 
+        /// <summary>
+        /// Obsługa klikania w ListView zawierający listę części
+        /// </summary>
         private async void ListViewItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListViewItem element = sender as ListViewItem;
@@ -119,6 +130,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda dodająca dane do bazy danych, wykonująca się po kliknięciu przycisku
+        /// </summary>
         private async void dodajClick(object sender, RoutedEventArgs e)
         {
             string NazwaCzesciD = NazwaCzesci.Text;
@@ -170,6 +184,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda usuwająca dane (pod warunkiem, że nie są w użyciu) z bazy danych, wykonująca się po kliknięciu przycisku
+        /// </summary>
         private async void usunClick(object sender, RoutedEventArgs e)
         {
             if (CzescID != -1)
@@ -210,6 +227,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda modyfikująca dane w bazie danych, wykonująca się po kliknięciu przycisku
+        /// </summary>
         private async void modyfikujClick(object sender, RoutedEventArgs e)
         {
 
@@ -251,6 +271,9 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Metoda zmieniająca dostępność formularza i przycisków
+        /// </summary>
         private void zmienDostepnosc(bool wartosc)
         {
             NazwaCzesci.IsEnabled = wartosc;
@@ -261,6 +284,9 @@ namespace WarsztatV2.Menu
             lvDataBinding.IsEnabled = wartosc;
         }
 
+        /// <summary>
+        /// Metoda czyszcząca zawartość formularza
+        /// </summary>
         private void wyczyscZawartosc()
         {
             NazwaCzesci.Clear();
@@ -268,6 +294,9 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Metoda sprawdza czy dana część jest w użyciu
+        /// </summary>
         private bool CzyWUzyciu(List<Uzyte_czesci> listaUzytychCzesci, int indeksIdCzesci)
         {
             for (int i = 0; i < listaUzytychCzesci.Count; i++)
@@ -278,7 +307,10 @@ namespace WarsztatV2.Menu
         }
 
 
-        //Klasa pojedynczego wiersza w ListView (potrzebna, by poprawnie generować odpowiednie wiersze)
+        
+        /// <summary>
+        /// Klasa pojedynczego wiersza w ListView (potrzebna, by poprawnie generować odpowiednie wiersze)
+        /// </summary>
         public class DaneCzesc
         {
             public int ID_Czesc { get; set; }
@@ -288,7 +320,10 @@ namespace WarsztatV2.Menu
 
         }
 
-        private async void WczytajFakure_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Metoda wywołująca wczytywanie faktur po klikniecu przycisku
+        /// </summary>
+        private void WczytajFakure_Click(object sender, RoutedEventArgs e)
         {
             OdczywywanieCzesciZFaktur.ReadPDF();
 

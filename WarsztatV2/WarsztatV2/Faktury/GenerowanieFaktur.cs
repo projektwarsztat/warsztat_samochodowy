@@ -15,11 +15,18 @@ using System.Windows.Documents;
 
 namespace WarsztatV2.Faktury
 {
+    /// <summary>
+    /// Klasa generującja faktury
+    /// </summary>
     class GenerowanieFaktur
     {
         public static string SciezkaDoZapisu;
         public static int Vat;
-        public static async void GetData()
+
+        /// <summary>
+        /// Metoda pobierająca dane (ścieżkę do zapisu faktury i stawkę VAT) z pliku konfiguracyjnego
+        /// </summary>
+        public static void GetData()
         {
             string[] lines = System.IO.File.ReadAllLines("config.txt");
 
@@ -35,6 +42,10 @@ namespace WarsztatV2.Faktury
             }
             
         }
+
+        /// <summary>
+        /// Metoda pobiera dane z bazy danych i generuje fakturę w formacie PDF
+        /// </summary>
         public static async void GenerujFakture(Faktura fav)
         {
             GetData();

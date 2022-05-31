@@ -19,7 +19,7 @@ using BibliotekaKlas;
 namespace WarsztatV2.Menu
 {
     /// <summary>
-    /// Interaction logic for Samochody.xaml
+    /// Klasa zawierająca implementację zakładki Samochody: dodawanie, podgląd wszystkich pojazdów
     /// </summary>
     public partial class Samochody : Page
     {
@@ -36,6 +36,9 @@ namespace WarsztatV2.Menu
             _ = pobierzDanePojazdow();
         }
 
+        /// <summary>
+        /// Metoda pobierająca dane pojazdów, klientów i ich adresów z bazy danych, wypełnienie ListViewBox
+        /// </summary>
         private async Task pobierzDanePojazdow()
         {
             List<Pojazd> pojazdL;
@@ -86,7 +89,9 @@ namespace WarsztatV2.Menu
             view.Filter = UserFilter;
         }
 
-
+        /// <summary>
+        /// Obsługa klikania w ListView zawierający listę zleceń do naprawy
+        /// </summary>
         private async void ListViewItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListViewItem element = sender as ListViewItem;
@@ -120,7 +125,9 @@ namespace WarsztatV2.Menu
             }
         }
 
-
+        /// <summary>
+        /// Metoda modyfikująca dane w bazie danych, wykonująca się po kliknięciu przycisku
+        /// </summary>
         private async void modyfikujClick(object sender, RoutedEventArgs e)
         {
             if (KlientID != -1 && AdresID != -1 && NumerRejestracyjny != "-1")
@@ -156,6 +163,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny NumerRejestracyjny
+        /// </summary>
         private bool UserFilter(object item)
         {
             if (String.IsNullOrEmpty(searchTextBox.Text))
@@ -165,12 +175,18 @@ namespace WarsztatV2.Menu
 
         }
 
+        /// <summary>
+        /// Wyszukiwanie w ListVievBox frazy z pola formularza 
+        /// </summary>
         private void searchTextBoxTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource).Refresh();
         }
 
 
+        /// <summary>
+        /// Klasa pojedynczego wiersza w ListView (potrzebna, by poprawnie generować odpowiednie wiersze)
+        /// </summary>
         public class DanePojazd
         {
             public string Numer_rejestracyjny { get; set; }

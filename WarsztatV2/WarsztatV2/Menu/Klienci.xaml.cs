@@ -110,6 +110,9 @@ namespace WarsztatV2.Menu
             CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource).Refresh();
         }
 
+        /// <summary>
+        /// Obsługa klikania w ListView zawierający listę klientów
+        /// </summary>
         private async void ListViewItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListViewItem element = sender as ListViewItem;

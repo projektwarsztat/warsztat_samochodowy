@@ -7,6 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabele Pojazd, która organizuje dane na temat pojazdu. Zawiera: Numer_rejestracyjny (przechowuje numer rejestracyjny), Marka (marka pojazdu), Model (model pojazdu), Numer_VIN (numer VIN pojazdu), Rok_produkcji oraz Typ_paliwa. Posiada również dwie własności nawigacyjne do tabeli klient (KlientNav) oraz do kolekcji napraw danego pojazdu (NaprawaNav).
+    /// </summary>
     [Serializable]
     public class Pojazd
     {

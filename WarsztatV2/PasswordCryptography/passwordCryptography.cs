@@ -7,6 +7,9 @@ using System.Security.Cryptography;
 
 namespace PasswordCryptography
 {
+    /// <summary>
+    /// Klasa zajmująca się obsługą szyfrowania i deszyfrowania hasła z wykorzystaniem algorytmu symetrycznego TripleDES
+    /// </summary>
     public class passwordCryptography
     {
         private static string key = "mnyw-5uec-d3r2zk"; //Klucz używany w kodowaniu

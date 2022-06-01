@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabelę warsztat. Organizuje informacje na temat warsztatu tj. Nazwa (nazwa warsztatu samochodwego), ID_Adres (adres), Telefon (numer telefonu), NIP (numer NIP), Nazwa_banku (przechowuje nazwę banku), Numer_konta_bankowego (przechowuje numer konta bankowego). Zawiera własność nawigacyjną AdresNav (do tabeli adres) oraz kolekcję do tabeli faktura (FakturaNav).
+    /// </summary>
     [Serializable]
     public class Warsztat
     {

@@ -7,6 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabelę klient, która organizuje informacje o pracownikach. Zawiera następujące informacje: imię (Imie) i nazwisko (Nazwisko), adres (ID_Adres) oraz numer telefonu (Telefon). Posiada trzy własności nawigacuje do: tabeli adres (AdresNav), tabeli dane_logowania (Dane_logowaniaNav) zawierającej login i hasło, oraz kolekcję do napraw (NaprawaNav) wykonanych przez pracownika.
+    /// </summary>
     [Serializable]
     public class Pracownik
     {

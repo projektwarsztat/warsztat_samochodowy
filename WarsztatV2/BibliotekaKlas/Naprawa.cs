@@ -7,6 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabelę naprawa, organizująca jednostę naprawy. Wyposażona jest w następujące własności: numer rejestracyjny, status naprawy, opis usterek, wiadomosc zwrotna daty wydania oraz przyjecia, pracownik. Zawiera trzy własności nawigacyjne tj. PojazdNav do tabeli pojazd (numer_rejestracyjny jest kluczem obcym do tabeli pojazd), PracownikNav do tabeli pracownik (ID_Pracownik jest kluczem obcym do tabeli pracownik), Uzyte_czesciNav do tabeli uzyte_czesci (Uzyte_czesciNav są kolekcją organizującą użyte części podczas naprawy pojazdu).
+    /// </summary>
     [Serializable]
     public class Naprawa
     {

@@ -9,6 +9,10 @@ using BibliotekaKlas;
 
 namespace WarsztatV2
 {
+
+    /// <summary>
+    /// Klasa zajmująca się obsługą połączenia z bazą danych
+    /// </summary>
     internal class databaseConnection : DbContext
     {
         public databaseConnection()
@@ -41,7 +45,7 @@ namespace WarsztatV2
             modelBuilder.Entity<Uzyte_czesci>().ToTable("uzyte_czesci", "public");
             modelBuilder.Entity<Dane_logowania>().ToTable("dane_logowania", "public");
 
-            modelBuilder.Conventions.Add<StoreGeneratedIdentityKeyConvention>();
+            modelBuilder.Conventions.Add<StoreGeneratedIdentityKeyConvention>(); //Obsługa autoinkrementacji indentyfikatorów w tabelach
         }
     }
 }

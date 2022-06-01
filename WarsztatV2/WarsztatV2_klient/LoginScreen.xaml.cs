@@ -71,22 +71,3 @@ namespace WarsztatV2_klient
         }
     }
 }
-
-/*private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (InputPin.Text == "1234")
-            {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-
-                this.Close();
-
-            }
-
-            else
-            {
-
-                MessageBox.Show("Błędny PIN", "Błąd !", MessageBoxButton.OK, MessageBoxImage.Error);
-                InputPin.Clear();
-            }
-        }*/

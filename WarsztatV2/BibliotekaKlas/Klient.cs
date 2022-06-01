@@ -8,6 +8,9 @@ using System.Runtime.Serialization;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabelę klient, która organizuje informacje o klientach. Zawiera następujące informacje: imię (Imie) i nazwisko (Nazwisko), adres (ID_Adres) oraz numer telefonu (Telefon). Posiada trzy własności nawigacuje do: tabeli adres (AdresNav), oraz kolekcję do pojzadów klienta (PojazdNav) oraz faktur (FakturaNav), które zostały jemu wystawione.
+    /// </summary>
     [Serializable]
     public class Klient
     {

@@ -7,6 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabelę czesc, która organizuje informacje na temat części dostępnych w warsztacie. Zawiera dane o nazwie (Nazwa) i cenie (Cena)  danej części oraz własność nawigacyjną (kolekcję) do klasy (tabeli) uzyte_czesci (Uzyte_czesc)
+    /// </summary>
     [Serializable]
     public class Czesc
     {

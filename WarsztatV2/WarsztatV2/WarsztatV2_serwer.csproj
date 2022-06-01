@@ -162,6 +162,7 @@
       <DependentUpon>Samochody.xaml</DependentUpon>
     </Compile>
     <Compile Include="SMS\SendSMS.cs" />
+    <Compile Include="socketConnection.cs" />
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>

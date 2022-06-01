@@ -25,13 +25,6 @@ namespace WarsztatV2.Menu
     /// Interaction logic for Klienci.xaml
     /// </summary>
 
-    /*
-     NALEŻY DODAĆ:
-    -> walidację wprowadzanych danych: tu skupić się na poprawności wprowadzanego numeru telefonu (!!!)
-    -> sprawdzać, czy wprowadzany do bazy danych rekord nie jest istnieje już w bazie (?)
-    -> dodać obsługę sytuacji wyjątkowych (!!!)
-     */
-
     public partial class Klienci : Page
     {
         private int KlientID { get; set; } //Własność do przechowywania indeksu edytowanego klienta
@@ -46,6 +39,10 @@ namespace WarsztatV2.Menu
             AdresID = -1;
         }
 
+
+        /// <summary>
+        /// Metoda pobierająca dane z bazy danych i wypełniająca odpowiedni ListView danymi
+        /// </summary>
         private async void pobieranieDanych()
         {
             List<Klient> klientL;
@@ -89,7 +86,10 @@ namespace WarsztatV2.Menu
             view.Filter = klientFilter;
         }
 
-        private bool klientFilter(object item) //Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny Imię, lub Nazwisko
+        /// <summary>
+        /// Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny Imię, lub Nazwisko
+        /// </summary>
+        private bool klientFilter(object item) 
         {
             if (String.IsNullOrEmpty(searchTextBox.Text)) return true;
             else
@@ -143,6 +143,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda zajmująca się obsługa przycisku dodaj
+        /// </summary>
         private async void dodajClick(object sender, RoutedEventArgs e)
         {
             string imieD = imie.Text;
@@ -204,6 +207,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda zajmująca się obsługą przycisku usun
+        /// </summary>
         private async void usunClick(object sender, RoutedEventArgs e)
         {
             if (KlientID != -1 && AdresID != -1)
@@ -245,6 +251,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda zajmująca się obsługą przycisku do modyfikacji
+        /// </summary>
         private async void modyfikujClick(object sender, RoutedEventArgs e)
         {
             if (KlientID != -1 && AdresID != -1)
@@ -294,6 +303,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda zmieniająca widoczność (zakrycie / odkrycie) inputów i przycisków
+        /// </summary>
         private void zmienDostepnosc(bool wartosc)
         {
             imie.IsEnabled = wartosc;
@@ -309,6 +321,9 @@ namespace WarsztatV2.Menu
             lvDataBinding.IsEnabled = wartosc;
         }
 
+        /// <summary>
+        /// Metoda czyszcząca zawartość inputów w formularzu
+        /// </summary>
         private void wyczyscZawartosc()
         {
             imie.Clear();
@@ -320,6 +335,9 @@ namespace WarsztatV2.Menu
             kod_pocztowy.Clear();
         }
 
+        /// <summary>
+        /// Metoda sprawdzająca, czy klient posiada pojazd
+        /// </summary>
         private bool posiadaPojazd(List<Pojazd> listaPojazdow, int indeksKlienta)
         {
             for (int i = 0; i < listaPojazdow.Count; i++)

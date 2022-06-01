@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabelę adres, która przechowuje informacje adresowe wszystkich podmiotów. Zawiera: Ulica (własność przechowywująca ulicę), Numer (przechowuje numer mieszkania/domu), Kod_pocztowy (przechowuje kod pocztowy) oraz Miejscowość (przechowuje nazwe miejscowosci)
+    /// </summary>
     [Serializable]
     public class Adres
     {

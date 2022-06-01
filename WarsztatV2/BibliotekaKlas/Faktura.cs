@@ -8,6 +8,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabelę fakutra, która całkowicie domyka całe przedsięwzięcie naprawy. Organizuje następujące informacje: dane warsztatu (ID_Warsztat), dane klienta (ID_Klient) oraz dane naprawy (ID_Napraww). Posiada trzy własności nawigacyje do wymienionych wcześniej tabel (warsztat (WarsztatNav), klient (KlientNav), naprawa (NaprawaNav)).
+    /// </summary>
     [Serializable]
     public class Faktura
     {

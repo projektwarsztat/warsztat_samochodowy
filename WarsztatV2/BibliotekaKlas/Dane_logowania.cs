@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BibliotekaKlas
 {
+    /// <summary>
+    /// Klasa mapowana na tabelę dane_logowania, organizująca dane logowania pracowników. Zawiera login (Login) i hasło (Haslo), które zaszyfrowane jest przy pomocy symetrycznego algorytmu szyfrującego TripleDES
+    /// </summary>
     [Serializable]
     public class Dane_logowania
     {

@@ -80,8 +80,6 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny Imię, lub Nazwisko
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
         private bool pracownikFilter(object item)
         {
             if (String.IsNullOrEmpty(searchTextBox.Text)) return true;
@@ -101,8 +99,6 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Odświeża widok ListView po każdej aktualizacji związanej z wyszukiwaniem pracownika
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void searchTextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource).Refresh();
@@ -111,8 +107,6 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Obsługa kliknięcia lewym przyciskiem myszy na rekord z danymi pracownika. Lista boczna wypełni się danymi
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private async void ListViewItemPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListViewItem element = sender as ListViewItem;
@@ -150,8 +144,6 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Obsluga dodawania nowego pracownika
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private async void dodajClick(object sender, RoutedEventArgs e)
         {
             string imieD = imie.Text;
@@ -231,8 +223,6 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Obsługa usuwania prawcownika
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private async void usunClick(object sender, RoutedEventArgs e)
         {
             if (PracownikID != -1 && AdresID != -1)
@@ -280,8 +270,6 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Obsługa modyfikacji danych pracownika
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private async void modyfikujClick(object sender, RoutedEventArgs e)
         {
             if (PracownikID != -1 && AdresID != -1)
@@ -336,6 +324,9 @@ namespace WarsztatV2.Menu
             }
         }
 
+        /// <summary>
+        /// Metoda zmieniająca widoczność (zakrycie / odkrycie) inputów i przycisków
+        /// </summary>
         private void zmienDostepnosc(bool wartosc)
         {
             imie.IsEnabled = wartosc;
@@ -353,6 +344,9 @@ namespace WarsztatV2.Menu
             lvDataBinding.IsEnabled = wartosc;
         }
 
+        /// <summary>
+        /// Metoda czyszcząca zawartość inputów w formularzu
+        /// </summary>
         private void wyczyscZawartosc()
         {
             imie.Clear();
@@ -366,6 +360,9 @@ namespace WarsztatV2.Menu
             haslo.Clear();
         }
 
+        /// <summary>
+        /// Metoda sprawdzająca, czy pracownik wykonuje naprawę
+        /// </summary>
         private bool wykonujeNaprawe(List<Naprawa> listaNapraw, int indeksPracownika)
         {
             for (int i = 0; i < listaNapraw.Count; i++)
@@ -375,6 +372,9 @@ namespace WarsztatV2.Menu
             return false;
         }
 
+        /// <summary>
+        /// Metoda sprawdzająca, czy dany login już znajduje się w bazie danych
+        /// </summary>
         private async Task<bool> istniejeLoginWBazie(string login)
         {
             bool result = false;

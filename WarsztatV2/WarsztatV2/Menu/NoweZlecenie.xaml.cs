@@ -23,6 +23,7 @@ namespace WarsztatV2.Menu
     {
         private bool IfPojazdExist = false;
 
+        Validation validation = new Validation();
         public NoweZlecenie()
         {
             InitializeComponent();
@@ -50,13 +51,13 @@ namespace WarsztatV2.Menu
         /// </summary>
         public void WlascicielTextBoxInaccessible(bool value)
         {
-            Imie.IsEnabled = value;
-            Nazwisko.IsEnabled = value;
-            Miejscowosc.IsEnabled = value;
-            Ulica.IsEnabled = value;
-            Numer.IsEnabled = value;
-            Kod_pocztowy.IsEnabled = value;
-            Telefon.IsEnabled = value;
+            imie.IsEnabled = value;
+            nazwisko.IsEnabled = value;
+            miejscowosc.IsEnabled = value;
+            ulica.IsEnabled = value;
+            numer.IsEnabled = value;
+            kod_pocztowy.IsEnabled = value;
+            telefon.IsEnabled = value;
 
         }
 
@@ -65,12 +66,12 @@ namespace WarsztatV2.Menu
         /// </summary>
         private void TextChangedEventHandler(object sender, TextChangedEventArgs e)
         {
-            if (Numer_rejestracyjny_input.Text.Length > 3)
+            if (Numer_rejestracyjny.Text.Length > 3)
             {
                 DataToForm();
             }
 
-            if (Numer_rejestracyjny_input.Text.Length < 7)
+            if (Numer_rejestracyjny.Text.Length < 7)
             {
                 ClearForm();
 
@@ -107,7 +108,7 @@ namespace WarsztatV2.Menu
             using (databaseConnection newConnection = new databaseConnection())
             {
                 //Dane pojazdu
-                string numer_rejestracyjny = Numer_rejestracyjny_input.Text;
+                string numer_rejestracyjny = Numer_rejestracyjny.Text;
                 string marka = Marka.Text;
                 string model = Model.Text;
                 string numer_VIN = Numer_VIN.Text;
@@ -115,15 +116,15 @@ namespace WarsztatV2.Menu
                 string typ_paliwa = Typ_paliwa.Text;
 
                 //Dane wlasciciela pojazdu
-                string imieWlasciciela = Imie.Text;
-                string nazwiskoWlasciciela = Nazwisko.Text;
-                int numerTelefonu = Convert.ToInt32(Telefon.Text);
+                string imieWlasciciela = imie.Text;
+                string nazwiskoWlasciciela = nazwisko.Text;
+                int numerTelefonu = Convert.ToInt32(telefon.Text);
 
                 //Dane adresowe
-                string nazwaMiejscowosci = Miejscowosc.Text;
-                string nazwaUlicy = Ulica.Text;
-                string numerBudynku = Numer.Text;
-                string numerKoduPocztowego = Kod_pocztowy.Text;
+                string nazwaMiejscowosci = miejscowosc.Text;
+                string nazwaUlicy = ulica.Text;
+                string numerBudynku = numer.Text;
+                string numerKoduPocztowego = kod_pocztowy.Text;
 
                 //Dane mechanika
                 string imieMechanika = ImieMechanika.Text;
@@ -175,7 +176,7 @@ namespace WarsztatV2.Menu
 
                         MessageBox.Show("Utowrzono nowe zlecenie naprawy");
                         ClearForm();
-                        Numer_rejestracyjny_input.Clear();
+                        Numer_rejestracyjny.Clear();
 
                     }
 
@@ -200,7 +201,7 @@ namespace WarsztatV2.Menu
 
                         MessageBox.Show("Utowrzono nowe zlecenie naprawy", "Komunikat", MessageBoxButton.OK, MessageBoxImage.Information);
                         ClearForm();
-                        Numer_rejestracyjny_input.Clear();
+                        Numer_rejestracyjny.Clear();
                     }
 
 
@@ -217,6 +218,8 @@ namespace WarsztatV2.Menu
                 await newConnection.SaveChangesAsync();
             }
 
+            ramkaKolor();
+
         }
 
         /// <summary>
@@ -232,7 +235,7 @@ namespace WarsztatV2.Menu
                 Klient DefaultKlient = new Klient();
                 Adres DefaultAdres = new Adres();
 
-                string nr = Numer_rejestracyjny_input.Text;
+                string nr = Numer_rejestracyjny.Text;
                 if (await Task.Run(() => !newConnection.Pojazdy.Any(p => p.Numer_rejestracyjny == nr)))
                 {
                     // MessageBox.Show("NIE MA TAKIEGO NUMERU");
@@ -257,14 +260,14 @@ namespace WarsztatV2.Menu
                     Rok_produkcji.Text = DefaultPojazd.Rok_produkcji.ToString();
                     Typ_paliwa.Text = DefaultPojazd.Typ_paliwa;
                 
-                    Imie.Text = DefaultKlient.Imie;
-                    Nazwisko.Text = DefaultKlient.Nazwisko;
-                    Telefon.Text = DefaultKlient.Telefon.ToString();
+                    imie.Text = DefaultKlient.Imie;
+                    nazwisko.Text = DefaultKlient.Nazwisko;
+                    telefon.Text = DefaultKlient.Telefon.ToString();
          
-                    Miejscowosc.Text = DefaultAdres.Miejscowosc;
-                    Ulica.Text = DefaultAdres.Ulica;
-                    Numer.Text = DefaultAdres.Numer;
-                    Kod_pocztowy.Text = DefaultAdres.Kod_pocztowy;
+                    miejscowosc.Text = DefaultAdres.Miejscowosc;
+                    ulica.Text = DefaultAdres.Ulica;
+                    numer.Text = DefaultAdres.Numer;
+                    kod_pocztowy.Text = DefaultAdres.Kod_pocztowy;
                }
             }
         }
@@ -280,16 +283,50 @@ namespace WarsztatV2.Menu
             Numer_VIN.Clear();
             Rok_produkcji.Clear();
             Typ_paliwa.Clear();
-            Imie.Clear();
-            Nazwisko.Clear();
+            imie.Clear();
+            nazwisko.Clear();
             ImieMechanika.Clear();
             NazwiskoMechanika.Clear();
-            Ulica.Clear();
-            Miejscowosc.Clear();
-            Telefon.Clear();
-            Numer.Clear();
-            Kod_pocztowy.Clear();
+            ulica.Clear();
+            miejscowosc.Clear();
+            telefon.Clear();
+            numer.Clear();
+            kod_pocztowy.Clear();
             Opis_usterek.Clear();
+        }
+
+        /// <summary>
+        /// Metoda ustawiający pierwotny kolor obramowania TextBoxów
+        /// </summary>
+        private void ramkaKolor()
+        {
+            validation.colorRestore(imie);
+            validation.colorRestore(nazwisko);
+            validation.colorRestore(miejscowosc);
+            validation.colorRestore(ulica);
+            validation.colorRestore(numer);
+            validation.colorRestore(kod_pocztowy);
+            validation.colorRestore(telefon);
+            validation.colorRestore(Numer_rejestracyjny);
+            validation.colorRestore(Numer_VIN);
+            validation.colorRestore(Marka);
+            validation.colorRestore(Model);
+            validation.colorRestore(Rok_produkcji);
+            validation.colorRestore(Typ_paliwa);
+        }
+
+        /// <summary>
+        /// Metoda zajmująca się walidacją danych wprowadzonych przez użytkownika
+        /// </summary>
+        /// <param name="sender">Obiekt typu TextBox z odpowiednią nazwą</param>
+        /// <param name="e"></param>
+        private void textBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox tB = sender as TextBox;
+                validation.checkData(tB);
+            }
         }
     }
 }

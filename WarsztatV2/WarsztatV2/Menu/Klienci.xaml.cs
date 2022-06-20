@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WarsztatV2;
 
 namespace WarsztatV2.Menu
 {
@@ -30,6 +32,7 @@ namespace WarsztatV2.Menu
         private int KlientID { get; set; } //Własność do przechowywania indeksu edytowanego klienta
         private int AdresID { get; set; } //Własność używana do przechowywania indeksu edytowanego adresu
         private List<DaneKlient> wynikL = new List<DaneKlient>(); // Lista elementów - do wyświetlenia w ListBoxie
+        Validation validation = new Validation();
         public Klienci()
         {
             InitializeComponent();
@@ -89,6 +92,7 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Metoda zwracająca prawdę dla rekordów, które spełniają tę własność, że wpisany ciąg znaków do searchBara jest w dowolnym stopniu podobny do danych z kolumny Imię, lub Nazwisko
         /// </summary>
+        /// <param name="item">Rekord z ListView zawierający dane klienta</param>
         private bool klientFilter(object item) 
         {
             if (String.IsNullOrEmpty(searchTextBox.Text)) return true;
@@ -139,6 +143,7 @@ namespace WarsztatV2.Menu
                     });
                     KlientID = klient.ID_Klient;
                     AdresID = klient.ID_Adres;
+                    ramkaKolor(); //Przywrócenie koloru ramek
                 }
             }
         }
@@ -146,6 +151,8 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Metoda zajmująca się obsługa przycisku dodaj
         /// </summary>
+        /// /// <param name="sender">Przycisk dodaj, bądź każdy inny mający spełniać taką rolę</param>
+        /// <param name="e"></param>
         private async void dodajClick(object sender, RoutedEventArgs e)
         {
             string imieD = imie.Text;
@@ -200,6 +207,8 @@ namespace WarsztatV2.Menu
                 );
 
                 watek.Start();
+
+                ramkaKolor(); //Przywrócenie koloru ramek
             }
             else
             {
@@ -210,6 +219,8 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Metoda zajmująca się obsługą przycisku usun
         /// </summary>
+        /// /// <param name="sender">Przycisk usuń, bądź każdy inny mający spełniać taką rolę</param>
+        /// <param name="e"></param>
         private async void usunClick(object sender, RoutedEventArgs e)
         {
             if (KlientID != -1 && AdresID != -1)
@@ -248,12 +259,16 @@ namespace WarsztatV2.Menu
 
                 KlientID = -1; //Zerowanie danych na temat ostatnio wybranego rekordu
                 AdresID = -1;
+
+                ramkaKolor(); //Przywrócenie koloru ramek
             }
         }
 
         /// <summary>
         /// Metoda zajmująca się obsługą przycisku do modyfikacji
         /// </summary>
+        /// <param name="sender">Przycisk modyfikuj, bądź każdy inny mający spełniać taką rolę</param>
+        /// <param name="e"></param>
         private async void modyfikujClick(object sender, RoutedEventArgs e)
         {
             if (KlientID != -1 && AdresID != -1)
@@ -300,12 +315,15 @@ namespace WarsztatV2.Menu
 
                 KlientID = -1; //Zerowanie danych na temat ostatnio wybranego rekordu
                 AdresID = -1;
+
+                ramkaKolor(); //Przywrócenie koloru ramek
             }
         }
 
         /// <summary>
         /// Metoda zmieniająca widoczność (zakrycie / odkrycie) inputów i przycisków
         /// </summary>
+        /// <param name="wartosc">Wartość bool, jeśli true: pola formularza zostaną odkryte do edycji, jeśli false: pola formularza zostaną zakryte przed edycją</param>
         private void zmienDostepnosc(bool wartosc)
         {
             imie.IsEnabled = wartosc;
@@ -338,6 +356,8 @@ namespace WarsztatV2.Menu
         /// <summary>
         /// Metoda sprawdzająca, czy klient posiada pojazd
         /// </summary>
+        /// <param name="listaPojazdow">Lista typu Pojazd zawierająca pojazdy z bazy danych</param>
+        /// <param name="indeksKlienta">Numer identyfikacyjny klienta</param>
         private bool posiadaPojazd(List<Pojazd> listaPojazdow, int indeksKlienta)
         {
             for (int i = 0; i < listaPojazdow.Count; i++)
@@ -345,6 +365,34 @@ namespace WarsztatV2.Menu
                 if (listaPojazdow[i].ID_Klient == indeksKlienta) return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Metoda ustawiający pierwotny kolor obramowania TextBoxów
+        /// </summary>
+        private void ramkaKolor()
+        {
+            validation.colorRestore(imie);
+            validation.colorRestore(nazwisko);
+            validation.colorRestore(miejscowosc);
+            validation.colorRestore(ulica);
+            validation.colorRestore(numer);
+            validation.colorRestore(kod_pocztowy);
+            validation.colorRestore(telefon);
+        }
+
+        /// <summary>
+        /// Metoda zajmująca się walidacją danych wprowadzonych przez użytkownika
+        /// </summary>
+        /// <param name="sender">Obiekt typu TextBox z odpowiednią nazwą</param>
+        /// <param name="e"></param>
+        private void textBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox tB = sender as TextBox;
+                validation.checkData(tB);
+            }
         }
     }
 

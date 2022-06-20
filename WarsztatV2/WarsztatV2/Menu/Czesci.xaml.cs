@@ -16,6 +16,7 @@ using System.Threading;
 using System.ComponentModel;
 using WarsztatV2.Faktury;
 using BibliotekaKlas;
+using System.Text.RegularExpressions;
 
 namespace WarsztatV2.Menu
 {
@@ -27,7 +28,7 @@ namespace WarsztatV2.Menu
 
         private int CzescID { get; set; } //Własność używana do przechowywania indeksu edytowanego adresu
         private List<DaneCzesc> wynikL = new List<DaneCzesc>(); // Lista elementów - do wyświetlenia w ListBoxie
-
+        Validation validation = new Validation();
         public Czesci()
         {
             InitializeComponent();
@@ -126,6 +127,7 @@ namespace WarsztatV2.Menu
                         );
                     });
                     CzescID = czesc.ID_Czesc;
+                    ramkaKolor();
                 }
             }
         }
@@ -176,6 +178,7 @@ namespace WarsztatV2.Menu
                 );
 
                 watek.Start();
+                ramkaKolor();
 
             }
             else
@@ -222,6 +225,7 @@ namespace WarsztatV2.Menu
                 );
 
                 watek.Start();
+                ramkaKolor();
 
                 CzescID = -1;
             }
@@ -267,6 +271,7 @@ namespace WarsztatV2.Menu
             );
 
             watek.Start(); //Uruchomienie wątka
+            ramkaKolor();
 
 
         }
@@ -331,6 +336,29 @@ namespace WarsztatV2.Menu
             pobieranieDanych();
 
 
+        }
+
+        /// <summary>
+        /// Metoda ustawiający pierwotny kolor obramowania TextBoxów
+        /// </summary>
+        private void ramkaKolor()
+        {
+            validation.colorRestore(NazwaCzesci);
+            validation.colorRestore(Cena);
+        }
+
+        /// <summary>
+        /// Metoda zajmująca się walidacją danych wprowadzonych przez użytkownika
+        /// </summary>
+        /// <param name="sender">Obiekt typu TextBox z odpowiednią nazwą</param>
+        /// <param name="e"></param>
+        private void textBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox tB = sender as TextBox;
+                validation.checkData(tB);
+            }
         }
     }
 }

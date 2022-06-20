@@ -38,19 +38,19 @@
             </Grid>
             <StackPanel Grid.Row="0" Margin="20,0,0,0">
                 <Label Content="Imię:" Height="25" Width="85" HorizontalAlignment="Left"/>
-                <TextBox x:Name ="imie" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name ="imie" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
                 <Label Content="Nazwisko:" Width="170" HorizontalAlignment="Left"/>
-                <TextBox x:Name="nazwisko" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name="nazwisko" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
                 <Label Content="Telefon: (+48)" Width="170" HorizontalAlignment="Left"/>
-                <TextBox x:Name="telefon" Width="170" HorizontalAlignment="Left" Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name="telefon" Width="170" HorizontalAlignment="Left" Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
                 <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left"/>
-                <TextBox x:Name="miejscowosc" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name="miejscowosc" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
                 <Label Content="Ulica:" Width="170" HorizontalAlignment="Left"/>
-                <TextBox x:Name="ulica" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name="ulica" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
                 <Label Content="Numer:" Width="170" HorizontalAlignment="Left"/>
-                <TextBox x:Name="numer" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name="numer" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
                 <Label Content="Kod pocztowy:" Width="170" HorizontalAlignment="Left"/>
-                <TextBox x:Name="kod_pocztowy" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name="kod_pocztowy" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
             </StackPanel>
             <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
             <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="410" VerticalAlignment="Top" Grid.Column="1" Margin="10,40,10,0">

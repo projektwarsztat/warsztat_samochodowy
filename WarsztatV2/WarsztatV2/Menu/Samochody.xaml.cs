@@ -27,6 +27,8 @@ namespace WarsztatV2.Menu
         private int KlientID { get; set; }
         private int AdresID { get; set; }
 
+        Validation validation = new Validation();
+
         public Samochody()
         {
             InitializeComponent();
@@ -102,19 +104,19 @@ namespace WarsztatV2.Menu
                 {
                     this.Dispatcher
                         .Invoke(() => {
-                            Imie.Text = pojazd.Imie;
-                            Nazwisko.Text = pojazd.Nazwisko;
-                            Telefon.Text = pojazd.Telefon.ToString();
+                            imie.Text = pojazd.Imie;
+                            nazwisko.Text = pojazd.Nazwisko;
+                            telefon.Text = pojazd.Telefon.ToString();
                             Numer_rejestracyjny.Text = pojazd.Numer_rejestracyjny;
                             Marka.Text = pojazd.Marka;
                             Model.Text = pojazd.Model;
-                            Numer_VIM.Text = pojazd.Numer_VIN;
+                            Numer_VIN.Text = pojazd.Numer_VIN;
                             Rok_produkcji.Text = pojazd.Rok_produkcji.ToString();
                             Typ_paliwa.Text = pojazd.Typ_paliwa;
-                            Miejscowosc.Text = pojazd.Miejscowosc;
-                            Ulica.Text = pojazd.Ulica;
-                            Numer.Text = pojazd.Numer;
-                            KodPocztowy.Text = pojazd.Kod_pocztowy;
+                            miejscowosc.Text = pojazd.Miejscowosc;
+                            ulica.Text = pojazd.Ulica;
+                            numer.Text = pojazd.Numer;
+                            kod_pocztowy.Text = pojazd.Kod_pocztowy;
 
                         }
                     );
@@ -123,6 +125,7 @@ namespace WarsztatV2.Menu
                     NumerRejestracyjny = pojazd.Numer_rejestracyjny;
                 });
             }
+            ramkaKolor();
         }
 
         /// <summary>
@@ -141,17 +144,17 @@ namespace WarsztatV2.Menu
                         Pojazd pojazdModyfikacja = newConnection.Pojazdy.Single<Pojazd>(p => p.Numer_rejestracyjny == NumerRejestracyjny);
                         this.Dispatcher.Invoke(() =>
                         {
-                            klientModyfikacja.Imie = Imie.Text;
-                            klientModyfikacja.Nazwisko = Nazwisko.Text;
-                            klientModyfikacja.Telefon = Convert.ToInt32(Telefon.Text);
-                            adresModyfikacja.Miejscowosc = Miejscowosc.Text;
-                            adresModyfikacja.Ulica = Ulica.Text;
-                            adresModyfikacja.Numer = Numer.Text;
-                            adresModyfikacja.Kod_pocztowy = KodPocztowy.Text;
+                            klientModyfikacja.Imie = imie.Text;
+                            klientModyfikacja.Nazwisko = nazwisko.Text;
+                            klientModyfikacja.Telefon = Convert.ToInt32(telefon.Text);
+                            adresModyfikacja.Miejscowosc = miejscowosc.Text;
+                            adresModyfikacja.Ulica = ulica.Text;
+                            adresModyfikacja.Numer = numer.Text;
+                            adresModyfikacja.Kod_pocztowy = kod_pocztowy.Text;
                             pojazdModyfikacja.Numer_rejestracyjny = Numer_rejestracyjny.Text;
                             pojazdModyfikacja.Marka = Marka.Text;
                             pojazdModyfikacja.Model = Model.Text;
-                            pojazdModyfikacja.Numer_VIN = Numer_VIM.Text;
+                            pojazdModyfikacja.Numer_VIN = Numer_VIN.Text;
                             pojazdModyfikacja.Rok_produkcji = Convert.ToInt32(Rok_produkcji.Text);
                             pojazdModyfikacja.Typ_paliwa = Typ_paliwa.Text;
 
@@ -161,6 +164,7 @@ namespace WarsztatV2.Menu
                 });
                 _ = pobierzDanePojazdow();
             }
+            ramkaKolor();
         }
 
         /// <summary>
@@ -181,6 +185,41 @@ namespace WarsztatV2.Menu
         private void searchTextBoxTextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(lvDataBinding.ItemsSource).Refresh();
+        }
+
+
+        /// <summary>
+        /// Metoda ustawiający pierwotny kolor obramowania TextBoxów
+        /// </summary>
+        private void ramkaKolor()
+        {
+            validation.colorRestore(imie);
+            validation.colorRestore(nazwisko);
+            validation.colorRestore(miejscowosc);
+            validation.colorRestore(ulica);
+            validation.colorRestore(numer);
+            validation.colorRestore(kod_pocztowy);
+            validation.colorRestore(telefon);
+            validation.colorRestore(Numer_rejestracyjny);
+            validation.colorRestore(Numer_VIN);
+            validation.colorRestore(Marka);
+            validation.colorRestore(Model);
+            validation.colorRestore(Rok_produkcji);
+            validation.colorRestore(Typ_paliwa);
+        }
+
+        /// <summary>
+        /// Metoda zajmująca się walidacją danych wprowadzonych przez użytkownika
+        /// </summary>
+        /// <param name="sender">Obiekt typu TextBox z odpowiednią nazwą</param>
+        /// <param name="e"></param>
+        private void textBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox tB = sender as TextBox;
+                validation.checkData(tB);
+            }
         }
 
 

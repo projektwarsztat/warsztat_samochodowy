@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,6 +33,7 @@ namespace WarsztatV2.Menu
         List<Adres> adresL; //Lista adresów
         List<Dane_logowania> dane_logowaniaL; //Lista danych logowania
         List<Naprawa> naprawaL; //Lista napraw
+        Validation validation = new Validation();
         public Pracownicy()
         {
             InitializeComponent();
@@ -137,6 +139,7 @@ namespace WarsztatV2.Menu
                     PracownikID = pracownik.ID_Pracownik;
                     AdresID = pracownik.ID_Adres;
                     Dane_logowaniaID = pracownik.ID_Dane_logowania;
+                    ramkaKolor();
                 }
             }
         }
@@ -208,6 +211,7 @@ namespace WarsztatV2.Menu
                     );
 
                     watek.Start();
+                    ramkaKolor();
                 }
                 else
                 {
@@ -264,6 +268,7 @@ namespace WarsztatV2.Menu
                 PracownikID = -1; //Zerowanie danych na temat ostatnio wybranego rekordu
                 AdresID = -1;
                 Dane_logowaniaID = -1;
+                ramkaKolor();
             }
         }
 
@@ -321,6 +326,7 @@ namespace WarsztatV2.Menu
                 PracownikID = -1; //Zerowanie danych na temat ostatnio wybranego rekordu
                 AdresID = -1;
                 Dane_logowaniaID = -1;
+                ramkaKolor();
             }
         }
 
@@ -383,6 +389,36 @@ namespace WarsztatV2.Menu
                 result = await Task.Run(() => newConnection.Dane_logowania.Any<Dane_logowania>(dn => dn.Login.Equals(login)));
             }
             return result;
+        }
+
+        /// <summary>
+        /// Metoda ustawiający pierwotny kolor obramowania TextBoxów
+        /// </summary>
+        private void ramkaKolor()
+        {
+            validation.colorRestore(imie);
+            validation.colorRestore(nazwisko);
+            validation.colorRestore(miejscowosc);
+            validation.colorRestore(ulica);
+            validation.colorRestore(numer);
+            validation.colorRestore(kod_pocztowy);
+            validation.colorRestore(telefon);
+            validation.colorRestore(login);
+            validation.colorRestore(haslo);
+        }
+
+        /// <summary>
+        /// Metoda zajmująca się walidacją danych wprowadzonych przez użytkownika
+        /// </summary>
+        /// <param name="sender">Obiekt typu TextBox z odpowiednią nazwą</param>
+        /// <param name="e"></param>
+        private void textBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox tB = sender as TextBox;
+                validation.checkData(tB);
+            }
         }
     }
 }

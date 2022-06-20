@@ -31,26 +31,26 @@
 
             <StackPanel Margin="10,0,0,10" HorizontalAlignment="Left" Width="480" Background="#ffeeeeee" Grid.Row="1">
                 <Label Content="Nazwa:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold" Margin="15,0,0,0" />
-                <TextBox Name="nazwa" Width="170" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0" ></TextBox>
+                <TextBox Name="nazwa" Width="170" HorizontalAlignment="Left"  Height="20" Margin="15,0,0,0" LostFocus="textBoxLostFocus"></TextBox>
                 <Label Content="Telefon:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold" />
-                <TextBox Name="telefon"  Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0"></TextBox>
+                <TextBox Name="telefon"  Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0" LostFocus="textBoxLostFocus"></TextBox>
                 <Label Content="NIP:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="nip" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0"></TextBox>
+                <TextBox Name="nip" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0" LostFocus="textBoxLostFocus"></TextBox>
                 <Label Content="Numer Konta:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="numer_konta" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0"></TextBox>
+                <TextBox Name="numer_konta" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0" LostFocus="textBoxLostFocus"></TextBox>
                 <Label Content="Nazwa Banku:" Width="170" HorizontalAlignment="Left" Margin="15,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="nazwa_banku" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0"></TextBox>
+                <TextBox Name="nazwa_banku" Width="170" HorizontalAlignment="Left" Height="20" Margin="15,0,0,0" LostFocus="textBoxLostFocus"></TextBox>
             </StackPanel>
 
             <StackPanel  Grid.Row="1" Margin="300,0,0,0" Height="220" VerticalAlignment="Top" HorizontalAlignment="Left" Width="190" >
                 <Label Content="Miejscowość:" Width="170" HorizontalAlignment="Left"  FontWeight="Bold"/>
-                <TextBox Name="miejscowosc" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                <TextBox Name="miejscowosc" Width="170" HorizontalAlignment="Left"  Height="20" LostFocus="textBoxLostFocus"></TextBox>
                 <Label Content="Ulica:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="ulica"  Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                <TextBox Name="ulica"  Width="170" HorizontalAlignment="Left"  Height="20" LostFocus="textBoxLostFocus"></TextBox>
                 <Label Content="Numer:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="numer" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                <TextBox Name="numer" Width="170" HorizontalAlignment="Left"  Height="20" LostFocus="textBoxLostFocus"></TextBox>
                 <Label Content="Kod Pocztowy:" Width="170" HorizontalAlignment="Left" Margin="0,10,0,0" FontWeight="Bold"/>
-                <TextBox Name="kod_pocztowy" Width="170" HorizontalAlignment="Left"  Height="20"></TextBox>
+                <TextBox Name="kod_pocztowy" Width="170" HorizontalAlignment="Left"  Height="20" LostFocus="textBoxLostFocus"></TextBox>
             </StackPanel>
 
             <StackPanel Margin="499,0,10,0" Height="460" VerticalAlignment="Top" Background="#ffeeeeee" Grid.Row="1">

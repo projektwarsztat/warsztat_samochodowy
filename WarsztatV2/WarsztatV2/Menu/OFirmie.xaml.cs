@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace WarsztatV2
 {
@@ -23,6 +24,7 @@ namespace WarsztatV2
     /// </summary>
     public partial class OFirmie : Page
     {
+        Validation validation = new Validation();
         public OFirmie()
         {
             InitializeComponent();
@@ -216,6 +218,7 @@ namespace WarsztatV2
         private void SaveButtonFile_Click(object sender, RoutedEventArgs e)
         {
             SaveDataToFIle();
+            ramkaKolor();
         }
 
         /// <summary>
@@ -235,6 +238,36 @@ namespace WarsztatV2
                 sciezkafaktury.Text = fd.SelectedPath;
 
 
+        }
+
+        /// <summary>
+        /// Metoda ustawiający pierwotny kolor obramowania TextBoxów
+        /// </summary>
+        private void ramkaKolor()
+        {
+            validation.colorRestore(nazwa);
+            validation.colorRestore(telefon);
+            validation.colorRestore(nip);
+            validation.colorRestore(numer_konta);
+            validation.colorRestore(nazwa_banku);
+            validation.colorRestore(miejscowosc);
+            validation.colorRestore(ulica);
+            validation.colorRestore(numer);
+            validation.colorRestore(kod_pocztowy);
+        }
+
+        /// <summary>
+        /// Metoda zajmująca się walidacją danych wprowadzonych przez użytkownika
+        /// </summary>
+        /// <param name="sender">Obiekt typu TextBox z odpowiednią nazwą</param>
+        /// <param name="e"></param>
+        private void textBoxLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                TextBox tB = sender as TextBox;
+                validation.checkData(tB);
+            }
         }
     }
 }

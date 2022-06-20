@@ -38,9 +38,9 @@
 
             <StackPanel Grid.Row="0" Margin="20,0,0,0">
                 <Label Content="Nazwa części:" Height="25" Width="85" HorizontalAlignment="Left"/>
-                <TextBox x:Name ="NazwaCzesci" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name ="NazwaCzesci" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
                 <Label Content="Cena:" Width="170" HorizontalAlignment="Left"/>
-                <TextBox x:Name="Cena" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333"/>
+                <TextBox x:Name="Cena" Width="170" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
             </StackPanel>
 
             <StackPanel Grid.Row="0" Margin="20,180,0,0">

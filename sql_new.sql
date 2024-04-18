@@ -7,3 +7,10 @@ CREATE TABLE Adres
     Miejscowosc VARCHAR(100)
 );
 
+CREATE TABLE Czesc
+(
+    ID_Czesci INT PRIMARY KEY,
+    Nazwa VARCHAR(255),
+    Cena DECIMAL(10, 2)
+);
+

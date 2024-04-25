@@ -1,6 +1,6 @@
 CREATE TABLE Adres
 (
-    "ID_Adres" INT PRIMARY KEY,
+    "ID_Adres" SERIAL PRIMARY KEY,
     "Ulica" VARCHAR(255),
     "Numer" VARCHAR(50),
     "Kod_pocztowy" VARCHAR(10),
@@ -9,21 +9,21 @@ CREATE TABLE Adres
 
 CREATE TABLE Czesc
 (
-    "ID_Czesci" INT PRIMARY KEY,
+    "ID_Czesci" SERIAL PRIMARY KEY,
     "Nazwa" VARCHAR(255),
     "Cena" DECIMAL(10, 2)
 );
 
 CREATE TABLE Dane_logowania
 (
-    "ID_Dane_logowania" INT PRIMARY KEY,
+    "ID_Dane_logowania" SERIAL PRIMARY KEY,
     "Login" VARCHAR(255),
     "Haslo" VARCHAR(255)
 );
 
 CREATE TABLE Faktura
 (
-    "ID_Faktura" INT PRIMARY KEY,
+    "ID_Faktura" SERIAL PRIMARY KEY,
     "ID_Warsztat" INT,
     "ID_Klient" INT,
     "ID_Naprawa" INT
@@ -31,7 +31,7 @@ CREATE TABLE Faktura
 
 CREATE TABLE Klient
 (
-    "ID_Klient" INT PRIMARY KEY,
+    "ID_Klient" SERIAL PRIMARY KEY,
     "Imie" VARCHAR(100),
     "Nazwisko" VARCHAR(100),
     "ID_Adres" INT,
@@ -39,7 +39,7 @@ CREATE TABLE Klient
 );
 
 CREATE TABLE Warsztat (
-    "ID_Warsztat" INT PRIMARY KEY,
+    "ID_Warsztat" SERIAL PRIMARY KEY,
     "Nazwa" VARCHAR(255),
     "ID_Adres" INT,
     "Telefon" INT,
@@ -49,14 +49,14 @@ CREATE TABLE Warsztat (
 );
 
 CREATE TABLE Uzyte_czesci (
-    "ID" INT PRIMARY KEY,
+    "ID" SERIAL PRIMARY KEY,
     "ID_Naprawa" INT,
     "ID_Czesci" INT,
     "Ilosc" INT
 );
 
 CREATE TABLE Pracownik (
-    "ID_Pracownik" INT PRIMARY KEY,
+    "ID_Pracownik" SERIAL PRIMARY KEY,
     "Imie" VARCHAR(255) NOT NULL,
     "Nazwisko" VARCHAR(255) NOT NULL,
     "ID_Adres" INT,
@@ -75,7 +75,7 @@ CREATE TABLE Pojazd (
 );
 
 CREATE TABLE Naprawa (
-    "ID_Naprawa" INT PRIMARY KEY,
+    "ID_Naprawa" SERIAL PRIMARY KEY,
     "Numer_rejestracyjny" VARCHAR(255),
     "ID_Pracownik" INT,
     "Data_przyjecia" DATE,

@@ -3,6 +3,7 @@ using Serialization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -152,7 +153,7 @@ namespace WarsztatV2_klient
         private async Task firstDataDownload()
         {
             Socket clientSocketConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Utworzenie gniazda
-            EndPoint serverSocketConnection = new IPEndPoint(IPAddress.Loopback, 19164); //Utworzenie adresu
+            EndPoint serverSocketConnection = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["IPAddress"]), Convert.ToInt32(ConfigurationManager.AppSettings["Port"])); //Utworzenie adresu
             try
             {
                 clientSocketConnection.Connect(serverSocketConnection);
@@ -243,7 +244,7 @@ namespace WarsztatV2_klient
         private async Task refreshData()
         {
             Socket clientSocketConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Utworzenie gniazda
-            EndPoint serverSocketConnection = new IPEndPoint(IPAddress.Loopback, 19164); //Utworzenie adresu
+            EndPoint serverSocketConnection = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["IPAddress"]), Convert.ToInt32(ConfigurationManager.AppSettings["Port"])); //Utworzenie adresu
             try
             {
                 clientSocketConnection.Connect(serverSocketConnection);
@@ -298,7 +299,7 @@ namespace WarsztatV2_klient
         private async void acceptButton_Click(object sender, RoutedEventArgs e)
         {
             Socket clientSocketConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Utworzenie gniazda
-            EndPoint serverSocketConnection = new IPEndPoint(IPAddress.Loopback, 19164); //Utworzenie adresu
+            EndPoint serverSocketConnection = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["IPAddress"]), Convert.ToInt32(ConfigurationManager.AppSettings["Port"])); //Utworzenie adresu
             try
             {
                 clientSocketConnection.Connect(serverSocketConnection);

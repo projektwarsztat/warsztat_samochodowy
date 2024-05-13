@@ -3,6 +3,7 @@ using PasswordCryptography;
 using Serialization;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -23,8 +24,7 @@ namespace WarsztatV2
         public socketConnection()
         {
             serverSocketConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Utworzenie gniazda
-            endPoint = new IPEndPoint(IPAddress.Any, 19164); //Utworzenie adresu
-
+            endPoint = new IPEndPoint(IPAddress.Any, Convert.ToInt32(ConfigurationManager.AppSettings["Port"])); //Utworzenie adresu
         }
 
         /// <summary>

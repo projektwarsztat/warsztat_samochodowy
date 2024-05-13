@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
 
 namespace WarsztatV2_klient
 {
@@ -34,7 +35,7 @@ namespace WarsztatV2_klient
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
             Socket clientSocketConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Utworzenie gniazda
-            EndPoint serverSocketConnection = new IPEndPoint(IPAddress.Loopback, 19164); //Utworzenie adresu
+            EndPoint serverSocketConnection = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["IPAddress"]), Convert.ToInt32(ConfigurationManager.AppSettings["Port"])); //Utworzenie adresu
             try
             {
                 clientSocketConnection.Connect(serverSocketConnection);

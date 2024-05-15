@@ -3,3 +3,4 @@ Aplikacja działająca w architekturze klient-serwer, przy pomocy której prowad
 ## Funkcjonalności:
 * Dedykowana aplikacja dla każdego pracownika-mechanika, gdzie dostępny jest podgląd kolejnych zleconych napraw.
 * Rozbudowany pulpit nawigacyjny z wieloma ważnymi wskaźnikami dostępny w aplikacji dla administratora.
+* Generowanie faktur w formacie PDF.

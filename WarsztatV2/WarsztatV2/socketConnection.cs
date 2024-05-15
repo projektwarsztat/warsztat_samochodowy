@@ -106,7 +106,7 @@ namespace WarsztatV2
                                         Naprawa naprawa = newConnection.Naprawy.SingleOrDefault<Naprawa>(n => n.ID_Naprawa == naprawaID);
                                         naprawa.Status_naprawy = "DoOdbioru"; //Zaznaczenie stanu jako naprawniony i jest już do odbioru
                                         naprawa.Wiadomosc_zwrotna = komentarz;
-                                        SendSMS.SendToClient(naprawaID);
+                                        //SendSMS.SendToClient(naprawaID);
                                         for (int i = 0; i < uzyteCzesciL.Count; i++)
                                         {
                                             newConnection.Uzyte_czesci.Add(new Uzyte_czesci { ID_Czesci = uzyteCzesciL[i].CzescNav.ID_Czesci, ID_Naprawa = uzyteCzesciL[i].NaprawaNav.ID_Naprawa, Ilosc = uzyteCzesciL[i].Ilosc });

@@ -131,5 +131,14 @@ namespace WarsztatV2
         {
             tB.BorderBrush = Brushes.Silver;
         }
+
+        /// <summary>
+        /// Metoda ustawiający pierwotny kolor obramowania PasswordBox
+        /// </summary>
+        /// <param name="pB">Pole tekstowe</param>
+        public void colorRestore(PasswordBox pB)
+        {
+            pB.BorderBrush = Brushes.Silver;
+        }
     }
 }

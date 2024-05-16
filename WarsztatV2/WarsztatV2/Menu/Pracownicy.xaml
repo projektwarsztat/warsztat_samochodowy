@@ -1,4 +1,4 @@
-﻿<Page x:Class="WarsztatV2.Menu.Pracownicy"
+<Page x:Class="WarsztatV2.Menu.Pracownicy"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -56,9 +56,11 @@
                     </StackPanel>
                     <StackPanel>
                         <Label Content="Hasło:" Width="83" HorizontalAlignment="Left"/>
-                        <TextBox x:Name="haslo" Width="83" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus"/>
+                        <PasswordBox x:Name="haslo" Width="83" HorizontalAlignment="Left"  Height="20" Margin="5, 0, 0, 0" SelectionBrush="#FF333333" LostFocus="textBoxLostFocus" />
+                        <TextBox x:Name="hasloShow" Width="83"  Height="20" SelectionBrush="#FF333333" Margin="5, 0, 0, 0" LostFocus="textBoxLostFocus" Visibility="Collapsed"/>
                     </StackPanel>
                 </WrapPanel>
+                <Button x:Name="pokazHaslo" Content="Pokaż hasło" Width="83" Height="25" Margin="5, 7, 0, 0"  HorizontalAlignment="Left" Click="pokazHasloClick" IsEnabled="False"/>
             </StackPanel>
             <TextBox Margin="10,8,10,0" Name="searchTextBox" TextChanged="searchTextBoxTextChanged" Height="20" VerticalAlignment="Top" Grid.Column="1" Visibility="Hidden"/>
             <ListView x:Name="lvDataBinding" HorizontalContentAlignment="Stretch" Background="#FFEEEEEE" Height="410" VerticalAlignment="Top" Grid.Column="1" Margin="10,40,10,0">

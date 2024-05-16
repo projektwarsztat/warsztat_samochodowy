@@ -1,4 +1,4 @@
-﻿using BibliotekaKlas;
+using BibliotekaKlas;
 using PasswordCryptography;
 using System;
 using System.Collections.Generic;
@@ -129,7 +129,8 @@ namespace WarsztatV2.Menu
                                 kod_pocztowy.Text = pracownik.AdresNav.Kod_pocztowy;
                                 telefon.Text = pracownik.Telefon.ToString();
                                 login.Text = pracownik.Dane_logowaniaNav.Login;
-                                haslo.Text = passwordCryptography.Decrypt(pracownik.Dane_logowaniaNav.Haslo);
+                                haslo.Password = passwordCryptography.Decrypt(pracownik.Dane_logowaniaNav.Haslo);
+                                pokazHaslo.IsEnabled = true;
 
                                 if (wykonujeNaprawe(naprawaL, pracownik.ID_Pracownik)) usun.IsEnabled = false;
                                 else usun.IsEnabled = true;
@@ -157,7 +158,7 @@ namespace WarsztatV2.Menu
             string numerD = numer.Text;
             string kodPocztowyD = kod_pocztowy.Text;
             string loginD = login.Text;
-            string hasloD = haslo.Text;
+            string hasloD = haslo.Password;
 
             bool istnieje = await Task.Run(() => istniejeLoginWBazie(loginD));
             if(istnieje == false)
@@ -306,7 +307,7 @@ namespace WarsztatV2.Menu
                                 adresM.Numer = numer.Text;
                                 adresM.Kod_pocztowy = kod_pocztowy.Text;
                                 daneM.Login = login.Text;
-                                daneM.Haslo = passwordCryptography.Encrypt(haslo.Text);
+                                daneM.Haslo = passwordCryptography.Encrypt(haslo.Password);
                             }
                         );
                         newConnection.SaveChanges();
@@ -418,6 +419,23 @@ namespace WarsztatV2.Menu
             {
                 TextBox tB = sender as TextBox;
                 validation.checkData(tB);
+            }
+        }
+
+        private void pokazHasloClick(object sender, RoutedEventArgs e)
+        {
+            if (haslo.Visibility == Visibility.Visible)
+            {
+                hasloShow.Text = haslo.Password;
+                haslo.Visibility = Visibility.Collapsed;
+                hasloShow.Visibility = Visibility.Visible;
+                pokazHaslo.Content = "Ukryj hasło";
+            }
+            else if (hasloShow.Visibility == Visibility.Visible)
+            {
+                haslo.Visibility = Visibility.Visible;
+                hasloShow.Visibility = Visibility.Collapsed;
+                pokazHaslo.Content = "Pokaż hasło";
             }
         }
     }

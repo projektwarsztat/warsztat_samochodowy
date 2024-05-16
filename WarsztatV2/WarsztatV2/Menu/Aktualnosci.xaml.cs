@@ -42,6 +42,9 @@ namespace WarsztatV2.Menu
 
             //Wywołanie metody wypisującej informacje w postaci numeru rejestracyjnego, modelu pojazdu oraz przyczyny ostatniej wizyty, dla pojazdu który najczęściej się pojawia we warsztacie
             Task.Run(() => najczesciejWizytujacyPojazd());
+
+            //Wywołanie metody wypisującej informację o średnim czasie spędzonym przez pojazd we warsztacie, od czasu zgłoszenia do czasu odebrania pojazdu przez klienta
+            Task.Run(() => sredniCzasPobytu());
         }
 
         /// <summary>
@@ -238,7 +241,6 @@ namespace WarsztatV2.Menu
                                 informationLabel3.Visibility = Visibility.Hidden; //Ukrycie informacji dt. pobierania danych
                                 numberVehicle.Text = numerRejestracyjny; //Wstawienie numeru rejestracyjnego
                                 modelVehicle.Text = pojazdy.Where(p => p.Numer_rejestracyjny == numerRejestracyjny).First().Model; //Wstawienie nazwy modelu pojazdu
-                                reasonText.Text = naprawy.Where(p => p.Numer_rejestracyjny == numerRejestracyjny).OrderBy(p => p.Data_przyjecia).Last().Opis_usterek; //Wstawienie opisu ostatniej ustreki danego pojazdu
                             }
                         );
                     }
@@ -259,6 +261,56 @@ namespace WarsztatV2.Menu
                 );
             }
             
+        }
+
+        ///<summary>
+        ///Metoda pobierająca dane z bazy danych na temat średniej długości czasu spędzonego przez pojazd we warsztacie samochodowym. W przypadku braku informacji wyświetla informację o braku danych.
+        /// </summary>
+        private async void sredniCzasPobytu()
+        {
+            List<Naprawa> naprawy;
+
+            using (databaseConnection newConnection = new databaseConnection())
+            {
+                naprawy = await Task.Run(
+                    () => newConnection.Naprawy.Where(n => n.Status_naprawy == "Wydany").ToList() //Pobranie danych o zakończonych naprawach
+                );
+            }
+
+            if (naprawy.Count() != 0)
+            {
+                TimeSpan sredniCzas = TimeSpan.FromMinutes(naprawy.Select(n => ((TimeSpan)(n.Data_wydania - n.Data_przyjecia)).TotalMinutes)
+                    .Sum() / naprawy.Count());
+
+                //Zmiana wartości odpowiednich elementów na właściwe treści
+                await Task.Run(
+                    () =>
+                    {
+                        this.Dispatcher.Invoke(
+                            () =>
+                            {
+                                informationLabel5.Visibility = Visibility.Hidden; //Ukrycie informacji dt. pobierania danych
+                                averageTime.Text = $"{sredniCzas.Hours}h {sredniCzas.Minutes}min";
+                            }
+                        );
+                    }
+                );
+            }
+            else
+            {
+                await Task.Run(
+                    () =>
+                    {
+                        this.Dispatcher.Invoke(
+                            () =>
+                            {
+                                informationLabel3.Content = "Brak danych do wyświetlenia"; //Wyświetlenie informacji o braku danych do wypisania
+                            }
+                        );
+                    }
+                );
+            }
+
         }
 
         ///<summary>
